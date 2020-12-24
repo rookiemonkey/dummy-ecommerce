@@ -17,7 +17,7 @@ const slidesDescription = [
 
 
 
-// starts the slideshow
+// show slides and start it right away
 function showSlides() {
     const slides = document.getElementsByClassName("slide");
     const slideshowParent = document.querySelector('#slideshow');

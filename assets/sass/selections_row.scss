@@ -2,7 +2,11 @@
 #selections-row2,
 #selections-row3,
 #selections-row4,
-#selections-row5 {
+#selections-row5,
+#selections-row6,
+#selections-row7,
+#selections-row8,
+#selections-row9 {
     margin:$spacing_lg+$spacing_lg+$spacing_lg 0px;
 
     h4 {
@@ -13,7 +17,11 @@
     #list-babies,
     #list-groceries,
     #list-pets,
-    #list-fashionwomen {
+    #list-fashionwomen,
+    #list-fashionmen,
+    #list-accessories,
+    #list-sportsandlifestyle,
+    #list-automotive  {
         margin-top: $spacing_md;
         display: flex;
         justify-content: space-between;
@@ -77,7 +85,7 @@
                     }
 
                     span.type {
-                        font-size: small;
+                        font-size: smaller;
                         color: $color_meta;
                     }
 

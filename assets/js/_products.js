@@ -8,6 +8,10 @@ const baseurl = 'http://localhost:5050';
     const header_groceries = document.getElementById('header-groceries');
     const header_pets = document.getElementById('header-pets');
     const header_fashionwomen = document.getElementById('header-fashionwomen');
+    const header_fashionmen = document.getElementById('header-fashionmen');
+    const header_accesories = document.getElementById('header-accessories');
+    const header_sportsandlifestyle = document.getElementById('header-sportsandlifestyle');
+    const header_automotive = document.getElementById('header-automotive');
 
     const raw = await fetch(`${baseurl}/api/v1/departments?apikey=gFKVHZjIK_Wt`);
     const { data } = await raw.json();
@@ -40,6 +44,18 @@ const baseurl = 'http://localhost:5050';
                 break;
             case dept.department_name === 'Fashion Women':
                 appendNumProducts(header_fashionwomen, dept.department_numProducts)
+                break;
+            case dept.department_name === 'Fashion Men':
+                appendNumProducts(header_fashionmen, dept.department_numProducts)
+                break;
+            case dept.department_name === 'Accesories':
+                appendNumProducts(header_accesories, dept.department_numProducts)
+                break;
+            case dept.department_name === 'Sports & Lifestyle':
+                appendNumProducts(header_sportsandlifestyle, dept.department_numProducts)
+                break;
+            case dept.department_name === 'Automotive':
+                appendNumProducts(header_automotive, dept.department_numProducts)
                 break;
         }
     })
@@ -97,4 +113,28 @@ const baseurl = 'http://localhost:5050';
     const raw = await fetch(`${baseurl}/api/v1/departments/fashionwomen?apikey=gFKVHZjIK_Wt&limit=5`)
     const parsed = await raw.json();
     generanteDom(parsed.data, HTMLProductCard, '#list-fashionwomen')
+})();
+
+(async function renderFashionMenRow() {
+    const raw = await fetch(`${baseurl}/api/v1/departments/fashionmen?apikey=gFKVHZjIK_Wt&limit=5`)
+    const parsed = await raw.json();
+    generanteDom(parsed.data, HTMLProductCard, '#list-fashionmen')
+})();
+
+(async function renderAccesoriesRow() {
+    const raw = await fetch(`${baseurl}/api/v1/departments/accessories?apikey=gFKVHZjIK_Wt&limit=5`)
+    const parsed = await raw.json();
+    generanteDom(parsed.data, HTMLProductCard, '#list-accessories')
+})();
+
+(async function rendersSportsAndLifestyleRow() {
+    const raw = await fetch(`${baseurl}/api/v1/departments/sportsandlifestyle?apikey=gFKVHZjIK_Wt&limit=5`)
+    const parsed = await raw.json();
+    generanteDom(parsed.data, HTMLProductCard, '#list-sportsandlifestyle')
+})();
+
+(async function rendersAutomotiveRow() {
+    const raw = await fetch(`${baseurl}/api/v1/departments/automotive?apikey=gFKVHZjIK_Wt&limit=5`)
+    const parsed = await raw.json();
+    generanteDom(parsed.data, HTMLProductCard, '#list-automotive')
 })();
