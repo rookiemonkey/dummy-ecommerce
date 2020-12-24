@@ -1,0 +1,87 @@
+#topsales {
+    margin:$spacing_lg+$spacing_lg+$spacing_lg 0px;
+
+    h3 {
+        color: $color_primary;
+    }
+
+    #topsales-cards {
+        margin-top: $spacing_md;
+        display: flex;
+        justify-content: space-between;
+
+        li {    
+            background-color: white;
+            border-radius: $radius;
+            padding: $spacing_lg;
+            list-style-type: none;
+            width: 350px;       
+            height: 420px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            text-align: left;
+            color: $color_darkmuted;
+            cursor: pointer;
+            transition: transform 250ms ease-in-out,
+                        box-shadow 250ms ease-in-out;
+            
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 10px -5px;
+            }
+
+            &:hover > img {
+                transform: scale(1.1);
+            }
+
+            p.product-sales {
+                text-align: center;
+                font-size: larger;
+                font-weight: 800;
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                margin-bottom: $spacing_sm;
+                transition: transform 250ms ease-in-out;
+            }
+
+            div.productcard-meta {
+                width: 100%;
+
+                h4 {
+                    height: 38px;
+                    width: 100%;
+                }
+
+                div.productcard-meta-details {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    span.ratings {
+                        img {
+                            margin: 0px;
+                            height: 12px;
+                            width: 12px;
+                        }
+                    }
+
+                    span.type {
+                        font-size: small;
+                        color: $color_meta;
+                    }
+
+                    span.price {
+                        color: green;
+                        font-weight: 800;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+#slideshow {
+  margin:$spacing_lg+$spacing_lg+$spacing_lg 0px;
+
+  .slide {
+    width: 100%;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+
+    img {
+      width: 50%;
+      height: 500px;
+      object-fit: contain;
+    }
+
+    p {
+      width: 50%;
+      text-align: center;
+      color: $color_primary;
+      font-weight: 800;
+      font-size: 2.5rem;
+    }
+  }
+}
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}

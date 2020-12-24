@@ -1,0 +1,52 @@
+#banner {
+    display: flex;
+    margin: $spacing_lg 0px;
+
+    .banner-left,
+    .banner-right {
+        width: 50%;
+        padding: $spacing_lg;
+    }
+
+    .banner-left {
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .banner-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: $spacing_lg ($spacing_lg+$spacing_lg);
+
+        .banner-right-header {
+            h1 {
+                font-size: 60px;
+                color: $color_primary
+            }
+
+            p {
+                font-size: 1.5rem;
+            }
+        }
+
+        .banner-right-button {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            margin: $spacing_lg 0px;
+
+            button {
+                width: max-content;
+                font-size:  1rem;
+                font-weight: 800;
+                color: $color_lightmuted;
+                border: 2px solid $color_secondary;
+                background-color: $color_secondary;
+            }
+        }
+    }
+}

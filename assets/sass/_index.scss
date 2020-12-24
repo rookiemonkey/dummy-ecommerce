@@ -1,0 +1,60 @@
+$color_primary: #802c6e;
+$color_secondary: #f7aa35;
+$color_light: white;
+$color_lightmuted: #eaebec; 
+$color_darkmuted: rgba(0,0,0,0.75);
+$color_meta: #b1b1b3;
+$radius: 15px;
+$spacing_sm: 8px;
+$spacing_md: 12px;
+$spacing_lg: 20px;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+*, *::before, *::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $color_lightmuted;
+}
+
+main {
+    // border: 1px solid green;
+    margin: ($spacing_lg+$spacing_lg+$spacing_lg) 
+            ($spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg); 
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+}
+
+p {
+    line-height: 1.5;
+    font-size: 1.20em;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 135px;
+    height: 50px;
+    padding: 0px $spacing_lg;
+    border-radius: 35px;
+}
+
+@import './nav.scss';
+@import './banner.scss';
+@import './toprated.scss';
+@import './topsales.scss';
+@import './slideshow.scss';
+@import './selections_row1.scss';

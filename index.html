@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <title>Calzada</title>
+</head>
+
+<body>
+    <main>
+        <nav id="nav">
+            <div class="nav-brand">
+                <img src="/assets/images/logo.svg">
+            </div>
+            <ul class="nav-options">
+                <li class="button">Login</li>
+                <li class="button">Register</li>
+                <li class="button">Contact Us</li>
+            </ul>
+        </nav>
+
+        <!-- HOME -->
+        <div data-route="home">
+            <header id="banner">
+                <div class="banner-left">
+                    <img src="/assets/images/banner.svg" alt="calzada">
+                </div>
+                <div class="banner-right">
+                    <div class="banner-right-header">
+                        <h1>Calzada</h1>
+                        <p>A walk-in-a-park online shopping experience!</p>
+                    </div>
+                    <div class="banner-right-button">
+                        <button class="button">Shop Now!</button>
+                    </div>
+                </div>
+            </header>
+            <article id="toprated">
+                <h3>Top Rated Products</h3>
+                <ul id="toprated-cards">
+                </ul>
+            </article>
+            <article id="topsales">
+                <h3>Top Sales this week!</h3>
+                <ul id="topsales-cards">
+                </ul>
+            </article>
+            <article id="slideshow">
+            </article>
+            <article id="selections-row1">
+                <h3>Check out our wide range of selections!</h3>
+                <div id="selections-row1-container">
+                    <section id="selections-row1-left">
+                        <h4>Gadgets</h4>
+                        <ul id="list-gadgets">
+                        </ul>
+                    </section>
+                    <section id="selections-row1-right">
+                        <h4>Appliances</h4>
+                        <ul id="list-appliances">
+                        </ul>
+                    </section>
+                </div>
+            </article>
+        </div>
+
+        <!-- SEARCH -->
+        <div data-route="search" style="display: none;">
+            SEARCH
+        </div>
+
+        <!-- PRODUCT -->
+        <div data-route="product" style="display: none;">
+            PRODUCT
+        </div>
+
+        <!-- CHECKOUT -->
+        <div data-route="checkout" style="display: none;">
+            CHECKOUT
+        </div>
+
+    </main>
+</body>
+
+<script src="/assets/js/__utilities.js"></script>
+<script src="/assets/js/_crypto.js"></script>
+<script src="/assets/js/_models.js"></script>
+<script src="/assets/js/_products.js"></script>
+<script src="/assets/js/main.js"></script>
+
+</html>

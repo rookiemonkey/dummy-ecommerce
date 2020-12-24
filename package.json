@@ -1,0 +1,12 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "sass": "clear && node-sass assets/sass/_index.scss assets/css/main.css"
+  },
+  "devDependencies": {
+    "node-sass": "^5.0.0"
+  }
+}

@@ -1,0 +1,42 @@
+#nav {
+    width: 100%;
+    min-height: 50px; // relative to header's height
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .nav-brand,
+    .nav-options {
+        height: 50px;
+    }
+
+    .nav-brand {
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 40px;
+            height: 100%;
+        }
+    }
+
+    .nav-options {
+        display: flex;
+        align-items: center;
+        
+        li {
+            border: 2px solid $color_primary;
+            color: $color_primary;
+            font-weight: 800;
+            list-style-type: none;
+            margin-left: $spacing_lg;
+
+            &:last-child {
+                border: 2px solid $color_secondary;
+                background-color: $color_secondary;
+                color: $color_lightmuted;
+            }
+        }
+    }
+
+}
