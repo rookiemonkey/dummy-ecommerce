@@ -31,6 +31,16 @@ p {
   padding: 0px 20px;
   border-radius: 35px; }
 
+.num-products {
+  margin-left: 8px;
+  font-size: small;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  transition: font-weight 250ms ease; }
+  .num-products:hover {
+    font-weight: 800; }
+
 #nav {
   width: 100%;
   min-height: 50px;
@@ -244,51 +254,52 @@ p {
   to {
     opacity: 1; } }
 
-#selections-row1 {
+#selections-grid {
   margin: 60px 0px; }
-  #selections-row1 h3 {
-    color: #802c6e; }
-  #selections-row1 #selections-row1-container {
+  #selections-grid h3 {
+    color: #802c6e;
+    margin-bottom: 12px; }
+  #selections-grid #selections-row1-container {
     display: flex;
     justify-content: space-between; }
-    #selections-row1 #selections-row1-container h4:first-child {
+    #selections-grid #selections-row1-container h4:first-child {
       padding: 12px 8px; }
-  #selections-row1 #selections-row1-left,
-  #selections-row1 #selections-row1-right {
+  #selections-grid #selections-row1-left,
+  #selections-grid #selections-row1-right {
     width: 50%; }
-    #selections-row1 #selections-row1-left h4,
-    #selections-row1 #selections-row1-right h4 {
+    #selections-grid #selections-row1-left h4,
+    #selections-grid #selections-row1-right h4 {
       color: #f09409; }
-  #selections-row1 #selections-row1-left h4 {
+  #selections-grid #selections-row1-left h4 {
     color: white;
     background-color: #f9bf66;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px; }
-  #selections-row1 #selections-row1-left > #list-gadgets {
+  #selections-grid #selections-row1-left > #list-gadgets {
     background-color: #f9bf66;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px; }
-  #selections-row1 #selections-row1-left > #list-gadgets,
-  #selections-row1 #selections-row1-right > #list-appliances {
+  #selections-grid #selections-row1-left > #list-gadgets,
+  #selections-grid #selections-row1-right > #list-appliances {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 0px;
     grid-template-areas: "card1 card2" "card3 card4"; }
-    #selections-row1 #selections-row1-left > #list-gadgets li:nth-child(1),
-    #selections-row1 #selections-row1-right > #list-appliances li:nth-child(1) {
+    #selections-grid #selections-row1-left > #list-gadgets li:nth-child(1),
+    #selections-grid #selections-row1-right > #list-appliances li:nth-child(1) {
       grid-area: card1; }
-    #selections-row1 #selections-row1-left > #list-gadgets li:nth-child(2),
-    #selections-row1 #selections-row1-right > #list-appliances li:nth-child(2) {
+    #selections-grid #selections-row1-left > #list-gadgets li:nth-child(2),
+    #selections-grid #selections-row1-right > #list-appliances li:nth-child(2) {
       grid-area: card2; }
-    #selections-row1 #selections-row1-left > #list-gadgets li:nth-child(3),
-    #selections-row1 #selections-row1-right > #list-appliances li:nth-child(3) {
+    #selections-grid #selections-row1-left > #list-gadgets li:nth-child(3),
+    #selections-grid #selections-row1-right > #list-appliances li:nth-child(3) {
       grid-area: card3; }
-    #selections-row1 #selections-row1-left > #list-gadgets li:nth-child(4),
-    #selections-row1 #selections-row1-right > #list-appliances li:nth-child(4) {
+    #selections-grid #selections-row1-left > #list-gadgets li:nth-child(4),
+    #selections-grid #selections-row1-right > #list-appliances li:nth-child(4) {
       grid-area: card4; }
-    #selections-row1 #selections-row1-left > #list-gadgets li,
-    #selections-row1 #selections-row1-right > #list-appliances li {
+    #selections-grid #selections-row1-left > #list-gadgets li,
+    #selections-grid #selections-row1-right > #list-appliances li {
       background-color: white;
       border-radius: 15px;
       padding: 20px;
@@ -306,24 +317,24 @@ p {
       color: rgba(0, 0, 0, 0.75);
       cursor: pointer;
       transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out; }
-      #selections-row1 #selections-row1-left > #list-gadgets li:hover,
-      #selections-row1 #selections-row1-right > #list-appliances li:hover {
+      #selections-grid #selections-row1-left > #list-gadgets li:hover,
+      #selections-grid #selections-row1-right > #list-appliances li:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 10px -5px; }
-      #selections-row1 #selections-row1-left > #list-gadgets li:hover > img,
-      #selections-row1 #selections-row1-right > #list-appliances li:hover > img {
+      #selections-grid #selections-row1-left > #list-gadgets li:hover > img,
+      #selections-grid #selections-row1-right > #list-appliances li:hover > img {
         transform: scale(1.1); }
-      #selections-row1 #selections-row1-left > #list-gadgets li img,
-      #selections-row1 #selections-row1-right > #list-appliances li img {
+      #selections-grid #selections-row1-left > #list-gadgets li img,
+      #selections-grid #selections-row1-right > #list-appliances li img {
         width: 100%;
         height: 200px;
         margin-bottom: 8px;
         transition: transform 250ms ease-in-out; }
-      #selections-row1 #selections-row1-left > #list-gadgets li div.productcard-meta,
-      #selections-row1 #selections-row1-right > #list-appliances li div.productcard-meta {
+      #selections-grid #selections-row1-left > #list-gadgets li div.productcard-meta,
+      #selections-grid #selections-row1-right > #list-appliances li div.productcard-meta {
         width: 100%; }
-        #selections-row1 #selections-row1-left > #list-gadgets li div.productcard-meta h4,
-        #selections-row1 #selections-row1-right > #list-appliances li div.productcard-meta h4 {
+        #selections-grid #selections-row1-left > #list-gadgets li div.productcard-meta h4,
+        #selections-grid #selections-row1-right > #list-appliances li div.productcard-meta h4 {
           height: 38px;
           width: 100%;
           display: flex;
@@ -332,17 +343,350 @@ p {
           padding: 0px;
           margin: 0px;
           background-color: transparent; }
-        #selections-row1 #selections-row1-left > #list-gadgets li div.productcard-meta div.productcard-meta-details,
-        #selections-row1 #selections-row1-right > #list-appliances li div.productcard-meta div.productcard-meta-details {
+        #selections-grid #selections-row1-left > #list-gadgets li div.productcard-meta div.productcard-meta-details,
+        #selections-grid #selections-row1-right > #list-appliances li div.productcard-meta div.productcard-meta-details {
           display: flex;
           align-items: center;
           justify-content: space-between; }
-          #selections-row1 #selections-row1-left > #list-gadgets li div.productcard-meta div.productcard-meta-details span.ratings img,
-          #selections-row1 #selections-row1-right > #list-appliances li div.productcard-meta div.productcard-meta-details span.ratings img {
+          #selections-grid #selections-row1-left > #list-gadgets li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-grid #selections-row1-right > #list-appliances li div.productcard-meta div.productcard-meta-details span.ratings img {
             margin: 0px;
             height: 12px;
             width: 12px; }
-          #selections-row1 #selections-row1-left > #list-gadgets li div.productcard-meta div.productcard-meta-details span.price,
-          #selections-row1 #selections-row1-right > #list-appliances li div.productcard-meta div.productcard-meta-details span.price {
+          #selections-grid #selections-row1-left > #list-gadgets li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-grid #selections-row1-right > #list-appliances li div.productcard-meta div.productcard-meta-details span.type {
+            font-size: small;
+            color: #b1b1b3; }
+          #selections-grid #selections-row1-left > #list-gadgets li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-grid #selections-row1-right > #list-appliances li div.productcard-meta div.productcard-meta-details span.price {
+            color: green;
+            font-weight: 800; }
+
+#selections-row1,
+#selections-row2,
+#selections-row3,
+#selections-row4,
+#selections-row5 {
+  margin: 60px 0px; }
+  #selections-row1 h4,
+  #selections-row2 h4,
+  #selections-row3 h4,
+  #selections-row4 h4,
+  #selections-row5 h4 {
+    color: #f09409; }
+  #selections-row1 #list-healthandbeauty,
+  #selections-row1 #list-babies,
+  #selections-row1 #list-groceries,
+  #selections-row1 #list-pets,
+  #selections-row1 #list-fashionwomen,
+  #selections-row2 #list-healthandbeauty,
+  #selections-row2 #list-babies,
+  #selections-row2 #list-groceries,
+  #selections-row2 #list-pets,
+  #selections-row2 #list-fashionwomen,
+  #selections-row3 #list-healthandbeauty,
+  #selections-row3 #list-babies,
+  #selections-row3 #list-groceries,
+  #selections-row3 #list-pets,
+  #selections-row3 #list-fashionwomen,
+  #selections-row4 #list-healthandbeauty,
+  #selections-row4 #list-babies,
+  #selections-row4 #list-groceries,
+  #selections-row4 #list-pets,
+  #selections-row4 #list-fashionwomen,
+  #selections-row5 #list-healthandbeauty,
+  #selections-row5 #list-babies,
+  #selections-row5 #list-groceries,
+  #selections-row5 #list-pets,
+  #selections-row5 #list-fashionwomen {
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between; }
+    #selections-row1 #list-healthandbeauty li,
+    #selections-row1 #list-babies li,
+    #selections-row1 #list-groceries li,
+    #selections-row1 #list-pets li,
+    #selections-row1 #list-fashionwomen li,
+    #selections-row2 #list-healthandbeauty li,
+    #selections-row2 #list-babies li,
+    #selections-row2 #list-groceries li,
+    #selections-row2 #list-pets li,
+    #selections-row2 #list-fashionwomen li,
+    #selections-row3 #list-healthandbeauty li,
+    #selections-row3 #list-babies li,
+    #selections-row3 #list-groceries li,
+    #selections-row3 #list-pets li,
+    #selections-row3 #list-fashionwomen li,
+    #selections-row4 #list-healthandbeauty li,
+    #selections-row4 #list-babies li,
+    #selections-row4 #list-groceries li,
+    #selections-row4 #list-pets li,
+    #selections-row4 #list-fashionwomen li,
+    #selections-row5 #list-healthandbeauty li,
+    #selections-row5 #list-babies li,
+    #selections-row5 #list-groceries li,
+    #selections-row5 #list-pets li,
+    #selections-row5 #list-fashionwomen li {
+      background-color: white;
+      border-radius: 15px;
+      padding: 20px;
+      list-style-type: none;
+      width: 205px;
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      text-align: left;
+      color: rgba(0, 0, 0, 0.75);
+      cursor: pointer;
+      transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out; }
+      #selections-row1 #list-healthandbeauty li:hover,
+      #selections-row1 #list-babies li:hover,
+      #selections-row1 #list-groceries li:hover,
+      #selections-row1 #list-pets li:hover,
+      #selections-row1 #list-fashionwomen li:hover,
+      #selections-row2 #list-healthandbeauty li:hover,
+      #selections-row2 #list-babies li:hover,
+      #selections-row2 #list-groceries li:hover,
+      #selections-row2 #list-pets li:hover,
+      #selections-row2 #list-fashionwomen li:hover,
+      #selections-row3 #list-healthandbeauty li:hover,
+      #selections-row3 #list-babies li:hover,
+      #selections-row3 #list-groceries li:hover,
+      #selections-row3 #list-pets li:hover,
+      #selections-row3 #list-fashionwomen li:hover,
+      #selections-row4 #list-healthandbeauty li:hover,
+      #selections-row4 #list-babies li:hover,
+      #selections-row4 #list-groceries li:hover,
+      #selections-row4 #list-pets li:hover,
+      #selections-row4 #list-fashionwomen li:hover,
+      #selections-row5 #list-healthandbeauty li:hover,
+      #selections-row5 #list-babies li:hover,
+      #selections-row5 #list-groceries li:hover,
+      #selections-row5 #list-pets li:hover,
+      #selections-row5 #list-fashionwomen li:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 10px -5px; }
+      #selections-row1 #list-healthandbeauty li:hover > img,
+      #selections-row1 #list-babies li:hover > img,
+      #selections-row1 #list-groceries li:hover > img,
+      #selections-row1 #list-pets li:hover > img,
+      #selections-row1 #list-fashionwomen li:hover > img,
+      #selections-row2 #list-healthandbeauty li:hover > img,
+      #selections-row2 #list-babies li:hover > img,
+      #selections-row2 #list-groceries li:hover > img,
+      #selections-row2 #list-pets li:hover > img,
+      #selections-row2 #list-fashionwomen li:hover > img,
+      #selections-row3 #list-healthandbeauty li:hover > img,
+      #selections-row3 #list-babies li:hover > img,
+      #selections-row3 #list-groceries li:hover > img,
+      #selections-row3 #list-pets li:hover > img,
+      #selections-row3 #list-fashionwomen li:hover > img,
+      #selections-row4 #list-healthandbeauty li:hover > img,
+      #selections-row4 #list-babies li:hover > img,
+      #selections-row4 #list-groceries li:hover > img,
+      #selections-row4 #list-pets li:hover > img,
+      #selections-row4 #list-fashionwomen li:hover > img,
+      #selections-row5 #list-healthandbeauty li:hover > img,
+      #selections-row5 #list-babies li:hover > img,
+      #selections-row5 #list-groceries li:hover > img,
+      #selections-row5 #list-pets li:hover > img,
+      #selections-row5 #list-fashionwomen li:hover > img {
+        transform: scale(1.1); }
+      #selections-row1 #list-healthandbeauty li img,
+      #selections-row1 #list-babies li img,
+      #selections-row1 #list-groceries li img,
+      #selections-row1 #list-pets li img,
+      #selections-row1 #list-fashionwomen li img,
+      #selections-row2 #list-healthandbeauty li img,
+      #selections-row2 #list-babies li img,
+      #selections-row2 #list-groceries li img,
+      #selections-row2 #list-pets li img,
+      #selections-row2 #list-fashionwomen li img,
+      #selections-row3 #list-healthandbeauty li img,
+      #selections-row3 #list-babies li img,
+      #selections-row3 #list-groceries li img,
+      #selections-row3 #list-pets li img,
+      #selections-row3 #list-fashionwomen li img,
+      #selections-row4 #list-healthandbeauty li img,
+      #selections-row4 #list-babies li img,
+      #selections-row4 #list-groceries li img,
+      #selections-row4 #list-pets li img,
+      #selections-row4 #list-fashionwomen li img,
+      #selections-row5 #list-healthandbeauty li img,
+      #selections-row5 #list-babies li img,
+      #selections-row5 #list-groceries li img,
+      #selections-row5 #list-pets li img,
+      #selections-row5 #list-fashionwomen li img {
+        width: 100%;
+        height: 150px;
+        margin-bottom: 8px;
+        transition: transform 250ms ease-in-out; }
+      #selections-row1 #list-healthandbeauty li div.productcard-meta,
+      #selections-row1 #list-babies li div.productcard-meta,
+      #selections-row1 #list-groceries li div.productcard-meta,
+      #selections-row1 #list-pets li div.productcard-meta,
+      #selections-row1 #list-fashionwomen li div.productcard-meta,
+      #selections-row2 #list-healthandbeauty li div.productcard-meta,
+      #selections-row2 #list-babies li div.productcard-meta,
+      #selections-row2 #list-groceries li div.productcard-meta,
+      #selections-row2 #list-pets li div.productcard-meta,
+      #selections-row2 #list-fashionwomen li div.productcard-meta,
+      #selections-row3 #list-healthandbeauty li div.productcard-meta,
+      #selections-row3 #list-babies li div.productcard-meta,
+      #selections-row3 #list-groceries li div.productcard-meta,
+      #selections-row3 #list-pets li div.productcard-meta,
+      #selections-row3 #list-fashionwomen li div.productcard-meta,
+      #selections-row4 #list-healthandbeauty li div.productcard-meta,
+      #selections-row4 #list-babies li div.productcard-meta,
+      #selections-row4 #list-groceries li div.productcard-meta,
+      #selections-row4 #list-pets li div.productcard-meta,
+      #selections-row4 #list-fashionwomen li div.productcard-meta,
+      #selections-row5 #list-healthandbeauty li div.productcard-meta,
+      #selections-row5 #list-babies li div.productcard-meta,
+      #selections-row5 #list-groceries li div.productcard-meta,
+      #selections-row5 #list-pets li div.productcard-meta,
+      #selections-row5 #list-fashionwomen li div.productcard-meta {
+        width: 100%; }
+        #selections-row1 #list-healthandbeauty li div.productcard-meta h4,
+        #selections-row1 #list-babies li div.productcard-meta h4,
+        #selections-row1 #list-groceries li div.productcard-meta h4,
+        #selections-row1 #list-pets li div.productcard-meta h4,
+        #selections-row1 #list-fashionwomen li div.productcard-meta h4,
+        #selections-row2 #list-healthandbeauty li div.productcard-meta h4,
+        #selections-row2 #list-babies li div.productcard-meta h4,
+        #selections-row2 #list-groceries li div.productcard-meta h4,
+        #selections-row2 #list-pets li div.productcard-meta h4,
+        #selections-row2 #list-fashionwomen li div.productcard-meta h4,
+        #selections-row3 #list-healthandbeauty li div.productcard-meta h4,
+        #selections-row3 #list-babies li div.productcard-meta h4,
+        #selections-row3 #list-groceries li div.productcard-meta h4,
+        #selections-row3 #list-pets li div.productcard-meta h4,
+        #selections-row3 #list-fashionwomen li div.productcard-meta h4,
+        #selections-row4 #list-healthandbeauty li div.productcard-meta h4,
+        #selections-row4 #list-babies li div.productcard-meta h4,
+        #selections-row4 #list-groceries li div.productcard-meta h4,
+        #selections-row4 #list-pets li div.productcard-meta h4,
+        #selections-row4 #list-fashionwomen li div.productcard-meta h4,
+        #selections-row5 #list-healthandbeauty li div.productcard-meta h4,
+        #selections-row5 #list-babies li div.productcard-meta h4,
+        #selections-row5 #list-groceries li div.productcard-meta h4,
+        #selections-row5 #list-pets li div.productcard-meta h4,
+        #selections-row5 #list-fashionwomen li div.productcard-meta h4 {
+          height: 38px;
+          width: 100%;
+          display: flex;
+          align-items: flex-end;
+          color: rgba(0, 0, 0, 0.75) !important; }
+        #selections-row1 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details,
+        #selections-row1 #list-babies li div.productcard-meta div.productcard-meta-details,
+        #selections-row1 #list-groceries li div.productcard-meta div.productcard-meta-details,
+        #selections-row1 #list-pets li div.productcard-meta div.productcard-meta-details,
+        #selections-row1 #list-fashionwomen li div.productcard-meta div.productcard-meta-details,
+        #selections-row2 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details,
+        #selections-row2 #list-babies li div.productcard-meta div.productcard-meta-details,
+        #selections-row2 #list-groceries li div.productcard-meta div.productcard-meta-details,
+        #selections-row2 #list-pets li div.productcard-meta div.productcard-meta-details,
+        #selections-row2 #list-fashionwomen li div.productcard-meta div.productcard-meta-details,
+        #selections-row3 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details,
+        #selections-row3 #list-babies li div.productcard-meta div.productcard-meta-details,
+        #selections-row3 #list-groceries li div.productcard-meta div.productcard-meta-details,
+        #selections-row3 #list-pets li div.productcard-meta div.productcard-meta-details,
+        #selections-row3 #list-fashionwomen li div.productcard-meta div.productcard-meta-details,
+        #selections-row4 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details,
+        #selections-row4 #list-babies li div.productcard-meta div.productcard-meta-details,
+        #selections-row4 #list-groceries li div.productcard-meta div.productcard-meta-details,
+        #selections-row4 #list-pets li div.productcard-meta div.productcard-meta-details,
+        #selections-row4 #list-fashionwomen li div.productcard-meta div.productcard-meta-details,
+        #selections-row5 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details,
+        #selections-row5 #list-babies li div.productcard-meta div.productcard-meta-details,
+        #selections-row5 #list-groceries li div.productcard-meta div.productcard-meta-details,
+        #selections-row5 #list-pets li div.productcard-meta div.productcard-meta-details,
+        #selections-row5 #list-fashionwomen li div.productcard-meta div.productcard-meta-details {
+          display: flex;
+          align-items: center;
+          justify-content: space-between; }
+          #selections-row1 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row1 #list-babies li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row1 #list-groceries li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row1 #list-pets li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row1 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row2 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row2 #list-babies li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row2 #list-groceries li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row2 #list-pets li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row2 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row3 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row3 #list-babies li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row3 #list-groceries li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row3 #list-pets li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row3 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row4 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row4 #list-babies li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row4 #list-groceries li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row4 #list-pets li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row4 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row5 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row5 #list-babies li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row5 #list-groceries li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row5 #list-pets li div.productcard-meta div.productcard-meta-details span.ratings img,
+          #selections-row5 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.ratings img {
+            margin: 0px;
+            height: 12px;
+            width: 12px; }
+          #selections-row1 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row1 #list-babies li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row1 #list-groceries li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row1 #list-pets li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row1 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row2 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row2 #list-babies li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row2 #list-groceries li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row2 #list-pets li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row2 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row3 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row3 #list-babies li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row3 #list-groceries li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row3 #list-pets li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row3 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row4 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row4 #list-babies li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row4 #list-groceries li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row4 #list-pets li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row4 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row5 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row5 #list-babies li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row5 #list-groceries li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row5 #list-pets li div.productcard-meta div.productcard-meta-details span.type,
+          #selections-row5 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.type {
+            font-size: small;
+            color: #b1b1b3; }
+          #selections-row1 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row1 #list-babies li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row1 #list-groceries li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row1 #list-pets li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row1 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row2 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row2 #list-babies li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row2 #list-groceries li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row2 #list-pets li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row2 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row3 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row3 #list-babies li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row3 #list-groceries li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row3 #list-pets li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row3 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row4 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row4 #list-babies li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row4 #list-groceries li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row4 #list-pets li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row4 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row5 #list-healthandbeauty li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row5 #list-babies li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row5 #list-groceries li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row5 #list-pets li div.productcard-meta div.productcard-meta-details span.price,
+          #selections-row5 #list-fashionwomen li div.productcard-meta div.productcard-meta-details span.price {
             color: green;
             font-weight: 800; }

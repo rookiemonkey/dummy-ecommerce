@@ -52,9 +52,23 @@ p {
     border-radius: 35px;
 }
 
+.num-products {
+    margin-left: $spacing_sm;
+    font-size: small;
+    font-weight: 400;
+    color: $color_darkmuted;
+    cursor: pointer;
+    transition: font-weight 250ms ease;
+
+    &:hover {
+        font-weight: 800
+    }
+}
+
 @import './nav.scss';
 @import './banner.scss';
 @import './toprated.scss';
 @import './topsales.scss';
 @import './slideshow.scss';
-@import './selections_row1.scss';
+@import './selections_grid.scss';
+@import './selections_row.scss';

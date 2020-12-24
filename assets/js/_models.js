@@ -154,8 +154,8 @@ function CartHistory(cartInstance) {
     this.history_cart = cartInstance.cart_products;
 }
 
-// MODEL for HOME's top rated product card
-function HTMLHomeTopRated(product) {
+// MODEL for HOME's product card layout
+function HTMLProductCard(product) {
     this.li = document.createElement('li');
 
     this.li.innerHTML = `
@@ -195,28 +195,6 @@ function HTMLHomeTopSales(product) {
                         ${product.product_ratings} <img src="/assets/images/star.svg" />
                     </span>
                     <span class="type">${product.product_department}</span>
-                </div>
-                <span class="price">₱${product.product_price}</span>
-            </div>
-        </div>
-    `
-}
-
-// MODEL for HOME's grid style products
-function HTMLHomeProductGrid(product) {
-    this.li = document.createElement('li');
-
-    this.li.innerHTML = `
-        <img src="${product.product_image_md}"
-            alt="${product.product_name}"
-            title="${product.product_name}" />
-        <div class="productcard-meta">
-            <h4>${product.product_name}</h4>
-            <div class="productcard-meta-details">
-                <div class="productcard-meta-details-left">
-                    <span class="ratings">
-                        ${product.product_ratings} <img src="/assets/images/star.svg" />
-                    </span>
                 </div>
                 <span class="price">₱${product.product_price}</span>
             </div>
