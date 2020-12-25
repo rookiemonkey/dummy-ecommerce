@@ -29,6 +29,7 @@ body {
 
 main {
     // border: 1px solid green;
+    display: none;
     margin: ($spacing_lg+$spacing_lg+$spacing_lg) 
             ($spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg); 
 }
@@ -40,6 +41,28 @@ h1, h2, h3, h4, h5, h6 {
 p {
     line-height: 1.5;
     font-size: 1.20em;
+}
+
+.preloader {
+    width: 100%;
+    height: 100vh;
+    background: $color_primary;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    color: $color_light;
+    transition: opacity 500ms ease-in-out;
+
+    img {
+        width: 250px;
+        height: 250px;
+        margin-bottom: $spacing_lg;
+    }
 }
 
 .button {
