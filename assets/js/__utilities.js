@@ -1,7 +1,10 @@
 // =================================================================
 // UTILITY FUNCTIONS/VARIABLES
 // =================================================================
-let slideIndex = 0
+const baseurl = 'http://localhost:5050';
+const apikey = 'gFKVHZjIK_Wt';
+
+let slideIndex = 0;
 
 const slidesDescription = [
     'Movie Peripherals available! Go Grab one for netflix nights!',
@@ -12,7 +15,7 @@ const slidesDescription = [
     'Summer needs are on the go. Get that bathing suit you always wanted!',
     'Grab some medicine and keep your self healthy!',
     'Make use of your green thumb and help the environment!'
-]
+];
 
 
 

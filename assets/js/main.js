@@ -1,4 +1,3 @@
-const Calzada = Application();
 const copyright = document.getElementById('copyright');
 
 // generate the copyright

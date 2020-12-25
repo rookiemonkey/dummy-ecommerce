@@ -1,5 +1,3 @@
-const baseurl = 'http://localhost:5050';
-
 (async function getProductCounts() {
     const header_gadget = document.getElementById('header-gadget');
     const header_appliances = document.getElementById('header-appliances');
@@ -13,10 +11,8 @@ const baseurl = 'http://localhost:5050';
     const header_sportsandlifestyle = document.getElementById('header-sportsandlifestyle');
     const header_automotive = document.getElementById('header-automotive');
 
-    const raw = await fetch(`${baseurl}/api/v1/departments?apikey=gFKVHZjIK_Wt`);
+    const raw = await fetch(`${baseurl}/api/v1/departments?apikey=${apikey}`);
     const { data } = await raw.json();
-
-    console.log(data)
 
     const appendNumProducts = (element, num) => {
         element.innerHTML = `
@@ -64,84 +60,84 @@ const baseurl = 'http://localhost:5050';
 })();
 
 async function renderTopRated() {
-    const raw = await fetch(`${baseurl}/api/v1/products/toprated?apikey=gFKVHZjIK_Wt&limit=5`)
+    const raw = await fetch(`${baseurl}/api/v1/products/toprated?apikey=${apikey}&limit=5`)
     const parsed = await raw.json();
     generanteDom(parsed.data, HTMLProductCard, '#toprated-cards');
 };
 
 async function renderTopSales() {
-    const raw = await fetch(`${baseurl}/api/v1/products/topsales?apikey=gFKVHZjIK_Wt&limit=3`)
+    const raw = await fetch(`${baseurl}/api/v1/products/topsales?apikey=${apikey}&limit=3`)
     const parsed = await raw.json();
     generanteDom(parsed.data, HTMLHomeTopSales, '#topsales-cards');
 };
 
 async function renderGadgetGrid() {
-    const raw = await fetch(`${baseurl}/api/v1/departments/gadgets?apikey=gFKVHZjIK_Wt&limit=4`)
+    const raw = await fetch(`${baseurl}/api/v1/departments/gadgets?apikey=${apikey}&limit=4`)
     const parsed = await raw.json();
     generanteDom(parsed.data, HTMLProductCard, '#list-gadgets');
 };
 
 async function renderAppliancesGrid() {
-    const raw = await fetch(`${baseurl}/api/v1/departments/appliances?apikey=gFKVHZjIK_Wt&limit=4`)
+    const raw = await fetch(`${baseurl}/api/v1/departments/appliances?apikey=${apikey}&limit=4`)
     const parsed = await raw.json();
     generanteDom(parsed.data, HTMLProductCard, '#list-appliances');
 };
 
 async function renderHealthAndBeautyRow() {
-    const raw = await fetch(`${baseurl}/api/v1/departments/healthandbeauty?apikey=gFKVHZjIK_Wt&limit=5`)
+    const raw = await fetch(`${baseurl}/api/v1/departments/healthandbeauty?apikey=${apikey}&limit=5`)
     const parsed = await raw.json();
     generanteDom(parsed.data, HTMLProductCard, '#list-healthandbeauty')
 };
 
 async function renderBabiesRow() {
-    const raw = await fetch(`${baseurl}/api/v1/departments/babies?apikey=gFKVHZjIK_Wt&limit=5`)
+    const raw = await fetch(`${baseurl}/api/v1/departments/babies?apikey=${apikey}&limit=5`)
     const parsed = await raw.json();
     generanteDom(parsed.data, HTMLProductCard, '#list-babies')
 };
 
 async function renderGroceriesRow() {
-    const raw = await fetch(`${baseurl}/api/v1/departments/groceries?apikey=gFKVHZjIK_Wt&limit=5`)
+    const raw = await fetch(`${baseurl}/api/v1/departments/groceries?apikey=${apikey}&limit=5`)
     const parsed = await raw.json();
     generanteDom(parsed.data, HTMLProductCard, '#list-groceries')
 };
 
 async function renderPetsRow() {
-    const raw = await fetch(`${baseurl}/api/v1/departments/pets?apikey=gFKVHZjIK_Wt&limit=5`)
+    const raw = await fetch(`${baseurl}/api/v1/departments/pets?apikey=${apikey}&limit=5`)
     const parsed = await raw.json();
     generanteDom(parsed.data, HTMLProductCard, '#list-pets')
 };
 
 async function renderFashionWomenRow() {
-    const raw = await fetch(`${baseurl}/api/v1/departments/fashionwomen?apikey=gFKVHZjIK_Wt&limit=5`)
+    const raw = await fetch(`${baseurl}/api/v1/departments/fashionwomen?apikey=${apikey}&limit=5`)
     const parsed = await raw.json();
     generanteDom(parsed.data, HTMLProductCard, '#list-fashionwomen')
 };
 
 async function renderFashionMenRow() {
-    const raw = await fetch(`${baseurl}/api/v1/departments/fashionmen?apikey=gFKVHZjIK_Wt&limit=5`)
+    const raw = await fetch(`${baseurl}/api/v1/departments/fashionmen?apikey=${apikey}&limit=5`)
     const parsed = await raw.json();
     generanteDom(parsed.data, HTMLProductCard, '#list-fashionmen')
 };
 
 async function renderAccesoriesRow() {
-    const raw = await fetch(`${baseurl}/api/v1/departments/accessories?apikey=gFKVHZjIK_Wt&limit=5`)
+    const raw = await fetch(`${baseurl}/api/v1/departments/accessories?apikey=${apikey}&limit=5`)
     const parsed = await raw.json();
     generanteDom(parsed.data, HTMLProductCard, '#list-accessories')
 };
 
 async function rendersSportsAndLifestyleRow() {
-    const raw = await fetch(`${baseurl}/api/v1/departments/sportsandlifestyle?apikey=gFKVHZjIK_Wt&limit=5`)
+    const raw = await fetch(`${baseurl}/api/v1/departments/sportsandlifestyle?apikey=${apikey}&limit=5`)
     const parsed = await raw.json();
     generanteDom(parsed.data, HTMLProductCard, '#list-sportsandlifestyle')
 };
 
 async function rendersAutomotiveRow() {
-    const raw = await fetch(`${baseurl}/api/v1/departments/automotive?apikey=gFKVHZjIK_Wt&limit=5`)
+    const raw = await fetch(`${baseurl}/api/v1/departments/automotive?apikey=${apikey}&limit=5`)
     const parsed = await raw.json();
     generanteDom(parsed.data, HTMLProductCard, '#list-automotive')
 };
 
-// Hide the loader once all of the HTTP requests are done
+// Hide the loader once all of the HTTP requests has reponded back
 Promise.all([
     renderTopRated(), renderTopSales(),
     renderGadgetGrid(), renderAppliancesGrid(),

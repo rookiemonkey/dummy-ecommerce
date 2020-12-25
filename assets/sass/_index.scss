@@ -16,6 +16,7 @@ $spacing_lg: 20px;
     padding: 0px;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
 }
 
 *, *::before, *::after {
@@ -88,6 +89,7 @@ p {
     }
 }
 
+@import './_ionic';
 @import './nav.scss';
 @import './banner.scss';
 @import './toprated.scss';
@@ -96,3 +98,4 @@ p {
 @import './selections_grid.scss';
 @import './selections_row.scss';
 @import './footer.scss';
+@import './product.scss';
