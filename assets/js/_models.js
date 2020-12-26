@@ -3,11 +3,11 @@
 const Calzada = (function Application() {
 
     // emulating private variables
-    const users = new Array();
-    const cart = new Array();
-    const routes = document.querySelectorAll('[data-route]');
-    const secret = 'This application is not secured :D'
+    let users = new Array();
+    let cart = new Array();
     let currentUser = null;
+    let secret = 'This application is not secured :D'
+    let routes = document.querySelectorAll('[data-route]');
 
     return class App {
 
@@ -84,10 +84,21 @@ const Calzada = (function Application() {
             currentUser.user_creditcard = creditCardNum
         }
 
-        static addToCart = product => {
-            cart.push(product);
+        static addToCart = newProduct => {
+            const isOnCart = cart.some(cartProd => cartProd.id == newProduct.id)
+
+            isOnCart
+                ? cart = cart.map(cartProd => {
+                    cartProd.id == newProduct.id
+                        ? cartProd.quantity += newProduct.quantity
+                        : null
+
+                    return cartProd
+                })
+                : cart.push(newProduct)
 
             // update badge count
+            console.log(cart)
             document.querySelector('#badge').textContent = cart.length
         }
 
