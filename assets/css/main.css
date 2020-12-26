@@ -2328,11 +2328,25 @@ p {
       font-weight: 800;
       list-style-type: none;
       margin-left: 20px;
+      position: relative;
       cursor: pointer; }
       #nav .nav-options li:last-child {
         border: 2px solid #f7aa35;
         background-color: #f7aa35;
         color: #eaebec; }
+      #nav .nav-options li .badge {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        padding: 5px 10px;
+        border-radius: 50%;
+        background-color: green;
+        width: 30px;
+        height: 30px;
+        color: white; }
 
 #banner {
   display: flex;
