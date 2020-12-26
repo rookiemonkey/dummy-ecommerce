@@ -4,11 +4,12 @@ const nav_search = document.getElementById('nav_search');
 const nav_checkout = document.getElementById('nav_checkout');
 const nav_departments = document.getElementById('nav_departments');
 
-// generate the copyright
-copyright.textContent = `© ${new Date().getFullYear()} Calzada. All Rights Reserved`
-
-// start the slideshow
-showSlides()
+// onload of the document
+document.addEventListener("DOMContentLoaded", () => {
+    Calzada.slides();
+    Calzada.notifier.initialize();
+    copyright.textContent = `© ${new Date().getFullYear()} Calzada. All Rights Reserved`;
+});
 
 // routes to home when logo is clicked
 nav_brand.onclick = () => Calzada.router('home')

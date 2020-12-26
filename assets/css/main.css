@@ -63,6 +63,42 @@ p {
   .num-products:hover {
     font-weight: 800; }
 
+.notify {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 400px;
+  padding: 20px;
+  background: #cccccc;
+  color: #333333;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  border: 2px solid #aaaaaa;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 9999;
+  transition: opacity 0.2s,  top 0.2s,  visibility 0.2s; }
+
+.notify--visible {
+  top: 10px;
+  opacity: 1;
+  visibility: visible; }
+
+.notify--success {
+  background: #28a745;
+  border-color: #28a745;
+  color: #ffffff; }
+
+.notify--error {
+  background: #dc3545;
+  border-color: #dc3545;
+  color: #ffffff; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -2334,7 +2370,7 @@ p {
         border: 2px solid #f7aa35;
         background-color: #f7aa35;
         color: #eaebec; }
-      #nav .nav-options li .badge {
+      #nav .nav-options li #badge {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -3700,7 +3736,8 @@ footer {
       border: none;
       min-width: 48%;
       height: 48px;
-      font-weight: 800; }
+      font-weight: 800;
+      cursor: pointer; }
     #product-route .product-container .product-meta-container .product_actions button.btn_addToCart {
       background-color: #802c6e;
       color: white; }

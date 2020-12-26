@@ -89,6 +89,48 @@ p {
     }
 }
 
+.notify {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 400px;
+    padding: $spacing_lg;
+    background: #cccccc;
+    color: #333333;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid #aaaaaa;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 9999;
+    transition: opacity 0.2s, 
+              top 0.2s, 
+              visibility 0.2s;
+}
+
+.notify--visible {
+    top: 10px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.notify--success {
+    background: #28a745;
+    border-color: #28a745;
+    color: #ffffff;
+}
+
+.notify--error {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: #ffffff;
+}
+
 @import './_ionic';
 @import './nav.scss';
 @import './banner.scss';

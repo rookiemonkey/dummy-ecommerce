@@ -4,6 +4,7 @@ const Calzada = (function Application() {
 
     // emulating private variables
     const users = new Array();
+    const cart = new Array();
     const routes = document.querySelectorAll('[data-route]');
     const secret = 'This application is not secured :D'
     let currentUser = null;
@@ -44,6 +45,10 @@ const Calzada = (function Application() {
             })
         }
 
+        static notifier = new HTMLNotifier()
+
+        static slides = () => showSlides();
+
         static getUser = () => console.log(currentUser)
 
         static createUser(fullname, email, password) {
@@ -79,26 +84,11 @@ const Calzada = (function Application() {
             currentUser.user_creditcard = creditCardNum
         }
 
-        static addToCart(productId) {
+        static addToCart = product => {
+            cart.push(product);
 
-            if (!currentUser) return alert('Please login first')
-
-            const { cart_products, cart_recaculate } = currentUser.user_cart;
-
-            const isOnCart = cart_products
-                .some(cartProduct => cartProduct.product_id === productId)
-
-            if (isOnCart) return alert('Product is already on cart')
-
-            const foundProduct = products
-                .find(product => product.product_id === productId)
-
-            if (!foundProduct) return alert("Product doesn't exists")
-
-            foundProduct.quantity = 1;
-            cart_products.push(foundProduct)
-            cart_recaculate()
-
+            // update badge count
+            document.querySelector('#badge').textContent = cart.length
         }
 
         static addToCartQuantity(action, productId) {
@@ -275,15 +265,17 @@ function HTMLProduct(product) {
 
                 <div class="product_quantity">
                     <label>Quantity: </label>
-                    <input type="number" min="1" step="1" value="1" />
+                    <input id="quantity_${product._id}" name="quantity" type="number" min="1" step="1" value="1" />
                 </div>
 
                 <div class="product_actions">
-                    <button class="btn_addToCart"><i class="ion-ios-cart">
-                        </i> &nbsp; Add To Cart
+                    <button class="btn_addToCart" id="addToCart_${product._id}">
+                        <i class="ion-ios-cart"></i> 
+                        &nbsp; Add To Cart
                     </button>
-                    <button class="btn_buyNow">
-                        <i class="ion-bag"></i> &nbsp; Buy Now
+                    <button class="btn_buyNow" id="buyNow_${product._id}">
+                        <i class="ion-bag"></i> 
+                        &nbsp; Buy Now
                     </button>
                 </div>
 
@@ -296,8 +288,27 @@ function HTMLProduct(product) {
         </ul>
     `
 
+    // append to DOM, create review elements and append it as well
     document.getElementById('product-route').appendChild(this.container)
     product.product_reviews.forEach(p => new HTMLProductReview(p))
+
+    // attach event listeners after appending to DOM
+    const quantity = document.getElementById(`quantity_${product._id}`);
+    const addtocart = document.getElementById(`addToCart_${product._id}`);
+    const buynow = document.getElementById(`buyNow_${product._id}`);
+
+    // EVENT: Add to Cart!
+    addtocart.onclick = () => {
+        Calzada.addToCart({
+            id: product._id,
+            name: product.product_name,
+            quantity: parseInt(quantity.value),
+            image: product.product_image_lg
+        })
+
+        quantity.value = 1;
+        Calzada.notifier.showMessage('Successfully added to your cart!', 'success')
+    }
 }
 
 // MODEL for PRODUCT route's product review component
@@ -352,5 +363,28 @@ function HTMLStarRatings(rating) {
             : img.setAttribute('src', '/assets/images/star_off.svg')
 
         this.container.appendChild(img);
+    }
+}
+
+// ELEMENT model for notifications
+function HTMLNotifier() {
+    this.initialize = () => {
+        this.hideTimeout = null;
+        this.element = document.createElement("div");
+        this.element.className = "notify";
+        document.body.appendChild(this.element);
+    }
+    this.showMessage = (message, state) => {
+        clearTimeout(this.hideTimeout);
+        this.element.textContent = message;
+        this.element.className = "notify notify--visible";
+
+        if (state) {
+            this.element.classList.add(`notify--${state}`);
+        }
+
+        this.hideTimeout = setTimeout(() => {
+            this.element.classList.remove("notify--visible");
+        }, 3000);
     }
 }
