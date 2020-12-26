@@ -16,7 +16,7 @@ body {
 
 main {
   display: none;
-  margin: 60px 140px; }
+  margin: 40px 140px; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 800; }
@@ -2304,19 +2304,31 @@ p {
     height: 50px; }
   #nav .nav-brand {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    cursor: pointer; }
     #nav .nav-brand img {
       width: 40px;
-      height: 100%; }
+      height: 100%;
+      margin-right: 8px; }
+    #nav .nav-brand h2 {
+      font-size: 2.25rem;
+      color: #802c6e; }
   #nav .nav-options {
     display: flex;
     align-items: center; }
     #nav .nav-options li {
       border: 2px solid #802c6e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 35px;
       color: #802c6e;
       font-weight: 800;
       list-style-type: none;
-      margin-left: 20px; }
+      margin-left: 20px;
+      cursor: pointer; }
       #nav .nav-options li:last-child {
         border: 2px solid #f7aa35;
         background-color: #f7aa35;

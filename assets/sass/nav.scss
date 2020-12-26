@@ -13,10 +13,17 @@
     .nav-brand {
         display: flex;
         align-items: center;
+        cursor: pointer;
 
         img {
             width: 40px;
             height: 100%;
+            margin-right: 8px;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            color: $color_primary;
         }
     }
 
@@ -26,10 +33,17 @@
         
         li {
             border: 2px solid $color_primary;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 35px;
             color: $color_primary;
             font-weight: 800;
             list-style-type: none;
             margin-left: $spacing_lg;
+            cursor: pointer;
 
             &:last-child {
                 border: 2px solid $color_secondary;
@@ -38,5 +52,4 @@
             }
         }
     }
-
 }

@@ -13,9 +13,34 @@ const Calzada = (function Application() {
         // ROUTES: home, search, product, checkout
         static router = route => {
             routes.forEach(el => {
-                el.dataset.route.toLowerCase() === route.toLowerCase()
-                    ? el.style.display = 'block'
-                    : el.style.display = 'none'
+                const target = el.dataset.route.toLowerCase() === route.toLowerCase()
+
+                if (!target && el.dataset.route != 'home') {
+                    el.style.display = 'none';
+                    el.innerHTML = '';
+                }
+
+                if (!target && el.dataset.route == 'home') {
+                    el.style.display = 'none';
+                }
+
+                if (target && el.dataset.route != 'home') {
+                    document.querySelector('.nav-brand').innerHTML = `
+                        <img src="/assets/images/logo.svg">
+                        <h2>Calzada</h2>
+                    `
+                }
+
+                if (target && route == 'home') {
+                    el.style.display = 'block'
+                    document.querySelector('.nav-brand').innerHTML = `
+                        <img src="/assets/images/logo.svg">
+                    `
+                }
+
+                if (target)
+                    el.style.display = 'block'
+
             })
         }
 
@@ -214,6 +239,17 @@ function HTMLHomeTopSales(product) {
             </div>
         </div>
     `
+
+    // onclick will make an HTTP request and route to product route
+    this.li.onclick = async () => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+
+        const raw = await fetch(`${baseurl}/api/v1/products/${product._id}?apikey=${apikey}`)
+        const parsed = await raw.json();
+        Calzada.router('product');
+        new HTMLProduct(parsed.data);
+    }
 }
 
 // MODEL for PRODUCT route's product component
@@ -230,7 +266,7 @@ function HTMLProduct(product) {
                 <h1>${product.product_name}</h1>
                 <h3>${product.product_department} - <span>${product.product_type}</span></h3>
                 <div class="status">
-                    ${new HTMLStarRatings(product.product_ratings).container.innerHTML}
+                    ${new HTMLStarRatings(product.product_ratings).container.outerHTML}
                     <span>${product.product_sales} Sold &nbsp;| </span>
                     <span>${product.product_stock} Stocks Left</span>
                 </div>
@@ -278,7 +314,7 @@ function HTMLProductReview(review) {
             </div>
             <div class="review-header-meta">
                 <h3>${review.review_name}</h3>
-                ${new HTMLStarRatings(review.review_rating).container.innerHTML}
+                ${new HTMLStarRatings(review.review_rating).container.outerHTML}
             </div>
         </div>
         <div class="review-body">
