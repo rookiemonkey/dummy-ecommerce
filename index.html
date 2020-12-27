@@ -20,6 +20,7 @@
                 <img src="/assets/images/logo.svg">
             </div>
             <ul class="nav-options">
+                <input id="nav_search_input" type="text" placeholder="Search Product">
                 <li id="nav_search"><i class="ion-search"></i></li>
                 <li id="nav_departments"><i class="ion-ios-keypad"></i></li>
                 <li id="nav_checkout"><i class="ion-ios-cart"></i><span id="badge">0</span></li>
@@ -117,8 +118,7 @@
         </div>
 
         <!-- SEARCH -->
-        <div data-route="search" style="display: none;">
-            SEARCH
+        <div data-route="search" id="search-route" style="display: none;">
         </div>
 
         <!-- PRODUCT -->
@@ -213,7 +213,6 @@
 </body>
 
 <script src="/assets/js/__utilities.js"></script>
-<script src="/assets/js/_crypto.js"></script>
 <script src="/assets/js/_models.js"></script>
 <script src="/assets/js/_products.js"></script>
 <script src="/assets/js/main.js"></script>

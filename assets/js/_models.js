@@ -3,11 +3,12 @@
 const Calzada = (function Application() {
 
     // emulating private variables
-    let users = new Array();
     let cart = new Array();
-    let currentUser = null;
-    let secret = 'This application is not secured :D'
+    let search_query = '';
+    let search_page = 1;
     let routes = document.querySelectorAll('[data-route]');
+    let route_search = document.querySelector('[data-route="search"]')
+    let input = document.getElementById('nav_search_input');
 
     return class App {
 
@@ -39,6 +40,11 @@ const Calzada = (function Application() {
                     `
                 }
 
+                if (route != 'search') {
+                    search_query = '';
+                    search_page = 1;
+                }
+
                 if (target)
                     el.style.display = 'block'
 
@@ -49,39 +55,43 @@ const Calzada = (function Application() {
 
         static slides = () => showSlides();
 
-        static getUser = () => console.log(currentUser)
+        static search = async () => {
+            search_query = input.value;
+            const url1 = `${baseurl}/api/v1/products/search`
+            const url2 = `?apikey=${apikey}&term=${search_query}&page=${search_page}`;
+            const raw = await fetch(`${url1}${url2}`);
+            const { data, page, lastPage } = await raw.json();
+            const btn_next = document.createElement('span');
+            const btn_prev = document.createElement('span');
 
-        static createUser(fullname, email, password) {
-            const encryptedPassword = CryptoJS.AES.encrypt(password, secret).toString()
-            const isEmailExisting = users.some(user => user.user_email === email)
+            // generate initial html
+            route_search.innerHTML = `
+                <h3 id="search_header">Matching resuts for <span>'${search_query}'</span></h3>
+                <ul id="list-search"></ul>
+            `
 
-            if (isEmailExisting) return alert("User already exists")
+            // generate pagination if needed
+            if (lastPage > 1) {
+                switch (true) {
+                    case page == 1:
+                        break;
+                    // page == 1  render next only
+                    // page > 1 && page < lastPage  render prev/next
+                    // page > 1 && page == lastPage render prev only
+                }
+            }
 
-            const newUser = new User(fullname, email, encryptedPassword);
-            users.push(newUser)
-        }
+            // generate the product cards if there are results
+            if (data.length) {
+                generanteDom(data, HTMLProductCard, '#list-search')
+            } else {
+                const h2 = document.createElement('h2');
+                h2.textContent = 'No Matching Results found :(';
+                document.querySelector('#list-search').appendChild(h2);
+            }
 
-        static loginUser(email, password) {
-            const foundUser = users.find(user => {
-                const decryptedPassword = CryptoJS
-                    .AES
-                    .decrypt(user.user_password, secret)
-                    .toString(CryptoJS.enc.Utf8)
-
-                return user.user_email === email && decryptedPassword === password
-            })
-
-            if (!foundUser) return alert("User doesn't exists")
-
-            currentUser = foundUser;
-        }
-
-        static logoutUser() {
-            currentUser = null
-        }
-
-        static setUserBillingAccount(creditCardNum) {
-            currentUser.user_creditcard = creditCardNum
+            input.value = '';
+            this.router('search');
         }
 
         static addToCart = newProduct => {
@@ -100,32 +110,6 @@ const Calzada = (function Application() {
             // update badge count
             console.log(cart)
             document.querySelector('#badge').textContent = cart.length
-        }
-
-        static addToCartQuantity(action, productId) {
-
-            if (!currentUser) return alert('Please login first')
-
-            const { cart_products, cart_recaculate } = currentUser.user_cart;
-
-            const foundProduct = cart_products
-                .find(cartProduct => cartProduct.product_id === productId)
-
-            if (!foundProduct) return alert("Product is not on your cart")
-
-            switch (action) {
-                case 'ADD':
-                    foundProduct.quantity += 1;
-                    break;
-                case 'MINUS':
-                    foundProduct.quantity === 1
-                        ? currentUser.user_cart.cart_products = cart_products
-                            .filter(cartProduct => cartProduct.product_id !== productId)
-                        : foundProduct.quantity -= 1
-                    break;
-            }
-
-            cart_recaculate()
         }
 
         static checkOutCart() {

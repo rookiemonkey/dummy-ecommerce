@@ -17,5 +17,5 @@ nav_brand.onclick = () => Calzada.router('home')
 // routes to checkout
 nav_checkout.onclick = () => Calzada.router('checkout')
 
-// routes to search
-nav_search.onclick = () => Calzada.router('search')
+// query to api then routes to search
+nav_search.onclick = () => Calzada.search();
