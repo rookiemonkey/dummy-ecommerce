@@ -2352,7 +2352,7 @@ p {
   #nav .nav-options {
     display: flex;
     align-items: center; }
-    #nav .nav-options li {
+    #nav .nav-options li.nav_item {
       border: 2px solid #802c6e;
       display: flex;
       justify-content: center;
@@ -2366,11 +2366,11 @@ p {
       margin-left: 20px;
       position: relative;
       cursor: pointer; }
-      #nav .nav-options li:last-child {
+      #nav .nav-options li.nav_item:last-child {
         border: 2px solid #f7aa35;
         background-color: #f7aa35;
         color: #eaebec; }
-      #nav .nav-options li #badge {
+      #nav .nav-options li.nav_item #badge {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -2383,6 +2383,26 @@ p {
         width: 30px;
         height: 30px;
         color: white; }
+  #nav #nav_departments {
+    position: relative; }
+  #nav .nav-dropdown {
+    position: absolute;
+    background-color: #f9f9f9;
+    top: -10px;
+    min-width: 210px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1; }
+    #nav .nav-dropdown li {
+      list-style-type: none;
+      padding: 8px 12px;
+      font-size: small;
+      transition: background-color 250ms ease-in-out, color 250ms ease-in-out; }
+      #nav .nav-dropdown li i {
+        width: 15px;
+        margin-right: 8px; }
+      #nav .nav-dropdown li:hover {
+        background-color: #802c6e;
+        color: #eaebec; }
 
 #banner {
   display: flex;
@@ -3780,16 +3800,22 @@ footer {
   #product-route .reviews-container .review div.review-date {
     font-style: italic; }
 
-#search-route #search_header {
+#search-route #search_header,
+#department-route #search_header {
   margin: 20px 0px; }
-  #search-route #search_header span {
+  #search-route #search_header span,
+  #department-route #search_header span {
     color: #f7aa35; }
 
-#search-route #list-search {
+#search-route #list-search,
+#search-route #list-department,
+#department-route #list-search,
+#department-route #list-department {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr; }
 
-#search-route li {
+#search-route li,
+#department-route li {
   background-color: white;
   border-radius: 15px;
   padding: 20px;
@@ -3806,35 +3832,44 @@ footer {
   color: rgba(0, 0, 0, 0.75);
   cursor: pointer;
   transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out; }
-  #search-route li:hover {
+  #search-route li:hover,
+  #department-route li:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 10px -5px; }
-  #search-route li:hover > img {
+  #search-route li:hover > img,
+  #department-route li:hover > img {
     transform: scale(1.1); }
-  #search-route li img {
+  #search-route li img,
+  #department-route li img {
     width: 100%;
     height: 150px;
     margin-bottom: 8px;
     transition: transform 250ms ease-in-out; }
-  #search-route li div.productcard-meta {
+  #search-route li div.productcard-meta,
+  #department-route li div.productcard-meta {
     width: 100%; }
-    #search-route li div.productcard-meta h4 {
+    #search-route li div.productcard-meta h4,
+    #department-route li div.productcard-meta h4 {
       height: 38px;
       width: 100%;
       display: flex;
       align-items: flex-end;
       color: rgba(0, 0, 0, 0.75) !important; }
-    #search-route li div.productcard-meta div.productcard-meta-details {
+    #search-route li div.productcard-meta div.productcard-meta-details,
+    #department-route li div.productcard-meta div.productcard-meta-details {
       display: flex;
       align-items: center;
       justify-content: space-between; }
-      #search-route li div.productcard-meta div.productcard-meta-details span.ratings img {
+      #search-route li div.productcard-meta div.productcard-meta-details span.ratings img,
+      #department-route li div.productcard-meta div.productcard-meta-details span.ratings img {
         margin: 0px;
         height: 12px;
         width: 12px; }
-      #search-route li div.productcard-meta div.productcard-meta-details span.type {
+      #search-route li div.productcard-meta div.productcard-meta-details span.type,
+      #department-route li div.productcard-meta div.productcard-meta-details span.type {
         font-size: smaller;
         color: #b1b1b3; }
-      #search-route li div.productcard-meta div.productcard-meta-details span.price {
+      #search-route li div.productcard-meta div.productcard-meta-details span.price,
+      #department-route li div.productcard-meta div.productcard-meta-details span.price {
         color: green;
         font-weight: 800; }

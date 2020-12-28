@@ -17,6 +17,20 @@ const slidesDescription = [
     'Make use of your green thumb and help the environment!'
 ];
 
+const navIcons = {
+    'Gadgets': 'ion-usb',
+    'Appliances': 'ion-monitor',
+    'Health & Beauty': 'ion-ios-body',
+    'Babies': 'ion-egg',
+    'Groceries': 'ion-ios-nutrition',
+    'Pets': 'ion-ios-paw',
+    'Fashion Women': 'ion-woman',
+    'Fashion Men': 'ion-man',
+    'Accessories': 'ion-ios-rose',
+    'Sports & Lifestyle': 'ion-ios-basketball',
+    'Automotive': 'ion-model-s'
+}
+
 
 
 

@@ -1,4 +1,5 @@
 (async function getProductCounts() {
+    const nav_dropdown = document.querySelector('.nav-dropdown');
     const header_gadget = document.getElementById('header-gadget');
     const header_appliances = document.getElementById('header-appliances');
     const header_healthandbeauty = document.getElementById('header-healthandbeauty');
@@ -21,6 +22,18 @@
     }
 
     data.forEach(dept => {
+
+        // create each element on dropdown
+        const li = document.createElement('li');
+        li.onclick = () => Calzada.department(dept.department_id, dept.department_name)
+        li.innerHTML = `
+            <i class="${navIcons[dept.department_name]}"></i>
+            ${dept.department_name}
+        `
+        nav_dropdown.appendChild(li);
+
+
+        // create each department row on home
         switch (true) {
             case dept.department_name === 'Gadgets':
                 appendNumProducts(header_gadget, dept.department_numProducts)

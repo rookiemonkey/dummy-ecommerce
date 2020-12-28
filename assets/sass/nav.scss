@@ -31,7 +31,7 @@
         display: flex;
         align-items: center;
         
-        li {
+        li.nav_item {
             border: 2px solid $color_primary;
             display: flex;
             justify-content: center;
@@ -65,6 +65,37 @@
                 width: 30px;
                 height: 30px;
                 color: white;
+            }
+        }
+    }
+
+    #nav_departments {
+        position: relative;
+    }
+
+    .nav-dropdown {
+        position: absolute;
+        background-color: #f9f9f9;
+        top: -10px;
+        min-width: 210px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+
+        li {
+            list-style-type: none;
+            padding: $spacing_sm $spacing_md;
+            font-size: small;
+            transition: background-color 250ms ease-in-out,
+                        color 250ms ease-in-out;
+
+            i {
+                width: 15px;
+                margin-right: $spacing_sm;
+            }
+
+            &:hover {
+                background-color: $color_primary;
+                color: $color_lightmuted;
             }
         }
     }

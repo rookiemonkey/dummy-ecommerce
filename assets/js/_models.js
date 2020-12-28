@@ -6,13 +6,16 @@ const Calzada = (function Application() {
     let cart = new Array();
     let search_query = '';
     let search_page = 1;
-    let routes = document.querySelectorAll('[data-route]');
-    let route_search = document.querySelector('[data-route="search"]')
-    let input = document.getElementById('nav_search_input');
+    let department_page = 1;
+    const routes = document.querySelectorAll('[data-route]');
+    const route_search = document.querySelector('[data-route="search"]');
+    const route_department = document.querySelector('[data-route="department"]');
+    const input = document.getElementById('nav_search_input');
+    const dropdown = document.querySelector('.nav-dropdown');
 
     return class App {
 
-        // ROUTES: home, search, product, checkout
+        // ROUTES: home, search, product, checkout, department
         static router = route => {
             routes.forEach(el => {
                 const target = el.dataset.route.toLowerCase() === route.toLowerCase()
@@ -92,6 +95,30 @@ const Calzada = (function Application() {
 
             input.value = '';
             this.router('search');
+        }
+
+        static department = async (deptId, deptName) => {
+            const url1 = `${baseurl}/api/v1/departments/${deptId}`
+            const url2 = `?apikey=${apikey}&page=${department_page}`;
+            const raw = await fetch(`${url1}${url2}`);
+            const { data, page, lastPage } = await raw.json();
+
+            // generate initial html
+            route_department.innerHTML = `
+                <h3 id="search_header">${deptName} Department</h3>
+                <ul id="list-department"></ul>
+            `
+
+            // generate the product cards
+            generanteDom(data, HTMLProductCard, '#list-department')
+
+            this.router('department')
+        }
+
+        static dropdown = () => {
+            dropdown.style.display == 'none'
+                ? dropdown.style.display = 'block'
+                : dropdown.style.display = 'none'
         }
 
         static addToCart = newProduct => {

@@ -1,4 +1,5 @@
-#search-route {
+#search-route,
+#department-route {
 
     #search_header {
         margin: $spacing_lg 0px;
@@ -8,7 +9,8 @@
         }
     }
 
-    #list-search {
+    #list-search,
+    #list-department {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     }

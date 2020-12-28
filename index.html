@@ -21,9 +21,13 @@
             </div>
             <ul class="nav-options">
                 <input id="nav_search_input" type="text" placeholder="Search Product">
-                <li id="nav_search"><i class="ion-search"></i></li>
-                <li id="nav_departments"><i class="ion-ios-keypad"></i></li>
-                <li id="nav_checkout"><i class="ion-ios-cart"></i><span id="badge">0</span></li>
+                <li class="nav_item" id="nav_search"><i class="ion-search"></i></li>
+                <li class="nav_item" id="nav_departments">
+                    <i class="ion-ios-keypad"></i>
+                    <ul class="nav-dropdown" style="display: none;">
+                    </ul>
+                </li>
+                <li class="nav_item" id="nav_checkout"><i class="ion-ios-cart"></i><span id="badge">0</span></li>
             </ul>
         </nav>
 
@@ -119,6 +123,10 @@
 
         <!-- SEARCH -->
         <div data-route="search" id="search-route" style="display: none;">
+        </div>
+
+        <!-- DEPARTMENT -->
+        <div data-route="department" id="department-route" style="display: none;">
         </div>
 
         <!-- PRODUCT -->
