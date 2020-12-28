@@ -3,10 +3,13 @@
 const Calzada = (function Application() {
 
     // emulating private variables
-    let cart = new Array();
-    let search_query = '';
-    let search_page = 1;
-    let department_page = 1;
+    const cart = new Array();
+    const pagination = {
+        search_query: '',
+        search_page: 1,
+        department_query: '',
+        department_page: 1
+    }
     const routes = document.querySelectorAll('[data-route]');
     const route_search = document.querySelector('[data-route="search"]');
     const route_department = document.querySelector('[data-route="department"]');
@@ -44,8 +47,13 @@ const Calzada = (function Application() {
                 }
 
                 if (route != 'search') {
-                    search_query = '';
-                    search_page = 1;
+                    pagination.search_query = ''
+                    pagination.search_page = 1
+                }
+
+                if (route != 'department') {
+                    pagination.department_query = ''
+                    pagination.department_page = 1
                 }
 
                 if (target)
@@ -59,60 +67,93 @@ const Calzada = (function Application() {
         static slides = () => showSlides();
 
         static search = async () => {
-            search_query = input.value;
+
+            // initial search
+            if (!pagination.search_query)
+                pagination.search_query = input.value;
+
+            // another search after initial, reset everything 
+            if (pagination.search_query
+                && input.value
+                && pagination.search_query != input.value) {
+                pagination.search_query = input.value;
+                pagination.search_page = 1;
+                route_search.innerHTML = `
+                    <h3 id="search_header">Matching resuts for <span>'${pagination.search_query}'</span></h3>
+                    <ul id="list-search"></ul>
+                `
+            }
+
+            const { search_query, search_page } = pagination;
             const url1 = `${baseurl}/api/v1/products/search`
             const url2 = `?apikey=${apikey}&term=${search_query}&page=${search_page}`;
             const raw = await fetch(`${url1}${url2}`);
             const { data, page, lastPage } = await raw.json();
-            const btn_next = document.createElement('span');
-            const btn_prev = document.createElement('span');
 
             // generate initial html
-            route_search.innerHTML = `
-                <h3 id="search_header">Matching resuts for <span>'${search_query}'</span></h3>
-                <ul id="list-search"></ul>
-            `
+            if (!document.querySelector('#list-search')) {
+                route_search.innerHTML = `
+                    <h3 id="search_header">Matching resuts for <span>'${search_query}'</span></h3>
+                    <ul id="list-search"></ul>
+                `
+            }
 
-            // generate pagination if needed
-            if (lastPage > 1) {
-                switch (true) {
-                    case page == 1:
-                        break;
-                    // page == 1  render next only
-                    // page > 1 && page < lastPage  render prev/next
-                    // page > 1 && page == lastPage render prev only
-                }
+            // generate more button 
+            if (!document.querySelector('#btn_more_searchresults') && lastPage > 1) {
+                const props = { id: 'searchresults', page: 'search_page', route: 'search' }
+                const { button } = new HTMLMoreButton(props)
+                route_search.appendChild(button)
             }
 
             // generate the product cards if there are results
-            if (data.length) {
-                generanteDom(data, HTMLProductCard, '#list-search')
-            } else {
-                const h2 = document.createElement('h2');
-                h2.textContent = 'No Matching Results found :(';
-                document.querySelector('#list-search').appendChild(h2);
-            }
+            generanteDom(data, HTMLProductCard, '#list-search')
 
             input.value = '';
             this.router('search');
         }
 
-        static department = async (deptId, deptName) => {
+        static department = async event => {
+            const { target } = event;
+            const { department_query } = pagination;
+            const deptId = target.getAttribute('deptId');
+            const deptName = target.getAttribute('deptName');
+
+            // reset to first page if switched to a different department
+            if (department_query != deptId) {
+                pagination.department_page = 1;
+            }
+
             const url1 = `${baseurl}/api/v1/departments/${deptId}`
-            const url2 = `?apikey=${apikey}&page=${department_page}`;
+            const url2 = `?apikey=${apikey}&page=${pagination.department_page}`;
             const raw = await fetch(`${url1}${url2}`);
             const { data, page, lastPage } = await raw.json();
 
             // generate initial html
-            route_department.innerHTML = `
-                <h3 id="search_header">${deptName} Department</h3>
-                <ul id="list-department"></ul>
-            `
+            if (!document.querySelector('#list-department') || department_query != deptId) {
+                route_department.innerHTML = `
+                    <h3 id="search_header">${deptName} Department</h3>
+                    <ul id="list-department"></ul>
+                `
+            }
+
+            // generate more button 
+            if (!document.querySelector('#btn_more_departmentresults') && lastPage > 1) {
+                const props = {
+                    id: 'departmentresults',
+                    page: 'department_page',
+                    route: 'department',
+                    department_id: deptId,
+                    department_name: deptName
+                }
+                const { button } = new HTMLMoreButton(props);
+                route_department.appendChild(button);
+            }
 
             // generate the product cards
-            generanteDom(data, HTMLProductCard, '#list-department')
+            generanteDom(data, HTMLProductCard, '#list-department');
 
-            this.router('department')
+            pagination.department_query = deptId;
+            this.router('department');
         }
 
         static dropdown = () => {
@@ -139,7 +180,7 @@ const Calzada = (function Application() {
             document.querySelector('#badge').textContent = cart.length
         }
 
-        static checkOutCart() {
+        static checkOutCart = () => {
 
             if (!currentUser) return alert('Please login first')
 
@@ -151,6 +192,8 @@ const Calzada = (function Application() {
             currentUser.user_cart = new Cart();
 
         }
+
+        static incrementPage = key => pagination[key]++;
     }
 })();
 
@@ -385,6 +428,25 @@ function HTMLStarRatings(rating) {
             : img.setAttribute('src', '/assets/images/star_off.svg')
 
         this.container.appendChild(img);
+    }
+}
+
+// MODEL for more button component PROPS: (id, key, route, department_id, department_name)
+function HTMLMoreButton(props) {
+    this.button = document.createElement('span');
+    this.button.id = `btn_more_${props.id}`;
+    this.button.textContent = 'More!'
+
+    if (props.route == 'department') {
+        this.button.setAttribute('deptId', props.department_id);
+        this.button.setAttribute('deptName', props.department_name);
+    }
+
+    this.button.onclick = event => {
+        Calzada.incrementPage(props.page);
+        props.route == 'department'
+            ? Calzada.department(event)
+            : Calzada.search()
     }
 }
 

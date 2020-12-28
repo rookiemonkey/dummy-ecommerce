@@ -25,7 +25,9 @@
 
         // create each element on dropdown
         const li = document.createElement('li');
-        li.onclick = () => Calzada.department(dept.department_id, dept.department_name)
+        li.setAttribute('deptId', dept.department_id);
+        li.setAttribute('deptName', dept.department_name);
+        li.onclick = event => Calzada.department(event);
         li.innerHTML = `
             <i class="${navIcons[dept.department_name]}"></i>
             ${dept.department_name}
