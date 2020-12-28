@@ -30,6 +30,15 @@
     .nav-options {
         display: flex;
         align-items: center;
+
+        input {
+            border: none;
+            color: $color_primary;
+            background-color: transparent;
+            border-bottom: 2px solid $color_secondary;
+            padding: $spacing_sm 0px;
+            text-align: right;
+        }
         
         li.nav_item {
             border: 2px solid $color_primary;

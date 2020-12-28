@@ -49,6 +49,7 @@ const Calzada = (function Application() {
                 if (route != 'search') {
                     pagination.search_query = ''
                     pagination.search_page = 1
+                    input.value = ''
                 }
 
                 if (route != 'department') {
@@ -67,6 +68,10 @@ const Calzada = (function Application() {
         static slides = () => showSlides();
 
         static search = async () => {
+
+            // searching w/o query to match
+            if (!input.value)
+                return this.notifier.showMessage('Please enter a query', 'error')
 
             // initial search
             if (!pagination.search_query)
@@ -105,10 +110,15 @@ const Calzada = (function Application() {
                 route_search.appendChild(button)
             }
 
+            // remove more button if last page
+            if (page == lastPage) {
+                this.notifier.showMessage(`You've reached the last page`, 'success')
+                document.querySelector('#btn_more_searchresults').remove()
+            }
+
             // generate the product cards if there are results
             generanteDom(data, HTMLProductCard, '#list-search')
 
-            input.value = '';
             this.router('search');
         }
 
@@ -147,6 +157,12 @@ const Calzada = (function Application() {
                 }
                 const { button } = new HTMLMoreButton(props);
                 route_department.appendChild(button);
+            }
+
+            // remove more button if last page
+            if (page == lastPage) {
+                this.notifier.showMessage(`You've reached the last page`, 'success')
+                document.querySelector('#btn_more_departmentresults').remove()
             }
 
             // generate the product cards
@@ -434,8 +450,10 @@ function HTMLStarRatings(rating) {
 // MODEL for more button component PROPS: (id, key, route, department_id, department_name)
 function HTMLMoreButton(props) {
     this.button = document.createElement('span');
+    this.button.classList.add('button')
+    this.button.classList.add('btn_more')
     this.button.id = `btn_more_${props.id}`;
-    this.button.textContent = 'More!'
+    this.button.textContent = 'More'
 
     if (props.route == 'department') {
         this.button.setAttribute('deptId', props.department_id);

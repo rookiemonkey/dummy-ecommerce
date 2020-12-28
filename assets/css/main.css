@@ -53,6 +53,16 @@ p {
   padding: 0px 20px;
   border-radius: 35px; }
 
+.btn_more {
+  background-color: #f7aa35;
+  border: 2px solid #f7aa35;
+  color: white;
+  cursor: pointer;
+  transition: background-color 250ms ease-in-out,  border 250ms ease-in-out; }
+  .btn_more:hover {
+    background-color: #802c6e;
+    border: 2px solid #802c6e; }
+
 .num-products {
   margin-left: 8px;
   font-size: small;
@@ -2352,6 +2362,13 @@ p {
   #nav .nav-options {
     display: flex;
     align-items: center; }
+    #nav .nav-options input {
+      border: none;
+      color: #802c6e;
+      background-color: transparent;
+      border-bottom: 2px solid #f7aa35;
+      padding: 8px 0px;
+      text-align: right; }
     #nav .nav-options li.nav_item {
       border: 2px solid #802c6e;
       display: flex;

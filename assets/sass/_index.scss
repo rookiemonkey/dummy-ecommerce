@@ -76,6 +76,20 @@ p {
     border-radius: 35px;
 }
 
+.btn_more {
+    background-color: $color_secondary;
+    border: 2px solid $color_secondary;
+    color: $color_light;
+    cursor: pointer;
+    transition: background-color 250ms ease-in-out, 
+                border 250ms ease-in-out;
+
+    &:hover {
+        background-color: $color_primary;
+        border: 2px solid $color_primary;
+    }
+}
+
 .num-products {
     margin-left: $spacing_sm;
     font-size: small;
