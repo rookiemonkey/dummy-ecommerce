@@ -1,0 +1,16 @@
+.search_noresults {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+
+    img {
+        width: 400px;
+        height: 400px;
+    }
+
+    h3 {
+        text-align: center;
+    }
+}

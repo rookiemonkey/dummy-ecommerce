@@ -97,8 +97,9 @@
             transition: background-color 250ms ease-in-out,
                         color 250ms ease-in-out;
 
-            i {
-                width: 15px;
+            span {
+                display: inline-block;
+                width: 17px;
                 margin-right: $spacing_sm;
             }
 

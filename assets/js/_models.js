@@ -68,58 +68,73 @@ const Calzada = (function Application() {
         static slides = () => showSlides();
 
         static search = async () => {
+            try {
 
-            // searching w/o query to match
-            if (!input.value)
-                return this.notifier.showMessage('Please enter a query', 'error')
+                // searching w/o query to match
+                if (!input.value)
+                    return this.notifier.showMessage('Please enter a query', 'error')
 
-            // initial search
-            if (!pagination.search_query)
-                pagination.search_query = input.value;
+                // initial search
+                if (!pagination.search_query)
+                    pagination.search_query = input.value;
 
-            // another search after initial, reset everything 
-            if (pagination.search_query
-                && input.value
-                && pagination.search_query != input.value) {
-                pagination.search_query = input.value;
-                pagination.search_page = 1;
-                route_search.innerHTML = `
-                    <h3 id="search_header">Matching resuts for <span>'${pagination.search_query}'</span></h3>
-                    <ul id="list-search"></ul>
-                `
-            }
+                // another search after initial, reset everything 
+                if (pagination.search_query
+                    && input.value
+                    && pagination.search_query != input.value) {
+                    pagination.search_query = input.value;
+                    pagination.search_page = 1;
+                    route_search.innerHTML = `
+                        <h3 id="search_header">Matching resuts for <span>'${pagination.search_query}'</span></h3>
+                        <ul id="list-search"></ul>
+                    `
+                }
 
-            const { search_query, search_page } = pagination;
-            const url1 = `${baseurl}/api/v1/products/search`
-            const url2 = `?apikey=${apikey}&term=${search_query}&page=${search_page}`;
-            const raw = await fetch(`${url1}${url2}`);
-            const { data, page, lastPage } = await raw.json();
+                const { search_query, search_page } = pagination;
+                const url1 = `${baseurl}/api/v1/products/search`
+                const url2 = `?apikey=${apikey}&term=${search_query}&page=${search_page}`;
+                const raw = await fetch(`${url1}${url2}`);
+                const { success, message, data, page, lastPage } = await raw.json();
 
-            // generate initial html
-            if (!document.querySelector('#list-search')) {
-                route_search.innerHTML = `
+                // throw error if there is no results
+                if (!success) throw new Error(message)
+
+                // generate initial html
+                if (!document.querySelector('#list-search')) {
+                    route_search.innerHTML = `
                     <h3 id="search_header">Matching resuts for <span>'${search_query}'</span></h3>
                     <ul id="list-search"></ul>
                 `
+                }
+
+                // generate more button 
+                if (!document.querySelector('#btn_more_searchresults') && lastPage > 1) {
+                    const props = { id: 'searchresults', page: 'search_page', route: 'search' }
+                    const { button } = new HTMLMoreButton(props)
+                    route_search.appendChild(button)
+                }
+
+                // remove more button if last page
+                if (page == lastPage) {
+                    this.notifier.showMessage(`You've reached the last page`, 'success')
+                    document.querySelector('#btn_more_searchresults').remove()
+                }
+
+                // generate the product cards if there are results
+                generanteDom(data, HTMLProductCard, '#list-search')
+
+                this.router('search');
             }
 
-            // generate more button 
-            if (!document.querySelector('#btn_more_searchresults') && lastPage > 1) {
-                const props = { id: 'searchresults', page: 'search_page', route: 'search' }
-                const { button } = new HTMLMoreButton(props)
-                route_search.appendChild(button)
+            catch (error) {
+                route_search.innerHTML = `
+                        <div class="search_noresults">
+                            <img src="/assets/images/empty.svg" />
+                            <h3>${error.message}</h3>
+                        </div>
+                    `
+                this.router('search');
             }
-
-            // remove more button if last page
-            if (page == lastPage) {
-                this.notifier.showMessage(`You've reached the last page`, 'success')
-                document.querySelector('#btn_more_searchresults').remove()
-            }
-
-            // generate the product cards if there are results
-            generanteDom(data, HTMLProductCard, '#list-search')
-
-            this.router('search');
         }
 
         static department = async event => {
@@ -192,7 +207,6 @@ const Calzada = (function Application() {
                 : cart.push(newProduct)
 
             // update badge count
-            console.log(cart)
             document.querySelector('#badge').textContent = cart.length
         }
 

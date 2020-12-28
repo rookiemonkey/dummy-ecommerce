@@ -29,7 +29,7 @@
         li.setAttribute('deptName', dept.department_name);
         li.onclick = event => Calzada.department(event);
         li.innerHTML = `
-            <i class="${navIcons[dept.department_name]}"></i>
+            <span><i class="${navIcons[dept.department_name]}"></i></span>
             ${dept.department_name}
         `
         nav_dropdown.appendChild(li);
