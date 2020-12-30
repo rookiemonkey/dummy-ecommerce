@@ -235,12 +235,16 @@ const Calzada = (function Application() {
         static remFromCart = event => {
             const targetId = event.target.id;
             const [_, idToRemove] = targetId.split('_')
+            let newTotal;
 
+            // update the cart 
             cart = cart.filter(cartItem => cartItem._id !== idToRemove)
+            newTotal = cart.reduce((a, b) => a + (b.product_price * b.product_quantity), 0);
 
+            // update the dom
             document.querySelector('#badge').textContent = cart.length
-            route_checkout.innerHTML = ``;
-            this.toCheckout();
+            document.querySelector(`#cart_${idToRemove}`).remove();
+            document.querySelector('.total_cart_amount').textContent = `₱ ${newTotal}`
         }
 
         static checkOutCart = () => {
@@ -530,6 +534,7 @@ function HTMLCartInit() {
 // MODEL for cart items on check out route
 function HTMLCartItem(product) {
     this.li = document.createElement('li');
+    this.li.id = `cart_${product._id}`;
 
     this.li.innerHTML = `
         <img src="${product.product_image_md}" />
