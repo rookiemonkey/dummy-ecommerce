@@ -42,12 +42,7 @@
                 div.cart-item-metatop {
                     h2 {
                         color: $color_primary;
-                    }
-
-                    h2 > i {
-                        color: red;
-                        float: right;
-                        cursor: pointer;
+                        font-size: 1.25rem;
                     }
                 }
 
@@ -61,6 +56,13 @@
                     font-size: 1.75rem;
                     font-weight: 800;
                     color: green;
+
+                    i {
+                        margin-left: $spacing_md;
+                        color: red;
+                        float: right;
+                        cursor: pointer;
+                    }
                 }
             }
         }
@@ -97,10 +99,12 @@
                     font-size: 1rem;
                     font-weight: 800;
                     cursor: pointer;
-                    transition: background-color 250ms ease-in-out;
+                    transition: background-color 250ms ease-in-out,
+                                color 250ms ease-in-out;
 
                     &:hover {
                         background-color: $color_secondary;
+                        color: $color_primary;
                     }
                 }
             }

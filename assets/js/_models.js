@@ -3,7 +3,7 @@
 const Calzada = (function Application() {
 
     // emulating private variables
-    const cart = new Array();
+    let cart = new Array();
     const pagination = {
         search_query: '',
         search_page: 1,
@@ -13,6 +13,7 @@ const Calzada = (function Application() {
     const routes = document.querySelectorAll('[data-route]');
     const route_search = document.querySelector('[data-route="search"]');
     const route_department = document.querySelector('[data-route="department"]');
+    const route_checkout = document.querySelector('[data-route="checkout"]');
     const input = document.getElementById('nav_search_input');
     const dropdown = document.querySelector('.nav-dropdown');
 
@@ -67,7 +68,7 @@ const Calzada = (function Application() {
 
         static slides = () => showSlides();
 
-        static search = async () => {
+        static toSearch = async () => {
             try {
 
                 // searching w/o query to match
@@ -137,7 +138,7 @@ const Calzada = (function Application() {
             }
         }
 
-        static department = async event => {
+        static toDepartment = async event => {
             const { target } = event;
             const { department_query } = pagination;
             const deptId = target.getAttribute('deptId');
@@ -187,6 +188,23 @@ const Calzada = (function Application() {
             this.router('department');
         }
 
+        static toCheckout = () => {
+            Calzada.router('checkout');
+
+            // generate initial elements of the cart
+            route_checkout.appendChild(new HTMLCartInit().parent);
+
+            // generate cart items
+            cart.forEach(item => {
+                const { li } = new HTMLCartItems(item);
+                document.querySelector('.list-cart').appendChild(li);
+            })
+
+            // generate cart form
+            new HTMLCartForm(cart.reduce((a, b) => a + (b.product_price * b.product_quantity), 0));
+
+        }
+
         static dropdown = () => {
             dropdown.style.display == 'none'
                 ? dropdown.style.display = 'block'
@@ -194,12 +212,12 @@ const Calzada = (function Application() {
         }
 
         static addToCart = newProduct => {
-            const isOnCart = cart.some(cartProd => cartProd.id == newProduct.id)
+            const isOnCart = cart.some(cartProd => cartProd._id == newProduct._id)
 
             isOnCart
                 ? cart = cart.map(cartProd => {
                     cartProd.id == newProduct.id
-                        ? cartProd.quantity += newProduct.quantity
+                        ? cartProd.product_quantity += newProduct.product_quantity
                         : null
 
                     return cartProd
@@ -395,10 +413,12 @@ function HTMLProduct(product) {
     // EVENT: Add to Cart!
     addtocart.onclick = () => {
         Calzada.addToCart({
-            id: product._id,
-            name: product.product_name,
-            quantity: parseInt(quantity.value),
-            image: product.product_image_lg
+            _id: product._id,
+            product_name: product.product_name,
+            product_quantity: parseInt(quantity.value),
+            product_image_md: product.product_image_md,
+            product_ratings: product.product_ratings,
+            product_price: product.product_price
         })
 
         quantity.value = 1;
@@ -477,12 +497,82 @@ function HTMLMoreButton(props) {
     this.button.onclick = event => {
         Calzada.incrementPage(props.page);
         props.route == 'department'
-            ? Calzada.department(event)
-            : Calzada.search()
+            ? Calzada.toDepartment(event)
+            : Calzada.toSearch()
     }
 }
 
-// ELEMENT model for notifications
+// MODEL for cart's initial elements
+function HTMLCartInit() {
+    this.parent = document.createElement('div');
+    this.parent.id = 'checkout-route-container';
+    this.parent.innerHTML = `
+        <ul class="list-cart"></ul>
+        <form class="sidebar-cart"></form>
+    `
+}
+
+// MODEL for cart items on check out route
+function HTMLCartItems(product) {
+    this.li = document.createElement('li');
+
+    this.li.innerHTML = `
+        <img src="${product.product_image_md}" />
+        <div class="cart-item-meta">
+            <div class="cart-item-metatop">
+                <h2>
+                    ${product.product_name} 
+                </h2>
+                <span>
+                    ${product.product_ratings}  
+                    <img src="/assets/images/star.svg" />&nbsp; |
+                </span>
+                <span>&nbsp; ₱ ${product.product_price}  &nbsp; |</span>
+                <span>&nbsp; Quantity: ${product.product_quantity}</span>
+            </div>
+
+            <span class='cart-item-total'>
+                ₱ ${product.product_price * product.product_quantity}
+                <i class="ion-android-remove-circle"
+                    id="rmv_${product._id}" 
+                    title="Remove ${product.product_name} from cart?">
+                </i>
+            </span>
+        </div>
+    `
+}
+
+// MODEL for cart form on check out route
+function HTMLCartForm(total) {
+    document.querySelector('form.sidebar-cart').innerHTML = `
+        <h2>Receiver's Information</h2>
+
+        <div class="form_group">
+            <label for="checkout_fullname">Full Name:</label>
+            <input id="checkout_fullname" name="fullname" type="text" />
+        </div>
+
+        <div class="form_group">
+            <label for="checkout_address">Address:</label>
+            <input id="checkout_address" name="address" type="text" />
+        </div>
+
+        <div class="form_group">
+            <label for="checkout_contact">Contact Number:</label>
+            <input id="checkout_contact" name="contact" type="tel" />
+        </div>
+
+        <div class="form_buttons">
+            <div class="total_cart">
+                <small class="total_cart_label">Total</small>
+                <span class="total_cart_amount">₱ ${total}</span>
+            </div>
+            <button class="form_button"><i class="ion-checkmark-circled"></i> &nbsp; Checkout</button>
+        </div>
+    `
+}
+
+// MODEL for notification component
 function HTMLNotifier() {
     this.initialize = () => {
         this.hideTimeout = null;

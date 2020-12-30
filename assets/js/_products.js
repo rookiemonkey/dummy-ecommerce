@@ -27,7 +27,7 @@
         const li = document.createElement('li');
         li.setAttribute('deptId', dept.department_id);
         li.setAttribute('deptName', dept.department_name);
-        li.onclick = event => Calzada.department(event);
+        li.onclick = event => Calzada.toDepartment(event);
         li.innerHTML = `
             <span><i class="${navIcons[dept.department_name]}"></i></span>
             ${dept.department_name}

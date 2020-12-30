@@ -3924,11 +3924,8 @@ footer {
         flex-direction: column;
         justify-content: space-between; }
         #checkout-route #checkout-route-container ul.list-cart li div.cart-item-meta div.cart-item-metatop h2 {
-          color: #802c6e; }
-        #checkout-route #checkout-route-container ul.list-cart li div.cart-item-meta div.cart-item-metatop h2 > i {
-          color: red;
-          float: right;
-          cursor: pointer; }
+          color: #802c6e;
+          font-size: 1.25rem; }
         #checkout-route #checkout-route-container ul.list-cart li div.cart-item-meta img {
           width: 12px;
           height: 12px; }
@@ -3937,6 +3934,11 @@ footer {
           font-size: 1.75rem;
           font-weight: 800;
           color: green; }
+          #checkout-route #checkout-route-container ul.list-cart li div.cart-item-meta span.cart-item-total i {
+            margin-left: 12px;
+            color: red;
+            float: right;
+            cursor: pointer; }
     #checkout-route #checkout-route-container form.sidebar-cart {
       height: max-content;
       background-color: #802c6e;
@@ -3963,9 +3965,10 @@ footer {
           font-size: 1rem;
           font-weight: 800;
           cursor: pointer;
-          transition: background-color 250ms ease-in-out; }
+          transition: background-color 250ms ease-in-out, color 250ms ease-in-out; }
           #checkout-route #checkout-route-container form.sidebar-cart .form_buttons button.form_button:hover {
-            background-color: #f7aa35; }
+            background-color: #f7aa35;
+            color: #802c6e; }
       #checkout-route #checkout-route-container form.sidebar-cart .total_cart {
         display: flex;
         flex-direction: column; }
