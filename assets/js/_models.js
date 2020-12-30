@@ -195,10 +195,7 @@ const Calzada = (function Application() {
             route_checkout.appendChild(new HTMLCartInit().parent);
 
             // generate cart items
-            cart.forEach(item => {
-                const { li } = new HTMLCartItems(item);
-                document.querySelector('.list-cart').appendChild(li);
-            })
+            generanteDom(cart, HTMLCartItems, '.list-cart');
 
             // generate cart form
             new HTMLCartForm(cart.reduce((a, b) => a + (b.product_price * b.product_quantity), 0));
@@ -540,6 +537,17 @@ function HTMLCartItems(product) {
             </span>
         </div>
     `
+
+    // onclick will make an HTTP request and route to product route
+    this.li.onclick = async () => {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+
+        const raw = await fetch(`${baseurl}/api/v1/products/${product._id}?apikey=${apikey}`)
+        const parsed = await raw.json();
+        Calzada.router('product');
+        new HTMLProduct(parsed.data);
+    }
 }
 
 // MODEL for cart form on check out route
