@@ -134,8 +134,76 @@
         </div>
 
         <!-- CHECKOUT -->
-        <div data-route="checkout" style="display: none;">
-            CHECKOUT
+        <div data-route="checkout" id="checkout-route" style="display: none;">
+            <div id='checkout-route-container'>
+                <ul class="list-cart">
+                    <li>
+                        <img src="https://dummyproducts-api.herokuapp.com/babies/babygirldress_300.png" />
+                        <div class="cart-item-meta">
+                            <div class="cart-item-metatop">
+                                <h2>Product Name <i class="ion-android-remove-circle" title="Remove Product"></i></h2>
+                                <span>1 <img src="/assets/images/star.svg" />&nbsp; |</span>
+                                <span>&nbsp; P500&nbsp; |</span>
+                                <span>&nbsp; Quantity: 2</span>
+                            </div>
+
+                            <span class='cart-item-total'>P1000</span>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://dummyproducts-api.herokuapp.com/babies/babygirldress_300.png" />
+                        <div class="cart-item-meta">
+                            <div class="cart-item-metatop">
+                                <h2>Product Name <i class="ion-android-remove-circle"></i></h2>
+                                <span>1 <img src="/assets/images/star.svg" />&nbsp; |</span>
+                                <span>&nbsp; P500&nbsp; |</span>
+                                <span>&nbsp; Quantity: 2</span>
+                            </div>
+
+                            <span class='cart-item-total'>P1000</span>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="https://dummyproducts-api.herokuapp.com/babies/babygirldress_300.png" />
+                        <div class="cart-item-meta">
+                            <div class="cart-item-metatop">
+                                <h2>Product Name <i class="ion-android-remove-circle"></i></h2>
+                                <span>1 <img src="/assets/images/star.svg" />&nbsp; |</span>
+                                <span>&nbsp; P500&nbsp; |</span>
+                                <span>&nbsp; Quantity: 2</span>
+                            </div>
+
+                            <span class='cart-item-total'>P1000</span>
+                        </div>
+                    </li>
+                </ul>
+                <form class="sidebar-cart">
+                    <h2>Receiver's Information</h2>
+
+                    <div class="form_group">
+                        <label for="checkout_fullname">Full Name:</label>
+                        <input id="checkout_fullname" name="fullname" type="text" />
+                    </div>
+
+                    <div class="form_group">
+                        <label for="checkout_address">Address:</label>
+                        <input id="checkout_address" name="address" type="text" />
+                    </div>
+
+                    <div class="form_group">
+                        <label for="checkout_contact">Contact Number:</label>
+                        <input id="checkout_contact" name="contact" type="tel" />
+                    </div>
+
+                    <div class="form_buttons">
+                        <div class="total_cart">
+                            <small class="total_cart_label">Total</small>
+                            <span class="total_cart_amount">P15000</span>
+                        </div>
+                        <button class="form_button"><i class="ion-checkmark-circled"></i> &nbsp; Checkout</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <footer>

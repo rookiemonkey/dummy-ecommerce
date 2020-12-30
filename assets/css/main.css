@@ -2405,7 +2405,7 @@ p {
   #nav .nav-dropdown {
     position: absolute;
     background-color: #f9f9f9;
-    top: -10px;
+    top: 50px;
     min-width: 210px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1; }
@@ -3891,6 +3891,89 @@ footer {
         #search-route li div.productcard-meta div.productcard-meta-details span.price,
         #department-route li div.productcard-meta div.productcard-meta-details span.price {
           color: green;
+          font-weight: 800; }
+
+#checkout-route {
+  min-height: 90vh; }
+  #checkout-route #checkout-route-container {
+    display: flex; }
+    #checkout-route #checkout-route-container ul.list-cart,
+    #checkout-route #checkout-route-container form.sidebar-cart {
+      width: 50%;
+      padding: 8px;
+      margin: 12px; }
+    #checkout-route #checkout-route-container ul.list-cart li {
+      width: 100%;
+      display: flex;
+      margin-bottom: 12px;
+      background-color: white;
+      border-radius: 15px;
+      padding: 20px;
+      list-style-type: none;
+      transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out; }
+      #checkout-route #checkout-route-container ul.list-cart li:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 10px -5px; }
+      #checkout-route #checkout-route-container ul.list-cart li img {
+        width: 150px;
+        height: 150px;
+        transition: transform 250ms ease-in-out; }
+      #checkout-route #checkout-route-container ul.list-cart li div.cart-item-meta {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; }
+        #checkout-route #checkout-route-container ul.list-cart li div.cart-item-meta div.cart-item-metatop h2 {
+          color: #802c6e; }
+        #checkout-route #checkout-route-container ul.list-cart li div.cart-item-meta div.cart-item-metatop h2 > i {
+          color: red;
+          float: right;
+          cursor: pointer; }
+        #checkout-route #checkout-route-container ul.list-cart li div.cart-item-meta img {
+          width: 12px;
+          height: 12px; }
+        #checkout-route #checkout-route-container ul.list-cart li div.cart-item-meta span.cart-item-total {
+          text-align: right;
+          font-size: 1.75rem;
+          font-weight: 800;
+          color: green; }
+    #checkout-route #checkout-route-container form.sidebar-cart {
+      height: max-content;
+      background-color: #802c6e;
+      color: white;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px; }
+      #checkout-route #checkout-route-container form.sidebar-cart h2 {
+        text-align: center; }
+      #checkout-route #checkout-route-container form.sidebar-cart .form_group,
+      #checkout-route #checkout-route-container form.sidebar-cart .form_buttons {
+        display: flex;
+        flex-direction: column;
+        margin: 12px 0px; }
+      #checkout-route #checkout-route-container form.sidebar-cart .form_buttons {
+        flex-direction: row !important;
+        justify-content: space-between; }
+        #checkout-route #checkout-route-container form.sidebar-cart .form_buttons button.form_button {
+          background-color: #802c6e;
+          border: 2px solid #f7aa35;
+          border-radius: 35px;
+          color: white;
+          width: 150px;
+          font-size: 1rem;
+          font-weight: 800;
+          cursor: pointer;
+          transition: background-color 250ms ease-in-out; }
+          #checkout-route #checkout-route-container form.sidebar-cart .form_buttons button.form_button:hover {
+            background-color: #f7aa35; }
+      #checkout-route #checkout-route-container form.sidebar-cart .total_cart {
+        display: flex;
+        flex-direction: column; }
+        #checkout-route #checkout-route-container form.sidebar-cart .total_cart .total_cart_label {
+          font-style: italic; }
+        #checkout-route #checkout-route-container form.sidebar-cart .total_cart .total_cart_amount {
+          color: #f7aa35;
+          font-size: 1.75rem;
           font-weight: 800; }
 
 .search_noresults {
