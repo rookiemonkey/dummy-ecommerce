@@ -195,7 +195,14 @@ const Calzada = (function Application() {
             route_checkout.appendChild(new HTMLCartInit().parent);
 
             // generate cart items
-            generanteDom(cart, HTMLCartItems, '.list-cart');
+            cart.forEach(cartItem => {
+                const { li } = new HTMLCartItem(cartItem);
+                document.querySelector('.list-cart').appendChild(li);
+                document.querySelector(`#rmv_${cartItem._id}`).onclick = event => {
+                    event.stopPropagation();
+                    this.remFromCart(event);
+                }
+            })
 
             // generate cart form
             new HTMLCartForm(cart.reduce((a, b) => a + (b.product_price * b.product_quantity), 0));
@@ -223,6 +230,17 @@ const Calzada = (function Application() {
 
             // update badge count
             document.querySelector('#badge').textContent = cart.length
+        }
+
+        static remFromCart = event => {
+            const targetId = event.target.id;
+            const [_, idToRemove] = targetId.split('_')
+
+            cart = cart.filter(cartItem => cartItem._id !== idToRemove)
+
+            document.querySelector('#badge').textContent = cart.length
+            route_checkout.innerHTML = ``;
+            this.toCheckout();
         }
 
         static checkOutCart = () => {
@@ -510,7 +528,7 @@ function HTMLCartInit() {
 }
 
 // MODEL for cart items on check out route
-function HTMLCartItems(product) {
+function HTMLCartItem(product) {
     this.li = document.createElement('li');
 
     this.li.innerHTML = `
