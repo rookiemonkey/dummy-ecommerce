@@ -234,7 +234,8 @@ const Calzada = (function Application() {
 
         static remFromCart = event => {
             const targetId = event.target.id;
-            const [_, idToRemove] = targetId.split('_')
+            const [_, idToRemove] = targetId.split('_');
+            const item = document.querySelector(`#cart_${idToRemove}`);
             let newTotal;
 
             // update the cart 
@@ -243,8 +244,9 @@ const Calzada = (function Application() {
 
             // update the dom
             document.querySelector('#badge').textContent = cart.length
-            document.querySelector(`#cart_${idToRemove}`).remove();
             document.querySelector('.total_cart_amount').textContent = `₱ ${newTotal}`
+            item.classList.add('fadeout');
+            setTimeout(() => item.remove(), 500)
         }
 
         static checkOutCart = () => {
