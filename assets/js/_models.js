@@ -195,6 +195,9 @@ const Calzada = (function Application() {
             // generate initial elements of the cart
             route_checkout.appendChild(new HTMLCartInit().parent);
 
+            // generate cart form
+            new HTMLCartForm(CalzadaCart.cart_total);
+
             // generate cart items
             CalzadaCart.cart_products.forEach(cartItem => {
                 const { li } = new HTMLCartItem(cartItem);
@@ -205,8 +208,38 @@ const Calzada = (function Application() {
                 }
             })
 
-            // generate cart form
-            new HTMLCartForm(CalzadaCart.cart_total);
+            // generate cart history items
+            CalzadaCartHistory.forEach(cartHistory => new HTMLCartHistoryItem(cartHistory))
+
+            // generate an illustration if cart is empty, remove .list-cart
+            if (!CalzadaCart.cart_products.length) {
+                document.querySelector('.list-cart').remove();
+
+                const container = document.createElement('div');
+                container.id = 'emptycart_container'
+
+                container.innerHTML = `
+                    <img src="/assets/images/cart_empty.svg" id='image_emptycart' />
+                    <h3>Your cart is empty</h3>
+                `
+
+                document.querySelector('#checkout-route-container')
+                    .insertAdjacentElement('afterbegin', container);
+            }
+
+            // generate an illustration if cart history is empty
+            if (!CalzadaCartHistory.length) {
+                const container = document.createElement('div');
+                container.id = 'emptycarthistory_container'
+
+                container.innerHTML = `
+                    <img src="/assets/images/cart_emptyhistory.svg" id='image_emptycarthistory' />
+                    <h3>No histories for past checkouts</h3>
+                `
+
+                document.querySelector('.sidebar-history')
+                    .insertAdjacentElement('beforeend', container);
+            }
 
         }
 
@@ -254,6 +287,24 @@ const Calzada = (function Application() {
             document.querySelector('.total_cart_amount').textContent = `₱ ${CalzadaCart.cart_total}`
             item.classList.add('fadeout');
             setTimeout(() => item.remove(), 500)
+
+            // bring back the illustration for empty cart after 500ms (relative to transition)
+            // if the CalzadaCart.cart_products length is 0
+            if (!CalzadaCart.cart_products.length) {
+                setTimeout(() => {
+                    document.querySelector('.list-cart').remove();
+                    const container = document.createElement('div');
+                    container.id = 'emptycart_container'
+
+                    container.innerHTML = `
+                    <img src="/assets/images/cart_empty.svg" id='image_emptycart' />
+                    <h3>Your cart is empty</h3>
+                `
+
+                    document.querySelector('#checkout-route-container')
+                        .insertAdjacentElement('afterbegin', container);
+                }, 500)
+            }
         }
 
         static checkoutCart = async event => {
@@ -304,11 +355,33 @@ const Calzada = (function Application() {
                 setTimeout(() => item.remove(), 500)
             })
 
+            // alert success
+            this.notifier.showMessage('Successfully bought all your item!', 'success')
+
             // reset cart state / DOM
             CalzadaCart = new Cart();
             document.querySelector('#badge').textContent = CalzadaCart.cart_products.length
             document.querySelector('.total_cart_amount').textContent = `₱ 0`
             form.reset();
+
+            if (document.querySelector('#emptycarthistory_container'))
+                document.querySelector('#emptycarthistory_container').remove();
+
+
+            // bring back the illustration for empty cart after 500ms (relative to transition)
+            setTimeout(() => {
+                document.querySelector('.list-cart').remove();
+                const container = document.createElement('div');
+                container.id = 'emptycart_container'
+
+                container.innerHTML = `
+                    <img src="/assets/images/cart_empty.svg" id='image_emptycart' />
+                    <h3>Your cart is empty</h3>
+                `
+
+                document.querySelector('#checkout-route-container')
+                    .insertAdjacentElement('afterbegin', container);
+            }, 500)
         }
 
         static incrementPage = key => pagination[key]++;
@@ -586,9 +659,7 @@ function HTMLCartInit() {
             <form class="sidebar-cart"></form>
             <div class="sidebar-history">
                 <h3>Checkout History</h3>
-                <ul class="list-carthistory">
-
-                </ul>
+                <ul class="list-carthistory"></ul>
             </div>
         </div>
     `
@@ -691,7 +762,7 @@ function HTMLCartHistoryItem(cartHistory) {
         <div class="cart-history-bottom">
             ${imgs_container.outerHTML}
             <span class="cart-history-numitems">
-                ${cartHistory.history_cart.length} items &nbsp; | 
+                ${cartHistory.history_cart.length} item/s &nbsp; | 
             </h5>
             <span class="cart-history-total"> 
                 &nbsp; Total P ${cartHistory.history_total}
