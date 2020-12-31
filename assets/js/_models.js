@@ -3,7 +3,8 @@
 const Calzada = (function Application() {
 
     // emulating private variables
-    let cart = new Array();
+    let CalzadaCart = new Cart();
+    let CalzadaCartHistory = new Array();
     const pagination = {
         search_query: '',
         search_page: 1,
@@ -195,7 +196,7 @@ const Calzada = (function Application() {
             route_checkout.appendChild(new HTMLCartInit().parent);
 
             // generate cart items
-            cart.forEach(cartItem => {
+            CalzadaCart.cart_products.forEach(cartItem => {
                 const { li } = new HTMLCartItem(cartItem);
                 document.querySelector('.list-cart').appendChild(li);
                 document.querySelector(`#rmv_${cartItem._id}`).onclick = event => {
@@ -205,7 +206,7 @@ const Calzada = (function Application() {
             })
 
             // generate cart form
-            new HTMLCartForm(cart.reduce((a, b) => a + (b.product_price * b.product_quantity), 0));
+            new HTMLCartForm(CalzadaCart.cart_total);
 
         }
 
@@ -216,50 +217,92 @@ const Calzada = (function Application() {
         }
 
         static addToCart = newProduct => {
-            const isOnCart = cart.some(cartProd => cartProd._id == newProduct._id)
+            const isOnCart = CalzadaCart.cart_products
+                .some(cartProd => cartProd._id == newProduct._id)
 
             isOnCart
-                ? cart = cart.map(cartProd => {
-                    cartProd.id == newProduct.id
-                        ? cartProd.product_quantity += newProduct.product_quantity
-                        : null
+                ? CalzadaCart.cart_products = CalzadaCart.cart_products
+                    .map(cartProd => {
+                        cartProd.id == newProduct.id
+                            ? cartProd.product_quantity += newProduct.product_quantity
+                            : null
 
-                    return cartProd
-                })
-                : cart.push(newProduct)
+                        return cartProd
+                    })
+                : CalzadaCart.cart_products.push(newProduct)
 
             // update badge count
-            document.querySelector('#badge').textContent = cart.length
+            document.querySelector('#badge').textContent = CalzadaCart.cart_products.length
+
+            // recalculate the total of cart
+            CalzadaCart.cart_calculate();
         }
 
         static remFromCart = event => {
             const targetId = event.target.id;
             const [_, idToRemove] = targetId.split('_');
             const item = document.querySelector(`#cart_${idToRemove}`);
-            let newTotal;
 
             // update the cart 
-            cart = cart.filter(cartItem => cartItem._id !== idToRemove)
-            newTotal = cart.reduce((a, b) => a + (b.product_price * b.product_quantity), 0);
+            CalzadaCart.cart_products = CalzadaCart.cart_products
+                .filter(cartItem => cartItem._id !== idToRemove)
+
+            CalzadaCart.cart_calculate();
 
             // update the dom
-            document.querySelector('#badge').textContent = cart.length
-            document.querySelector('.total_cart_amount').textContent = `₱ ${newTotal}`
+            document.querySelector('#badge').textContent = CalzadaCart.cart_products.length
+            document.querySelector('.total_cart_amount').textContent = `₱ ${CalzadaCart.cart_total}`
             item.classList.add('fadeout');
             setTimeout(() => item.remove(), 500)
         }
 
-        static checkOutCart = () => {
+        static checkoutCart = async event => {
+            event.preventDefault();
 
-            if (!currentUser) return alert('Please login first')
+            if (!CalzadaCart.cart_products.length)
+                return Calzada.notifier.showMessage('There is no item in your cart', 'error')
 
-            if (!currentUser.user_creditcard) return alert('Please complete your billing account')
+            // post request
+            const form = document.querySelector('form.sidebar-cart');
+            const formdata = parseFormData(new FormData(form));
+            const raw = await fetch(`${baseurl}/api/v1/actions/checkout?apikey=${apikey}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ items: CalzadaCart.cart_products })
+            })
+            const parsed = await raw.json();
 
-            const { user_history, user_cart } = currentUser;
-            const newCartHistory = new CartHistory(user_cart)
-            user_history.push(newCartHistory);
-            currentUser.user_cart = new Cart();
+            if (!parsed.success)
+                this.notifier.showMessage('Something went wrong upon checkout', 'error')
 
+
+            // append needed props to cart
+            const cart_receiverName = formdata.fullname;
+            const cart_receiverAddress = formdata.address;
+            const cart_receiverContact = formdata.contact;
+
+            CalzadaCart = {
+                ...CalzadaCart,
+                cart_receiverName,
+                cart_receiverAddress,
+                cart_receiverContact
+            }
+
+            // update history state
+            CalzadaCartHistory.push(new CartHistory(CalzadaCart));
+
+            // transition out all cart items
+            CalzadaCart.cart_products.forEach(product => {
+                const item = document.querySelector(`#cart_${product._id}`);
+                item.classList.add('fadeout');
+                setTimeout(() => item.remove(), 500)
+            })
+
+            // reset cart state / DOM
+            CalzadaCart = new Cart();
+            document.querySelector('#badge').textContent = CalzadaCart.cart_products.length
+            document.querySelector('.total_cart_amount').textContent = `₱ 0`
+            form.reset();
         }
 
         static incrementPage = key => pagination[key]++;
@@ -284,24 +327,26 @@ function User(fullname, email, password) {
 
 // MODEL for cart
 function Cart() {
+    this.cart_id = randomId();
     this.cart_total = 0;
     this.cart_products = new Array();
-    this.cart_recaculate = () => {
+    this.cart_calculate = () => {
         this.cart_total = this.cart_products
-            .reduce((acc, next) => acc + (parseFloat(next.product_price) * next.quantity), 0)
+            .reduce((acc, next) => acc + (parseFloat(next.product_price) * next.product_quantity), 0)
     }
 }
 
-// MODEL for cart history, stored inside User.user_history
+// MODEL for cart history
 function CartHistory(cartInstance) {
     const date = new Date()
     const dateStr = date.toDateString();
     const timeStr = date.toLocaleTimeString();
 
-    this.history_id = faker.random.uuid();
+    this.history_id = randomId();
     this.history_date = `${dateStr} ${timeStr}`;
     this.history_total = cartInstance.cart_total;
     this.history_cart = cartInstance.cart_products;
+    this.history_cartId = cartInstance.cart_id
 }
 
 // MODEL for HOME's product card component
@@ -443,7 +488,8 @@ function HTMLProduct(product) {
         })
 
         quantity.value = 1;
-        Calzada.notifier.showMessage('Successfully added to your cart!', 'success')
+        Calzada.notifier
+            .showMessage(`Successfully added ${product.product_name} to your cart!`, 'success')
     }
 }
 
@@ -577,22 +623,24 @@ function HTMLCartItem(product) {
 
 // MODEL for cart form on check out route
 function HTMLCartForm(total) {
-    document.querySelector('form.sidebar-cart').innerHTML = `
+    const form = document.querySelector('form.sidebar-cart');
+
+    form.innerHTML = `
         <h2>Receiver's Information</h2>
 
         <div class="form_group">
             <label for="checkout_fullname">Full Name:</label>
-            <input id="checkout_fullname" name="fullname" type="text" />
+            <input id="checkout_fullname" name="fullname" type="text" autocomplete="off" required />
         </div>
 
         <div class="form_group">
             <label for="checkout_address">Address:</label>
-            <input id="checkout_address" name="address" type="text" />
+            <input id="checkout_address" name="address" type="text" autocomplete="off" required />
         </div>
 
         <div class="form_group">
             <label for="checkout_contact">Contact Number:</label>
-            <input id="checkout_contact" name="contact" type="tel" />
+            <input id="checkout_contact" name="contact" type="tel" autocomplete="off" required />
         </div>
 
         <div class="form_buttons">
@@ -603,6 +651,8 @@ function HTMLCartForm(total) {
             <button class="form_button"><i class="ion-checkmark-circled"></i> &nbsp; Checkout</button>
         </div>
     `
+
+    form.onsubmit = event => Calzada.checkoutCart(event)
 }
 
 // MODEL for notification component

@@ -66,6 +66,28 @@ function randomNum(minNum, maxNum) {
     return Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum
 }
 
+// generate an object containing the form data inputs
+function parseFormData(formData) {
+    const formdataParsed = {};
+
+    [...formData].forEach(formitem => {
+        formdataParsed[formitem[0]] = formitem[1]
+    });
+
+    return formdataParsed;
+}
+
+// generate a random uuid from faker.js :D
+function randomId() {
+    const RFC4122_TEMPLATE = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+    const replacePlaceholders = function (placeholder) {
+        const random = randomNum(0, 15);
+        const value = placeholder == 'x' ? random : (random & 0x3 | 0x8);
+        return value.toString(16);
+    };
+    return RFC4122_TEMPLATE.replace(/[xy]/g, replacePlaceholders);
+}
+
 
 /**
  * generate DOM elements and append it
