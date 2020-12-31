@@ -4016,7 +4016,8 @@ footer {
       #checkout-route #checkout-route-container div.sidebar-history ul.list-carthistory > li > div.cart-history-bottom span.cart-history-numitems {
         color: #b1b1b3; }
       #checkout-route #checkout-route-container div.sidebar-history ul.list-carthistory > li > div.cart-history-bottom span.cart-history-total {
-        color: green; }
+        color: green;
+        font-weight: 800; }
 
 .search_noresults {
   display: flex;
