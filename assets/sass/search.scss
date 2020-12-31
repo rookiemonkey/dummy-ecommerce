@@ -67,24 +67,33 @@
                 align-items: center;
                 justify-content: space-between;
 
-                span.ratings {
-                    img {
-                        margin: 0px;
-                        height: 12px;
-                        width: 12px;
+                div.productcard-meta-details-left {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    span.ratings {
+                        display: flex;
+                        align-items: center;
+
+                        img {
+                            margin: 0px;
+                            height: 12px;
+                            width: 12px;
+                        }
+                    }
+
+                    span.type {
+                        margin-left: 2.5px;
+                        font-size: xx-small;
+                        color: $color_meta;
+                    }
+
+                    span.price {
+                        color: green;
+                        font-weight: 800;
                     }
                 }
-
-                span.type {
-                    font-size: smaller;
-                    color: $color_meta;
-                }
-
-                span.price {
-                    color: green;
-                    font-weight: 800;
-                }
-            }
         }
     }
 }

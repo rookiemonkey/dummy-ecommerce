@@ -284,7 +284,7 @@ const Calzada = (function Application() {
 
             // update the dom
             document.querySelector('#badge').textContent = CalzadaCart.cart_products.length
-            document.querySelector('.total_cart_amount').textContent = `₱ ${CalzadaCart.cart_total}`
+            document.querySelector('.total_cart_amount').textContent = toPhp(CalzadaCart.cart_total)
             item.classList.add('fadeout');
             setTimeout(() => item.remove(), 500)
 
@@ -361,7 +361,7 @@ const Calzada = (function Application() {
             // reset cart state / DOM
             CalzadaCart = new Cart();
             document.querySelector('#badge').textContent = CalzadaCart.cart_products.length
-            document.querySelector('.total_cart_amount').textContent = `₱ 0`
+            document.querySelector('.total_cart_amount').textContent = `₱0.00`
             form.reset();
 
             if (document.querySelector('#emptycarthistory_container'))
@@ -446,7 +446,7 @@ function HTMLProductCard(product) {
                     </span>
                     <span class="type">${product.product_department}</span>
                 </div>
-                <span class="price">₱ ${product.product_price}</span>
+                <span class="price">${toPhp(product.product_price)}</span>
             </div>
         </div>
     `
@@ -483,7 +483,7 @@ function HTMLHomeTopSales(product) {
                     </span>
                     <span class="type">${product.product_department}</span>
                 </div>
-                <span class="price">₱ ${product.product_price}</span>
+                <span class="price">${toPhp(product.product_price)}</span>
             </div>
         </div>
     `
@@ -519,7 +519,7 @@ function HTMLProduct(product) {
                     <span>${product.product_stock} Stocks Left</span>
                 </div>
 
-                <p class="product_price">₱ ${product.product_price}</p>
+                <p class="product_price">${toPhp(product.product_price)}</p>
 
                 <div class="product_quantity">
                     <label>Quantity: </label>
@@ -697,12 +697,12 @@ function HTMLCartItem(product) {
                     ${product.product_ratings}  
                     <img src="/assets/images/star.svg" />&nbsp; |
                 </span>
-                <span>&nbsp; ₱ ${product.product_price}  &nbsp; |</span>
+                <span>&nbsp; ${toPhp(product.product_price)}  &nbsp; |</span>
                 <span>&nbsp; Quantity: ${product.product_quantity}</span>
             </div>
 
             <span class='cart-item-total'>
-                ₱ ${product.product_price * product.product_quantity}
+                ${toPhp(product.product_price * product.product_quantity)}
                 <i class="ion-android-remove-circle"
                     id="rmv_${product._id}" 
                     title="Remove ${product.product_name} from cart?">
@@ -748,7 +748,7 @@ function HTMLCartForm(total) {
         <div class="form_buttons">
             <div class="total_cart">
                 <small class="total_cart_label">Total</small>
-                <span class="total_cart_amount">₱ ${total}</span>
+                <span class="total_cart_amount">${toPhp(total)}</span>
             </div>
             <button class="form_button"><i class="ion-checkmark-circled"></i> &nbsp; Checkout</button>
         </div>
@@ -781,7 +781,7 @@ function HTMLCartHistoryItem(cartHistory) {
                 ${cartHistory.history_cart.length} item/s &nbsp; | 
             </h5>
             <span class="cart-history-total"> 
-                &nbsp; Total P ${cartHistory.history_total}
+                &nbsp; Total ${toPhp(cartHistory.history_total)}
             </h5>
         </div>
     `

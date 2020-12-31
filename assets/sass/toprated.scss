@@ -59,7 +59,15 @@
                     align-items: center;
                     justify-content: space-between;
 
+                div.productcard-meta-details-left {
+                        display: flex;
+                        align-items: center;
+                    }
+
                     span.ratings {
+                        display: flex;
+                        align-items: center;
+
                         img {
                             margin: 0px;
                             height: 12px;
@@ -68,7 +76,8 @@
                     }
 
                     span.type {
-                        font-size: smaller;
+                        margin-left: 2.5px;
+                        font-size: xx-small;
                         color: $color_meta;
                     }
 

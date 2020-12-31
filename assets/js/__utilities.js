@@ -88,6 +88,11 @@ function randomId() {
     return RFC4122_TEMPLATE.replace(/[xy]/g, replacePlaceholders);
 }
 
+// currency formatter
+const { format: toPhp } = new Intl.NumberFormat('fil-PH', {
+    style: 'currency',
+    currency: 'PHP'
+})
 
 /**
  * generate DOM elements and append it
