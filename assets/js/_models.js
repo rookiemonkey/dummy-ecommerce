@@ -571,6 +571,22 @@ function HTMLProduct(product) {
         Calzada.notifier
             .showMessage(`Successfully added ${product.product_name} to your cart!`, 'success')
     }
+
+    // EVENT: Buy Now!, add to cart then route to checkout
+    buynow.onclick = () => {
+        Calzada.addToCart({
+            _id: product._id,
+            product_name: product.product_name,
+            product_quantity: parseInt(quantity.value),
+            product_image_sm: product.product_image_sm,
+            product_image_md: product.product_image_md,
+            product_ratings: product.product_ratings,
+            product_price: product.product_price
+        })
+
+        quantity.value = 1;
+        Calzada.toCheckout();
+    }
 }
 
 // MODEL for PRODUCT route's product review component
