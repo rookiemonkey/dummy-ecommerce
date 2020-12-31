@@ -3909,7 +3909,7 @@ footer {
   #checkout-route #checkout-route-container {
     display: flex; }
     #checkout-route #checkout-route-container ul.list-cart,
-    #checkout-route #checkout-route-container form.sidebar-cart {
+    #checkout-route #checkout-route-container div.sidebar {
       width: 50%;
       padding: 8px;
       margin: 12px; }
@@ -3955,8 +3955,7 @@ footer {
       background-color: #802c6e;
       color: white;
       border-radius: 15px;
-      padding: 20px;
-      margin: 20px; }
+      padding: 20px; }
       #checkout-route #checkout-route-container form.sidebar-cart h2 {
         text-align: center; }
       #checkout-route #checkout-route-container form.sidebar-cart .form_group,
@@ -3989,6 +3988,35 @@ footer {
           color: #f7aa35;
           font-size: 1.75rem;
           font-weight: 800; }
+    #checkout-route #checkout-route-container div.sidebar-history {
+      margin: 20px 0px; }
+      #checkout-route #checkout-route-container div.sidebar-history h3 {
+        color: #802c6e;
+        text-align: center;
+        margin: 12px 0px; }
+      #checkout-route #checkout-route-container div.sidebar-history ul.list-carthistory > li {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 12px;
+        background-color: white;
+        border-radius: 15px;
+        padding: 20px;
+        list-style-type: none;
+        transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out; }
+      #checkout-route #checkout-route-container div.sidebar-history ul.list-carthistory > li > div.cart-history-bottom div.cart-history-images {
+        margin: 12px;
+        min-height: 57px; }
+      #checkout-route #checkout-route-container div.sidebar-history ul.list-carthistory > li > div.cart-history-bottom div.cart-history-images > img {
+        width: 50px;
+        height: 50px; }
+      #checkout-route #checkout-route-container div.sidebar-history ul.list-carthistory > li > div.cart-history-bottom span.cart-history-numitems,
+      #checkout-route #checkout-route-container div.sidebar-history ul.list-carthistory > li > div.cart-history-bottom span.cart-history-total {
+        float: right; }
+      #checkout-route #checkout-route-container div.sidebar-history ul.list-carthistory > li > div.cart-history-bottom span.cart-history-numitems {
+        color: #b1b1b3; }
+      #checkout-route #checkout-route-container div.sidebar-history ul.list-carthistory > li > div.cart-history-bottom span.cart-history-total {
+        color: green; }
 
 .search_noresults {
   display: flex;

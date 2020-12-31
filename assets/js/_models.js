@@ -288,8 +288,14 @@ const Calzada = (function Application() {
                 cart_receiverContact
             }
 
+            // create instance of a cart history
+            const NewCartHistory = new CartHistory(CalzadaCart);
+
             // update history state
-            CalzadaCartHistory.push(new CartHistory(CalzadaCart));
+            CalzadaCartHistory.push(NewCartHistory);
+
+            // update history dom
+            new HTMLCartHistoryItem(NewCartHistory);
 
             // transition out all cart items
             CalzadaCart.cart_products.forEach(product => {
@@ -482,6 +488,7 @@ function HTMLProduct(product) {
             _id: product._id,
             product_name: product.product_name,
             product_quantity: parseInt(quantity.value),
+            product_image_sm: product.product_image_sm,
             product_image_md: product.product_image_md,
             product_ratings: product.product_ratings,
             product_price: product.product_price
@@ -575,7 +582,15 @@ function HTMLCartInit() {
     this.parent.id = 'checkout-route-container';
     this.parent.innerHTML = `
         <ul class="list-cart"></ul>
-        <form class="sidebar-cart"></form>
+        <div class="sidebar">
+            <form class="sidebar-cart"></form>
+            <div class="sidebar-history">
+                <h3>Checkout History</h3>
+                <ul class="list-carthistory">
+
+                </ul>
+            </div>
+        </div>
     `
 }
 
@@ -653,6 +668,38 @@ function HTMLCartForm(total) {
     `
 
     form.onsubmit = event => Calzada.checkoutCart(event)
+}
+
+// MODEL for cart history item 
+function HTMLCartHistoryItem(cartHistory) {
+    this.li = document.createElement('li');
+    this.li.id = `history_${cartHistory.history_id}`
+
+    const imgs_container = document.createElement('div');
+    imgs_container.classList.add('cart-history-images');
+
+    cartHistory.history_cart.forEach(item => {
+        const img = document.createElement('img');
+        img.src = item.product_image_sm;
+        imgs_container.appendChild(img);
+    })
+
+    this.li.innerHTML = `
+        <div class="cart-history-top">
+            <h4>${cartHistory.history_date}</h4>
+        </div>
+        <div class="cart-history-bottom">
+            ${imgs_container.outerHTML}
+            <span class="cart-history-numitems">
+                ${cartHistory.history_cart.length} items &nbsp; | 
+            </h5>
+            <span class="cart-history-total"> 
+                &nbsp; Total P ${cartHistory.history_total}
+            </h5>
+        </div>
+    `
+
+    document.querySelector('.list-carthistory').appendChild(this.li);
 }
 
 // MODEL for notification component
