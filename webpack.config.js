@@ -6,13 +6,18 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         main: './webpack.js',
     },
     output: {
         path: path.resolve(__dirname, "build"),
         filename: '[name].[contenthash].bundle.js',
+    },
+    devServer: {
+        port: 8080,
+        contentBase: path.resolve(__dirname, "build"),
+        hot: true
     },
     optimization: {
         minimizer: [
