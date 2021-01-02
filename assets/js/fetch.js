@@ -1,3 +1,11 @@
+import Calzada from './main';
+import HTMLProductCard from './components/ProductCard';
+import HTMLHomeTopSales from './components/ProductCardTopSales';
+import variables from './utilities/_variables';
+import generanteDom from './utilities/toGenerateDom';
+
+const { baseurl, apikey, navIcons } = variables;
+
 (async function getProductCounts() {
     const nav_dropdown = document.querySelector('.nav-dropdown');
     const header_gadget = document.getElementById('header-gadget');
@@ -152,7 +160,7 @@ async function rendersAutomotiveRow() {
     generanteDom(parsed.data, HTMLProductCard, '#list-automotive')
 };
 
-// Hide the loader once all of the HTTP requests has reponded back
+// Hide the preloader once all of the HTTP requests has reponded back wiht 200 status
 Promise.all([
     renderTopRated(), renderTopSales(),
     renderGadgetGrid(), renderAppliancesGrid(),

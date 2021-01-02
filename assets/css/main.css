@@ -134,7 +134,7 @@ p {
 @font-face {
   font-family: "Ionicons";
   src: url("/assets/fonts/ioniconsv2.0.1.ttf");
-  src: url("/assets/fonts/ioniconsv2.0.1.ttf") format("embedded-opentype"), url("/assets/fonts/ioniconsv2.0.1.ttf") format("truetype"), url("/assets/fonts/ioniconsv2.0.1.ttf") format("woff"), url("../fonts/ionicons.svg?v=2.0.1#Ionicons") format("svg");
+  src: url("/assets/fonts/ioniconsv2.0.1.ttf") format("embedded-opentype"), url("/assets/fonts/ioniconsv2.0.1.ttf") format("truetype"), url("/assets/fonts/ioniconsv2.0.1.ttf") format("woff"), format("svg");
   font-weight: normal;
   font-style: normal; }
 
