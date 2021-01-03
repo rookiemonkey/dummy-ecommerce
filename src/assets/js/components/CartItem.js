@@ -2,6 +2,7 @@ import Calzada from '../main';
 import HTMLProduct from './Product';
 import variables from '../utilities/_variables';
 import toPhp from '../utilities/toFormat';
+import img_start from '../../images/star.svg';
 
 const { baseurl, apikey } = variables;
 
@@ -19,7 +20,7 @@ export default function HTMLCartItem(product) {
                 </h2>
                 <span>
                     ${product.product_ratings}  
-                    <img src="/assets/images/star.svg" />&nbsp; |
+                    <img src="${img_start}" />&nbsp; |
                 </span>
                 <span>&nbsp; ${toPhp(product.product_price)}  &nbsp; |</span>
                 <span>&nbsp; Quantity: ${product.product_quantity}</span>

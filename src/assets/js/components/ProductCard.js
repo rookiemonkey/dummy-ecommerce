@@ -2,24 +2,23 @@ import Calzada from '../main';
 import HTMLProduct from './Product';
 import toPhp from '../utilities/toFormat';
 import variables from '../utilities/_variables';
+import img_start from '../../images/star.svg';
 const { baseurl, apikey } = variables;
 
-export default function HTMLHomeTopSales(product) {
+export default function HTMLProductCard(product) {
     this.li = document.createElement('li');
     this.li.setAttribute('data-product_id', product._id);
 
     this.li.innerHTML = `
-        <p class="product-sales">${product.product_sales} Sold!</p>
-        <img 
-            src="${product.product_image_md}" 
-            alt="${product.product_name}"
+        <img src="${product.product_image_md}" 
+            alt="${product.product_name}" 
             title="${product.product_name}" />
         <div class="productcard-meta">
             <h4>${product.product_name}</h4>
             <div class="productcard-meta-details">
                 <div class="productcard-meta-details-left">
                     <span class="ratings">
-                        ${product.product_ratings} <img src="/assets/images/star.svg" />
+                        ${product.product_ratings} <img src="${img_start}" />
                     </span>
                     <span class="type">${product.product_department}</span>
                 </div>
@@ -38,4 +37,5 @@ export default function HTMLHomeTopSales(product) {
         Calzada.router('product');
         new HTMLProduct(parsed.data);
     }
+
 }

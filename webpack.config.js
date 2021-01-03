@@ -13,6 +13,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "build"),
         filename: '[name].[contenthash].bundle.js',
+        publicPath: ''
     },
     devServer: {
         port: 8080,
@@ -24,7 +25,7 @@ module.exports = {
             new OptimizeCssAssetsPlugin(),
             new TerserPlugin(),
             new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, "index.html"),
+                template: path.resolve(__dirname, "./src/index.html"),
                 minify: {
                     removeAttributeQuotes: true,
                     collapseWhitespace: true,
@@ -35,7 +36,7 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({ template: path.resolve(__dirname, "index.html") }),
+        new HtmlWebpackPlugin({ template: path.resolve(__dirname, "./src/index.html") }),
         new MiniCssExtractPlugin({ filename: '[name].[contenthash].bundle.css' })
     ],
     module: {
@@ -84,7 +85,7 @@ module.exports = {
                     {
                         loader: 'file-loader',
                         options: {
-                            name: '[name].[ext]',
+                            name: '[name].[hash].[ext]',
                             outputPath: 'assets/images/'
                         }
                     }

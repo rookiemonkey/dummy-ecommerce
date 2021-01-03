@@ -12,6 +12,10 @@ import generanteDom from './utilities/toGenerateDom';
 import parseFormData from './utilities/getFormData';
 import showSlides from './utilities/toShowSlides';
 import variables from './utilities/_variables';
+import img_logo from '../images/logo.svg';
+import img_empty from '../images/empty.svg';
+import img_emptyCart from '../images/cart_empty.svg';
+import img_emptyCartHistory from '../images/cart_emptyhistory.svg';
 
 const { baseurl, apikey } = variables;
 
@@ -52,7 +56,7 @@ const Calzada = (function Application() {
 
                 if (target && el.dataset.route != 'home') {
                     document.querySelector('.nav-brand').innerHTML = `
-                        <img src="/assets/images/logo.svg">
+                        <img src="${img_logo}">
                         <h2>Calzada</h2>
                     `
                 }
@@ -60,7 +64,7 @@ const Calzada = (function Application() {
                 if (target && route == 'home') {
                     el.style.display = 'block'
                     document.querySelector('.nav-brand').innerHTML = `
-                        <img src="/assets/images/logo.svg">
+                        <img src="${img_logo}">
                     `
                 }
 
@@ -147,7 +151,7 @@ const Calzada = (function Application() {
             catch (error) {
                 route_search.innerHTML = `
                         <div class="search_noresults">
-                            <img src="/assets/images/empty.svg" />
+                            <img src="${img_empty}" />
                             <h3>${error.message}</h3>
                         </div>
                     `
@@ -235,7 +239,7 @@ const Calzada = (function Application() {
                 container.id = 'emptycart_container'
 
                 container.innerHTML = `
-                    <img src="/assets/images/cart_empty.svg" id='image_emptycart' />
+                    <img src="${img_emptyCart}" id='image_emptycart' />
                     <h3>Your cart is empty</h3>
                 `
 
@@ -249,7 +253,7 @@ const Calzada = (function Application() {
                 container.id = 'emptycarthistory_container'
 
                 container.innerHTML = `
-                    <img src="/assets/images/cart_emptyhistory.svg" id='image_emptycarthistory' />
+                    <img src="${img_emptyCartHistory}" id='image_emptycarthistory' />
                     <h3>No histories for past checkouts</h3>
                 `
 
@@ -313,7 +317,7 @@ const Calzada = (function Application() {
                     container.id = 'emptycart_container'
 
                     container.innerHTML = `
-                    <img src="/assets/images/cart_empty.svg" id='image_emptycart' />
+                    <img src="${img_emptyCart}" id='image_emptycart' />
                     <h3>Your cart is empty</h3>
                 `
 
@@ -390,7 +394,7 @@ const Calzada = (function Application() {
                 container.id = 'emptycart_container'
 
                 container.innerHTML = `
-                    <img src="/assets/images/cart_empty.svg" id='image_emptycart' />
+                    <img src="${img_emptyCart}" id='image_emptycart' />
                     <h3>Your cart is empty</h3>
                 `
 

@@ -7,7 +7,7 @@ export default function HTMLHomeSlide(slideNumber, slideDesc) {
 
     this.div.innerHTML = `
         <p>${slideDesc}</p>
-        <img src="/assets/images/slide${slideNumber}.svg" />
+        <img src="${require(`../../images/slide${slideNumber}.svg`).default}" />
     `
 
 }

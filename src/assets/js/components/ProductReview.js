@@ -1,4 +1,5 @@
 import HTMLStarRatings from './Stars';
+import img_avatar from '../../images/avatar.svg';
 
 export default function HTMLProductReview(review) {
 
@@ -11,7 +12,7 @@ export default function HTMLProductReview(review) {
     this.container.innerHTML = `
         <div class="review-header">
             <div class="review-header-avatar">
-                <img src="/assets/images/avatar.svg" />
+                <img src="${img_avatar}" />
             </div>
             <div class="review-header-meta">
                 <h3>${review.review_name}</h3>
