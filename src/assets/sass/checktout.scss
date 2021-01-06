@@ -107,6 +107,15 @@
                 margin: $spacing_md 0px;
             }
 
+            .form_group > input {
+                border: none;
+
+                &:focus {
+                    border: none;
+                    outline: none;
+                }
+            }
+
             .form_buttons {
                 flex-direction: row !important;
                 justify-content: space-between;

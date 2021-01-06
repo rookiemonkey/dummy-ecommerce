@@ -4188,6 +4188,11 @@ footer {
         display: flex;
         flex-direction: column;
         margin: 12px 0px; }
+      #checkout-route #checkout-route-container form.sidebar-cart .form_group > input {
+        border: none; }
+        #checkout-route #checkout-route-container form.sidebar-cart .form_group > input:focus {
+          border: none;
+          outline: none; }
       #checkout-route #checkout-route-container form.sidebar-cart .form_buttons {
         flex-direction: row !important;
         justify-content: space-between; }

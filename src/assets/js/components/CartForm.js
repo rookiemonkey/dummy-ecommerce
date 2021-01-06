@@ -32,4 +32,10 @@ export default function HTMLCartForm(total) {
     `
 
     form.onsubmit = event => Calzada.checkoutCart(event)
+
+    document.getElementById('checkout_contact').onkeypress = e => {
+        const { key } = e;
+        const numInput = parseInt(key)
+        if (!numInput && numInput !== 0) e.returnValue = false
+    }
 }

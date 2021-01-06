@@ -118,6 +118,7 @@ export default function HTMLProduct(product) {
         })
 
         quantity.textContent = 1;
+        evaluateQuantity();
         Calzada.notifier
             .showMessage(`Successfully added ${product.product_name} to your cart!`, 'success')
     }
