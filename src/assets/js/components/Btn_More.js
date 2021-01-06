@@ -16,6 +16,6 @@ export default function HTMLMoreButton(props) {
         Calzada.incrementPage(props.page);
         props.route == 'department'
             ? Calzada.toDepartment(event)
-            : Calzada.toSearch()
+            : Calzada.toSearch(event)
     }
 }

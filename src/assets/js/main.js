@@ -92,18 +92,25 @@ const Calzada = (function Application() {
 
         static slides = () => showSlides();
 
-        static toSearch = async () => {
+        static toSearch = async event => {
             try {
+                const { target } = event;
 
                 // searching w/o query to match
                 if (!input.value)
                     return this.notifier.showMessage('Please enter a query', 'error')
 
-                // initial search
+                // another search but same search query and not from more btn
+                if (pagination.search_query
+                    && pagination.search_query == input.value
+                    && !target.classList.contains('btn_more'))
+                    return null;
+
+                // initial search query
                 if (!pagination.search_query)
                     pagination.search_query = input.value;
 
-                // another search after initial, reset everything 
+                // another search different query after initial, reset everything 
                 if (pagination.search_query
                     && input.value
                     && pagination.search_query != input.value) {
@@ -440,6 +447,6 @@ nav_departments.onclick = () => Calzada.dropdown();
 nav_checkout.onclick = () => Calzada.toCheckout();
 
 // query to api then routes to search
-nav_search.onclick = () => Calzada.toSearch();
+nav_search.onclick = e => Calzada.toSearch(e);
 
 export default Calzada;
