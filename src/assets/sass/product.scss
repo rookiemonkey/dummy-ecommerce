@@ -11,6 +11,8 @@
         }
 
         .product-image-container {
+            min-height: 542px;
+
             img {
                 width: 100%;
                 height: auto;
@@ -55,13 +57,52 @@
             }
 
             .product_quantity {
-                label {
+
+                .quantity_add,
+                .quantity_minus,
+                .quantity_count {
                     display: inline-block;
-                    width: 20%;
+                    width: 30px;
+                    height: 30px;
+                    text-align: center;
                 }
-                input {
-                    width: 79%;
+
+                .quantity_add,
+                .quantity_minus {
+                    color: white;
+                    font-weight: 800;
+                    cursor: pointer;
+                    border: none;
+                    transition: background-color 500ms ease-in-out;
+
+                    &:focus {
+                        border: none;
+                        outline: none;
+                    }
                 }
+
+                .quantity_add {
+                    background-color: rgb(70, 185, 70);
+                }
+
+                .quantity_minus {
+                    background-color: rgb(211, 67, 67);
+                }
+
+                .quantity_minus_disabled {
+                    cursor: not-allowed !important;
+                    background-color: rgb(209, 121, 121) !important;
+                }
+
+                .quantity_add_disabled {
+                    cursor: not-allowed !important;
+                    background-color: rgb(131, 185, 131) !important;
+                }
+
+                .quantity_label {
+                    margin-right: $spacing_md;
+                }
+                
             }
 
             .product_actions {

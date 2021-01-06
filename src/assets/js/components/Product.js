@@ -24,9 +24,11 @@ export default function HTMLProduct(product) {
 
                 <p class="product_price">${toPhp(product.product_price)}</p>
 
-                <div class="product_quantity">
-                    <label>Quantity: </label>
-                    <input id="quantity_${product._id}" name="quantity" type="number" min="1" step="1" value="1" />
+                <div class="product_quantity">              
+                    <span class="quantity_label">Quantity: </span>
+                    <button id="quantity_minus_${product._id}" class="quantity_minus">-</button>
+                    <span id="quantity_${product._id}" class="quantity_count">1</span>
+                    <button id="quantity_add_${product._id}" class="quantity_add">+</button>
                 </div>
 
                 <div class="product_actions">
@@ -55,39 +57,86 @@ export default function HTMLProduct(product) {
 
     // attach event listeners after appending to DOM
     const quantity = document.getElementById(`quantity_${product._id}`);
+    const quantity_add = document.getElementById(`quantity_add_${product._id}`);
+    const quantity_minus = document.getElementById(`quantity_minus_${product._id}`);
     const addtocart = document.getElementById(`addToCart_${product._id}`);
     const buynow = document.getElementById(`buyNow_${product._id}`);
+
+
+
+    // EVENT: Add/Minus quantity!
+    quantity_add.onclick = () => {
+        const quantity_value = parseInt(quantity.textContent);
+        if (quantity_value == 10) return null
+        quantity.textContent = `${quantity_value + 1}`
+        evaluateQuantity()
+    }
+
+    quantity_minus.onclick = () => {
+        const quantity_value = parseInt(quantity.textContent);
+        if (quantity_value == 1) return null
+        quantity.textContent = `${quantity_value - 1}`
+        evaluateQuantity()
+    }
+
+    // Utility to style the +/- buttons
+    function evaluateQuantity() {
+        const quantity_value = parseInt(quantity.textContent);
+
+        if (quantity_value > 1 && quantity_value < 10) {
+            quantity_add.removeAttribute('disabled')
+            quantity_minus.removeAttribute('disabled')
+            quantity_add.classList.remove('quantity_add_disabled')
+            quantity_minus.classList.remove('quantity_minus_disabled')
+        }
+
+        if (quantity_value == 1) {
+            quantity_minus.setAttribute('disabled', 'disabled');
+            quantity_minus.classList.add('quantity_minus_disabled')
+        }
+
+        if (quantity_value == 10) {
+            quantity_add.setAttribute('disabled', 'disabled')
+            quantity_add.classList.add('quantity_add_disabled')
+        }
+    }
+
+    evaluateQuantity()
+
+
 
     // EVENT: Add to Cart!
     addtocart.onclick = () => {
         Calzada.addToCart({
             _id: product._id,
             product_name: product.product_name,
-            product_quantity: parseInt(quantity.value),
+            product_quantity: parseInt(quantity.textContent),
             product_image_sm: product.product_image_sm,
             product_image_md: product.product_image_md,
             product_ratings: product.product_ratings,
             product_price: product.product_price
         })
 
-        quantity.value = 1;
+        quantity.textContent = 1;
         Calzada.notifier
             .showMessage(`Successfully added ${product.product_name} to your cart!`, 'success')
     }
+
+
 
     // EVENT: Buy Now!, add to cart then route to checkout
     buynow.onclick = () => {
         Calzada.addToCart({
             _id: product._id,
             product_name: product.product_name,
-            product_quantity: parseInt(quantity.value),
+            product_quantity: parseInt(quantity.textContent),
             product_image_sm: product.product_image_sm,
             product_image_md: product.product_image_md,
             product_ratings: product.product_ratings,
             product_price: product.product_price
         })
 
-        quantity.value = 1;
+        quantity.textContent = 1;
         Calzada.toCheckout();
     }
 }
