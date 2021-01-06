@@ -25,6 +25,7 @@ const Calzada = (function Application() {
     // emulating private variables
     let CalzadaCart = new Cart();
     let CalzadaCartHistory = new Array();
+    let Route = new String();
     const pagination = {
         search_query: '',
         search_page: 1,
@@ -79,8 +80,10 @@ const Calzada = (function Application() {
                     pagination.department_page = 1
                 }
 
-                if (target)
+                if (target) {
+                    Route = route.toLowerCase()
                     el.style.display = 'block'
+                }
 
             })
         }
@@ -213,6 +216,9 @@ const Calzada = (function Application() {
         }
 
         static toCheckout = () => {
+            if (Route == 'checkout')
+                return null
+
             this.router('checkout');
 
             // generate initial elements of the cart
