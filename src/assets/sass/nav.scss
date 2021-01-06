@@ -38,6 +38,10 @@
             border-bottom: 2px solid $color_secondary;
             padding: $spacing_sm 0px;
             text-align: right;
+
+            &:focus {
+                outline: none;
+            }
         }
         
         li.nav_item {

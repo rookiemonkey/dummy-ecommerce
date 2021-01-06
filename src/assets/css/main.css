@@ -2380,6 +2380,8 @@ p {
       border-bottom: 2px solid #f7aa35;
       padding: 8px 0px;
       text-align: right; }
+      #nav .nav-options input:focus {
+        outline: none; }
     #nav .nav-options li.nav_item {
       border: 2px solid #802c6e;
       display: flex;

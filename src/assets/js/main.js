@@ -147,11 +147,11 @@ const Calzada = (function Application() {
                 }
 
                 // remove more button if last page
-                if (page == lastPage) {
+                if (page == lastPage && document.querySelector('#btn_more_searchresults')) {
                     this.notifier.showMessage(`You've reached the last page`, 'success')
                     document.querySelector('#btn_more_searchresults').remove()
                 }
-
+                
                 // generate the product cards if there are results
                 generanteDom(data, HTMLProductCard, '#list-search')
 
