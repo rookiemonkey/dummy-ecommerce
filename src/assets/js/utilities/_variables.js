@@ -2,7 +2,7 @@ export default {
 
     baseurl: 'http://localhost:5050',
 
-    apikey: 'gFKVHZjIK_Wt',
+    apikey: 'Ogq1qI5b1psE',
 
     slide: {
         slideIndex: 0,
