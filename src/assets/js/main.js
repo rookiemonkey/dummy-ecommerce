@@ -166,9 +166,12 @@ const Calzada = (function Application() {
             const deptName = target.getAttribute('deptName');
 
             // reset to first page if switched to a different department
-            if (department_query != deptId) {
+            if (department_query != deptId)
                 pagination.department_page = 1;
-            }
+
+            // halt the function if same department was clicked in a row and not more btn
+            if (department_query == deptId && !target.classList.contains('btn_more'))
+                return null;
 
             const url1 = `${baseurl}/api/v1/departments/${deptId}`
             const url2 = `?apikey=${apikey}&page=${pagination.department_page}`;
