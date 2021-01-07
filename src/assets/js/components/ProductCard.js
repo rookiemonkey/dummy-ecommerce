@@ -1,6 +1,7 @@
 import Calzada from '../main';
 import HTMLProduct from './Product';
 import toPhp from '../utilities/toFormat';
+import toTopScroll from '../utilities/toTopScroll';
 import variables from '../utilities/_variables';
 import img_start from '../../images/star.svg';
 const { baseurl, apikey } = variables;
@@ -29,11 +30,12 @@ export default function HTMLProductCard(product) {
 
     // onclick will make an HTTP request and route to product route
     this.li.onclick = async () => {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+        toTopScroll();
 
-        const raw = await fetch(`${baseurl}/api/v1/products/${product._id}?apikey=${apikey}`)
+        const url = `${baseurl}/api/v1/products/${product._id}?apikey=${apikey}`;
+        const raw = await fetch(url);
         const parsed = await raw.json();
+
         Calzada.router('product');
         new HTMLProduct(parsed.data);
     }

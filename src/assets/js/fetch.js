@@ -50,12 +50,15 @@ async function getProductCounts() {
 
         // create each element on department cards
         const card = document.createElement('li');
+        card.setAttribute('deptId', dept.department_id);
+        card.setAttribute('deptName', dept.department_name);
         card.classList.add('department_list_item');
         card.innerHTML = `
             <img src="${require(`../images/icon_${dept.department_id}.svg`).default}" />
             ${dept.department_name}
             <p>${dept.department_numProducts} Items!</p>
         `
+        card.onclick = event => Calzada.toDepartment(event);
         list_department.appendChild(card);
 
 

@@ -2645,6 +2645,7 @@ p {
     border: 1px solid #effeef;
     font-weight: 800;
     color: rgba(0, 0, 0, 0.75);
+    border-radius: 15px;
     cursor: pointer;
     transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out; }
   #departments ul#department_list li:hover {

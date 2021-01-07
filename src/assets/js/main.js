@@ -11,6 +11,7 @@ import toPhp from './utilities/toFormat';
 import generanteDom from './utilities/toGenerateDom';
 import parseFormData from './utilities/getFormData';
 import showSlides from './utilities/toShowSlides';
+import toTopScroll from './utilities/toTopScroll';
 import variables from './utilities/_variables';
 import img_logo from '../images/logo.svg';
 import img_empty from '../images/empty.svg';
@@ -175,6 +176,10 @@ const Calzada = (function Application() {
             const deptId = target.getAttribute('deptId');
             const deptName = target.getAttribute('deptName');
 
+            // scroll to top if btn_more is not clicked
+            if (!target.classList.contains('btn_more'))
+                toTopScroll();
+
             // reset to first page if switched to a different department
             if (department_query != deptId)
                 pagination.department_page = 1;
@@ -210,7 +215,7 @@ const Calzada = (function Application() {
             }
 
             // remove more button if last page
-            if (page == lastPage) {
+            if (page == lastPage && document.querySelector('#btn_more_departmentresults')) {
                 this.notifier.showMessage(`You've reached the last page`, 'success')
                 document.querySelector('#btn_more_departmentresults').remove()
             }
