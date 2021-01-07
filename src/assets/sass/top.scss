@@ -1,13 +1,19 @@
 #toprated ,
-#topsales{
+#topsales,
+#randomproducts{
     margin:$spacing_lg+$spacing_lg+$spacing_lg 0px;
 
-    h3 {
+    h2 {
         color: $color_primary;
     }
 
+    #btn_more_randomresults {
+        margin-top: $spacing_sm;
+    }
+
     #toprated-cards,
-    #topsales-cards {
+    #topsales-cards,
+    #randomproducts-cards {
         margin-top: $spacing_md;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

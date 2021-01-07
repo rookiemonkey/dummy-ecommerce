@@ -1,6 +1,7 @@
 import HTMLProductCard from './components/ProductCard';
 import HTMLDropDownItem from './components/DropdownItem';
 import HTMLDepartmentCard from './components/DepartmentCard';
+import HTMLMoreButton from './components/Btn_More';
 import variables from './utilities/_variables';
 import generanteDom from './utilities/toGenerateDom';
 
@@ -46,10 +47,33 @@ async function renderTopSales() {
     generanteDom(parsed.data, HTMLProductCard, '#topsales-cards');
 };
 
+async function renderRandomProducts() {
+
+    // disable cache for this request
+    const url = `${baseurl}/api/v1/products/random?apikey=${apikey}`
+    const raw = await fetch(url, { cache: "no-store" })
+
+    const { status, statusText } = raw;
+    if (status != 200) throw new Error(statusText)
+
+    const parsed = await raw.json();
+    generanteDom(parsed.data, HTMLProductCard, '#randomproducts-cards');
+
+    if (!document.getElementById('btn_more_randomresults')) {
+        const parent = document.getElementById('randomproducts');
+        const { button } = new HTMLMoreButton({ id: 'randomresults', route: 'home' })
+
+        parent.appendChild(button)
+        button.onclick = async () => await renderRandomProducts()
+    }
+
+}
+
 // Hide the preloader once all of the HTTP requests has reponded back wiht 200 status
 Promise.all([
     renderDepartments(),
-    renderTopRated(), renderTopSales()
+    renderTopRated(), renderTopSales(),
+    renderRandomProducts()
 ])
 
     .then(() => {
@@ -61,6 +85,6 @@ Promise.all([
     })
 
     .catch(e => {
-        alert("Please check your console!")
+        alert("Store is closed. Please come back tomorrow!")
         console.log(e)
     })

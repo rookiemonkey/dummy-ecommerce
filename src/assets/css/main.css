@@ -2470,23 +2470,39 @@ p {
         background-color: #f7aa35; }
 
 #toprated,
-#topsales {
+#topsales,
+#randomproducts {
   margin: 60px 0px; }
-  #toprated h3,
-  #topsales h3 {
+  #toprated h2,
+  #topsales h2,
+  #randomproducts h2 {
     color: #802c6e; }
+  #toprated #btn_more_randomresults,
+  #topsales #btn_more_randomresults,
+  #randomproducts #btn_more_randomresults {
+    margin-top: 8px; }
   #toprated #toprated-cards,
   #toprated #topsales-cards,
+  #toprated #randomproducts-cards,
   #topsales #toprated-cards,
-  #topsales #topsales-cards {
+  #topsales #topsales-cards,
+  #topsales #randomproducts-cards,
+  #randomproducts #toprated-cards,
+  #randomproducts #topsales-cards,
+  #randomproducts #randomproducts-cards {
     margin-top: 12px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 5px; }
     #toprated #toprated-cards li,
     #toprated #topsales-cards li,
+    #toprated #randomproducts-cards li,
     #topsales #toprated-cards li,
-    #topsales #topsales-cards li {
+    #topsales #topsales-cards li,
+    #topsales #randomproducts-cards li,
+    #randomproducts #toprated-cards li,
+    #randomproducts #topsales-cards li,
+    #randomproducts #randomproducts-cards li {
       background-color: white;
       border-radius: 15px;
       padding: 20px;
@@ -2504,73 +2520,128 @@ p {
       transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out; }
       #toprated #toprated-cards li:hover,
       #toprated #topsales-cards li:hover,
+      #toprated #randomproducts-cards li:hover,
       #topsales #toprated-cards li:hover,
-      #topsales #topsales-cards li:hover {
+      #topsales #topsales-cards li:hover,
+      #topsales #randomproducts-cards li:hover,
+      #randomproducts #toprated-cards li:hover,
+      #randomproducts #topsales-cards li:hover,
+      #randomproducts #randomproducts-cards li:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 10px -5px; }
       #toprated #toprated-cards li:hover > img,
       #toprated #topsales-cards li:hover > img,
+      #toprated #randomproducts-cards li:hover > img,
       #topsales #toprated-cards li:hover > img,
-      #topsales #topsales-cards li:hover > img {
+      #topsales #topsales-cards li:hover > img,
+      #topsales #randomproducts-cards li:hover > img,
+      #randomproducts #toprated-cards li:hover > img,
+      #randomproducts #topsales-cards li:hover > img,
+      #randomproducts #randomproducts-cards li:hover > img {
         transform: scale(1.1); }
       #toprated #toprated-cards li img,
       #toprated #topsales-cards li img,
+      #toprated #randomproducts-cards li img,
       #topsales #toprated-cards li img,
-      #topsales #topsales-cards li img {
+      #topsales #topsales-cards li img,
+      #topsales #randomproducts-cards li img,
+      #randomproducts #toprated-cards li img,
+      #randomproducts #topsales-cards li img,
+      #randomproducts #randomproducts-cards li img {
         width: 100%;
         height: 150px;
         margin-bottom: 8px;
         transition: transform 250ms ease-in-out; }
       #toprated #toprated-cards li div.productcard-meta,
       #toprated #topsales-cards li div.productcard-meta,
+      #toprated #randomproducts-cards li div.productcard-meta,
       #topsales #toprated-cards li div.productcard-meta,
-      #topsales #topsales-cards li div.productcard-meta {
+      #topsales #topsales-cards li div.productcard-meta,
+      #topsales #randomproducts-cards li div.productcard-meta,
+      #randomproducts #toprated-cards li div.productcard-meta,
+      #randomproducts #topsales-cards li div.productcard-meta,
+      #randomproducts #randomproducts-cards li div.productcard-meta {
         width: 100%; }
         #toprated #toprated-cards li div.productcard-meta h4,
         #toprated #topsales-cards li div.productcard-meta h4,
+        #toprated #randomproducts-cards li div.productcard-meta h4,
         #topsales #toprated-cards li div.productcard-meta h4,
-        #topsales #topsales-cards li div.productcard-meta h4 {
+        #topsales #topsales-cards li div.productcard-meta h4,
+        #topsales #randomproducts-cards li div.productcard-meta h4,
+        #randomproducts #toprated-cards li div.productcard-meta h4,
+        #randomproducts #topsales-cards li div.productcard-meta h4,
+        #randomproducts #randomproducts-cards li div.productcard-meta h4 {
           height: 38px;
           width: 100%;
           display: flex;
           align-items: flex-end; }
         #toprated #toprated-cards li div.productcard-meta div.productcard-meta-details,
         #toprated #topsales-cards li div.productcard-meta div.productcard-meta-details,
+        #toprated #randomproducts-cards li div.productcard-meta div.productcard-meta-details,
         #topsales #toprated-cards li div.productcard-meta div.productcard-meta-details,
-        #topsales #topsales-cards li div.productcard-meta div.productcard-meta-details {
+        #topsales #topsales-cards li div.productcard-meta div.productcard-meta-details,
+        #topsales #randomproducts-cards li div.productcard-meta div.productcard-meta-details,
+        #randomproducts #toprated-cards li div.productcard-meta div.productcard-meta-details,
+        #randomproducts #topsales-cards li div.productcard-meta div.productcard-meta-details,
+        #randomproducts #randomproducts-cards li div.productcard-meta div.productcard-meta-details {
           display: flex;
           align-items: center;
           justify-content: space-between; }
           #toprated #toprated-cards li div.productcard-meta div.productcard-meta-details div.productcard-meta-details-left,
           #toprated #topsales-cards li div.productcard-meta div.productcard-meta-details div.productcard-meta-details-left,
+          #toprated #randomproducts-cards li div.productcard-meta div.productcard-meta-details div.productcard-meta-details-left,
           #topsales #toprated-cards li div.productcard-meta div.productcard-meta-details div.productcard-meta-details-left,
-          #topsales #topsales-cards li div.productcard-meta div.productcard-meta-details div.productcard-meta-details-left {
+          #topsales #topsales-cards li div.productcard-meta div.productcard-meta-details div.productcard-meta-details-left,
+          #topsales #randomproducts-cards li div.productcard-meta div.productcard-meta-details div.productcard-meta-details-left,
+          #randomproducts #toprated-cards li div.productcard-meta div.productcard-meta-details div.productcard-meta-details-left,
+          #randomproducts #topsales-cards li div.productcard-meta div.productcard-meta-details div.productcard-meta-details-left,
+          #randomproducts #randomproducts-cards li div.productcard-meta div.productcard-meta-details div.productcard-meta-details-left {
             display: flex;
             align-items: center; }
           #toprated #toprated-cards li div.productcard-meta div.productcard-meta-details span.ratings,
           #toprated #topsales-cards li div.productcard-meta div.productcard-meta-details span.ratings,
+          #toprated #randomproducts-cards li div.productcard-meta div.productcard-meta-details span.ratings,
           #topsales #toprated-cards li div.productcard-meta div.productcard-meta-details span.ratings,
-          #topsales #topsales-cards li div.productcard-meta div.productcard-meta-details span.ratings {
+          #topsales #topsales-cards li div.productcard-meta div.productcard-meta-details span.ratings,
+          #topsales #randomproducts-cards li div.productcard-meta div.productcard-meta-details span.ratings,
+          #randomproducts #toprated-cards li div.productcard-meta div.productcard-meta-details span.ratings,
+          #randomproducts #topsales-cards li div.productcard-meta div.productcard-meta-details span.ratings,
+          #randomproducts #randomproducts-cards li div.productcard-meta div.productcard-meta-details span.ratings {
             display: flex;
             align-items: center; }
             #toprated #toprated-cards li div.productcard-meta div.productcard-meta-details span.ratings img,
             #toprated #topsales-cards li div.productcard-meta div.productcard-meta-details span.ratings img,
+            #toprated #randomproducts-cards li div.productcard-meta div.productcard-meta-details span.ratings img,
             #topsales #toprated-cards li div.productcard-meta div.productcard-meta-details span.ratings img,
-            #topsales #topsales-cards li div.productcard-meta div.productcard-meta-details span.ratings img {
+            #topsales #topsales-cards li div.productcard-meta div.productcard-meta-details span.ratings img,
+            #topsales #randomproducts-cards li div.productcard-meta div.productcard-meta-details span.ratings img,
+            #randomproducts #toprated-cards li div.productcard-meta div.productcard-meta-details span.ratings img,
+            #randomproducts #topsales-cards li div.productcard-meta div.productcard-meta-details span.ratings img,
+            #randomproducts #randomproducts-cards li div.productcard-meta div.productcard-meta-details span.ratings img {
               margin: 0px;
               height: 12px;
               width: 12px; }
           #toprated #toprated-cards li div.productcard-meta div.productcard-meta-details span.type,
           #toprated #topsales-cards li div.productcard-meta div.productcard-meta-details span.type,
+          #toprated #randomproducts-cards li div.productcard-meta div.productcard-meta-details span.type,
           #topsales #toprated-cards li div.productcard-meta div.productcard-meta-details span.type,
-          #topsales #topsales-cards li div.productcard-meta div.productcard-meta-details span.type {
+          #topsales #topsales-cards li div.productcard-meta div.productcard-meta-details span.type,
+          #topsales #randomproducts-cards li div.productcard-meta div.productcard-meta-details span.type,
+          #randomproducts #toprated-cards li div.productcard-meta div.productcard-meta-details span.type,
+          #randomproducts #topsales-cards li div.productcard-meta div.productcard-meta-details span.type,
+          #randomproducts #randomproducts-cards li div.productcard-meta div.productcard-meta-details span.type {
             margin-left: 2.5px;
             font-size: xx-small;
             color: #b1b1b3; }
           #toprated #toprated-cards li div.productcard-meta div.productcard-meta-details span.price,
           #toprated #topsales-cards li div.productcard-meta div.productcard-meta-details span.price,
+          #toprated #randomproducts-cards li div.productcard-meta div.productcard-meta-details span.price,
           #topsales #toprated-cards li div.productcard-meta div.productcard-meta-details span.price,
-          #topsales #topsales-cards li div.productcard-meta div.productcard-meta-details span.price {
+          #topsales #topsales-cards li div.productcard-meta div.productcard-meta-details span.price,
+          #topsales #randomproducts-cards li div.productcard-meta div.productcard-meta-details span.price,
+          #randomproducts #toprated-cards li div.productcard-meta div.productcard-meta-details span.price,
+          #randomproducts #topsales-cards li div.productcard-meta div.productcard-meta-details span.price,
+          #randomproducts #randomproducts-cards li div.productcard-meta div.productcard-meta-details span.price {
             color: green;
             font-weight: 800; }
 
@@ -2610,7 +2681,7 @@ p {
   to {
     opacity: 1; } }
 
-#departments h3 {
+#departments h2 {
   color: #802c6e; }
 
 #departments ul#department_list {

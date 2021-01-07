@@ -12,6 +12,9 @@ export default function HTMLMoreButton(props) {
         this.button.setAttribute('deptName', props.department_name);
     }
 
+    if (props.route == 'home')
+        return null
+
     this.button.onclick = event => {
         Calzada.incrementPage(props.page);
         props.route == 'department'
