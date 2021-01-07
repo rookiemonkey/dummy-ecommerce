@@ -16,7 +16,7 @@ export default function HTMLMoreButton(props) {
         return null
 
     this.button.onclick = event => {
-        Calzada.incrementPage(props.page);
+        Calzada.onNextPage(props.page);
         props.route == 'department'
             ? Calzada.toDepartment(event)
             : Calzada.toSearch(event)

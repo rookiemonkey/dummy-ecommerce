@@ -91,8 +91,6 @@ const Calzada = (function Application() {
 
         static notifier = new HTMLNotifier()
 
-        static slides = () => showSlides();
-
         static toSearch = async event => {
             try {
                 const { target } = event;
@@ -284,12 +282,6 @@ const Calzada = (function Application() {
 
         }
 
-        static dropdown = () => {
-            dropdown.style.display == 'none'
-                ? dropdown.style.display = 'block'
-                : dropdown.style.display = 'none'
-        }
-
         static addToCart = newProduct => {
             const isOnCart = CalzadaCart.cart_products
                 .some(cartProd => cartProd._id == newProduct._id)
@@ -424,7 +416,31 @@ const Calzada = (function Application() {
             }, 500)
         }
 
-        static incrementPage = key => pagination[key]++;
+        static onNextPage = key => pagination[key]++;
+
+        static onDropdown = () => {
+            dropdown.style.display == 'none'
+                ? dropdown.style.display = 'block'
+                : dropdown.style.display = 'none'
+        }
+
+        static onLoad = () => {
+
+            // initialize the slides
+            showSlides();
+
+            // initialize notifier
+            Calzada.notifier.initialize();
+
+            // initialize copyright date
+            copyright.textContent = `© ${new Date().getFullYear()} Calzada. All Rights Reserved`;
+
+            // onclick for the whole document to close the dropdown
+            document.onclick = event => {
+                if (event.target.id != 'nav_departments')
+                    dropdown.style.display = 'none'
+            }
+        }
     }
 })();
 
@@ -436,17 +452,13 @@ const nav_checkout = document.getElementById('nav_checkout');
 const nav_departments = document.getElementById('nav_departments');
 
 // onload of the document
-document.addEventListener("DOMContentLoaded", () => {
-    Calzada.slides();
-    Calzada.notifier.initialize();
-    copyright.textContent = `© ${new Date().getFullYear()} Calzada. All Rights Reserved`;
-});
+document.addEventListener("DOMContentLoaded", Calzada.onLoad);
 
 // routes to home when logo is clicked
 nav_brand.onclick = () => Calzada.router('home')
 
 // open/close dropdown
-nav_departments.onclick = () => Calzada.dropdown();
+nav_departments.onclick = () => Calzada.onDropdown();
 
 // renders the cart
 nav_checkout.onclick = () => Calzada.toCheckout();
