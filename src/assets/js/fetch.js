@@ -1,14 +1,13 @@
-import Calzada from './main';
 import HTMLProductCard from './components/ProductCard';
 import HTMLHomeTopSales from './components/ProductCardTopSales';
+import HTMLDropDownItem from './components/DropdownItem';
+import HTMLDepartmentCard from './components/DepartmentCard';
 import variables from './utilities/_variables';
 import generanteDom from './utilities/toGenerateDom';
 
-const { baseurl, apikey, navIcons } = variables;
+const { baseurl, apikey } = variables;
 
 async function getProductCounts() {
-    const nav_dropdown = document.querySelector('.nav-dropdown');
-    const list_department = document.getElementById('department_list');
     const header_gadget = document.getElementById('header-gadget');
     const header_appliances = document.getElementById('header-appliances');
     const header_healthandbeauty = document.getElementById('header-healthandbeauty');
@@ -36,31 +35,11 @@ async function getProductCounts() {
 
     data.forEach(dept => {
 
-        // create each element on dropdown
-        const dropdown_item = document.createElement('li');
-        dropdown_item.setAttribute('deptId', dept.department_id);
-        dropdown_item.setAttribute('deptName', dept.department_name);
-        dropdown_item.onclick = event => Calzada.toDepartment(event);
-        dropdown_item.innerHTML = `
-            <span><i class="${navIcons[dept.department_name]}"></i></span>
-            ${dept.department_name}
-        `
-        nav_dropdown.appendChild(dropdown_item);
+        // create dropdown elemnts for each department
+        new HTMLDropDownItem(dept);
 
-
-        // create each element on department cards
-        const card = document.createElement('li');
-        card.setAttribute('deptId', dept.department_id);
-        card.setAttribute('deptName', dept.department_name);
-        card.classList.add('department_list_item');
-        card.innerHTML = `
-            <img src="${require(`../images/icon_${dept.department_id}.svg`).default}" />
-            ${dept.department_name}
-            <p>${dept.department_numProducts} Items!</p>
-        `
-        card.onclick = event => Calzada.toDepartment(event);
-        list_department.appendChild(card);
-
+        // create department card for each department
+        new HTMLDepartmentCard(dept);
 
         // create each department row on home
         switch (true) {
