@@ -2626,11 +2626,37 @@ p {
   to {
     opacity: 1; } }
 
+#departments h3 {
+  color: #802c6e; }
+
+#departments ul#department_list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin-top: 12px; }
+  #departments ul#department_list li {
+    list-style-type: none;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #effeef;
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+    transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out; }
+  #departments ul#department_list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 10px -5px; }
+  #departments ul#department_list li img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 8px; }
+
 #selections-grid {
   margin: 60px 0px; }
-  #selections-grid h3 {
-    color: #802c6e;
-    margin-bottom: 12px; }
   #selections-grid #selections-row1-container {
     display: flex;
     justify-content: space-between; }

@@ -1,11 +1,6 @@
 #selections-grid {
     margin: $spacing_lg+$spacing_lg+$spacing_lg 0px;
 
-    h3 {
-        color: $color_primary;
-        margin-bottom: $spacing_md;
-    }
-
     #selections-row1-container {
         display: flex;
         justify-content: space-between;

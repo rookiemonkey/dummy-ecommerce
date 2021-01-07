@@ -1,0 +1,39 @@
+#departments {
+    h3 {
+        color: $color_primary;
+    }
+
+    ul#department_list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 5px;
+        margin-top: $spacing_md;
+
+        li {
+            list-style-type: none;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: $color_light;
+            border: 1px solid #effeef;
+            font-weight: 800;
+            color: $color_darkmuted;
+            cursor: pointer;
+            transition: transform 250ms ease-in-out,
+                        box-shadow 250ms ease-in-out;
+        }
+
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 10px -5px;
+        }
+
+        li img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: $spacing_sm;
+        }
+    }
+}

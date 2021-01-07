@@ -8,6 +8,7 @@ const { baseurl, apikey, navIcons } = variables;
 
 async function getProductCounts() {
     const nav_dropdown = document.querySelector('.nav-dropdown');
+    const list_department = document.getElementById('department_list');
     const header_gadget = document.getElementById('header-gadget');
     const header_appliances = document.getElementById('header-appliances');
     const header_healthandbeauty = document.getElementById('header-healthandbeauty');
@@ -36,15 +37,25 @@ async function getProductCounts() {
     data.forEach(dept => {
 
         // create each element on dropdown
-        const li = document.createElement('li');
-        li.setAttribute('deptId', dept.department_id);
-        li.setAttribute('deptName', dept.department_name);
-        li.onclick = event => Calzada.toDepartment(event);
-        li.innerHTML = `
+        const dropdown_item = document.createElement('li');
+        dropdown_item.setAttribute('deptId', dept.department_id);
+        dropdown_item.setAttribute('deptName', dept.department_name);
+        dropdown_item.onclick = event => Calzada.toDepartment(event);
+        dropdown_item.innerHTML = `
             <span><i class="${navIcons[dept.department_name]}"></i></span>
             ${dept.department_name}
         `
-        nav_dropdown.appendChild(li);
+        nav_dropdown.appendChild(dropdown_item);
+
+
+        // create each element on department cards
+        const card = document.createElement('li');
+        card.classList.add('department_list_item');
+        card.innerHTML = `
+            <img src="${require(`../images/icon_${dept.department_id}.svg`).default}" />
+            ${dept.department_name}
+        `
+        list_department.appendChild(card);
 
 
         // create each department row on home

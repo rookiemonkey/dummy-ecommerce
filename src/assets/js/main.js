@@ -151,7 +151,7 @@ const Calzada = (function Application() {
                     this.notifier.showMessage(`You've reached the last page`, 'success')
                     document.querySelector('#btn_more_searchresults').remove()
                 }
-                
+
                 // generate the product cards if there are results
                 generanteDom(data, HTMLProductCard, '#list-search')
 
