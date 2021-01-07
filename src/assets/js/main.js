@@ -64,6 +64,7 @@ const Calzada = (function Application() {
                 }
 
                 if (target && route == 'home') {
+                    toTopScroll();
                     el.style.display = 'block'
                     document.querySelector('.nav-brand').innerHTML = `
                         <img src="${img_logo}">
@@ -440,6 +441,21 @@ const Calzada = (function Application() {
                 if (event.target.id != 'nav_departments')
                     dropdown.style.display = 'none'
             }
+
+            // onscroll for navigation
+            window.addEventListener('scroll', function () {
+                // select the header/navigation
+                const navigation = document.querySelector('#nav');
+
+                // get the y-axis scroll value
+                const scroll_value = window.scrollY;
+
+                // if the user scrolled down
+                scroll_value > 0
+                    ? navigation.classList.add('nav_scrolled')
+                    : navigation.classList.remove('nav_scrolled')
+
+            });
         }
     }
 })();

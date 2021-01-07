@@ -63,16 +63,6 @@ p {
     background-color: #802c6e;
     border: 2px solid #802c6e; }
 
-.num-products {
-  margin-left: 8px;
-  font-size: small;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.75);
-  cursor: pointer;
-  transition: font-weight 250ms ease; }
-  .num-products:hover {
-    font-weight: 800; }
-
 .notify {
   position: fixed;
   top: 0;
@@ -2355,7 +2345,8 @@ p {
   min-height: 50px;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  transition: background-color 250ms ease-in-out, box-shadow 250ms ease-in-out; }
   #nav .nav-brand,
   #nav .nav-options {
     height: 50px; }
@@ -2434,6 +2425,19 @@ p {
       #nav .nav-dropdown li:hover {
         background-color: #802c6e;
         color: #eaebec; }
+
+.nav_shadow {
+  height: 50px; }
+
+.nav_scrolled {
+  z-index: 999999;
+  background-color: #e0e0e0;
+  box-shadow: 0 10px 10px -5px lightgrey;
+  position: fixed !important;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 20px 140px; }
 
 #banner {
   display: flex;

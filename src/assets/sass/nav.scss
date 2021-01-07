@@ -4,6 +4,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition:  background-color 250ms ease-in-out,
+                 box-shadow 250ms ease-in-out;
 
     .nav-brand,
     .nav-options {
@@ -113,4 +115,21 @@
             }
         }
     }
+}
+
+.nav_shadow {
+    height: 50px;
+    // prevent reflow when nav becomes fixed
+}
+
+.nav_scrolled {
+    z-index: 999999;
+    background-color: #e0e0e0;
+    box-shadow: 0 10px 10px -5px lightgrey;
+    position: fixed !important;
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: $spacing_lg
+             ($spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg);
 }

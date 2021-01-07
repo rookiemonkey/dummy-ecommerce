@@ -90,19 +90,6 @@ p {
     }
 }
 
-.num-products {
-    margin-left: $spacing_sm;
-    font-size: small;
-    font-weight: 400;
-    color: $color_darkmuted;
-    cursor: pointer;
-    transition: font-weight 250ms ease;
-
-    &:hover {
-        font-weight: 800
-    }
-}
-
 .notify {
     position: fixed;
     top: 0;
