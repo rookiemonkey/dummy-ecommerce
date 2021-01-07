@@ -1,25 +1,28 @@
-#topsales {
+#toprated ,
+#topsales{
     margin:$spacing_lg+$spacing_lg+$spacing_lg 0px;
 
     h3 {
         color: $color_primary;
     }
 
+    #toprated-cards,
     #topsales-cards {
         margin-top: $spacing_md;
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 5px;
 
         li {    
             background-color: white;
             border-radius: $radius;
             padding: $spacing_lg;
             list-style-type: none;
-            width: 350px;       
-            height: 420px;
+            width: 205px;       
+            height: 250px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             font-size: 0.8rem;
             text-align: left;
@@ -37,15 +40,9 @@
                 transform: scale(1.1);
             }
 
-            p.product-sales {
-                text-align: center;
-                font-size: larger;
-                font-weight: 800;
-            }
-
             img {
                 width: 100%;
-                height: auto;
+                height: 150px;
                 margin-bottom: $spacing_sm;
                 transition: transform 250ms ease-in-out;
             }
@@ -56,6 +53,8 @@
                 h4 {
                     height: 38px;
                     width: 100%;
+                    display: flex;
+                    align-items: flex-end;
                 }
 
                 div.productcard-meta-details {
@@ -63,7 +62,15 @@
                     align-items: center;
                     justify-content: space-between;
 
+                div.productcard-meta-details-left {
+                        display: flex;
+                        align-items: center;
+                    }
+
                     span.ratings {
+                        display: flex;
+                        align-items: center;
+
                         img {
                             margin: 0px;
                             height: 12px;
@@ -72,7 +79,8 @@
                     }
 
                     span.type {
-                        font-size: smaller;
+                        margin-left: 2.5px;
+                        font-size: xx-small;
                         color: $color_meta;
                     }
 
