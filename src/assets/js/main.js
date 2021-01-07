@@ -107,13 +107,16 @@ const Calzada = (function Application() {
                     return null;
 
                 // initial search query
-                if (!pagination.search_query)
+                if (!pagination.search_query) {
+                    toTopScroll();
                     pagination.search_query = input.value;
+                }
 
                 // another search different query after initial, reset everything 
                 if (pagination.search_query
                     && input.value
                     && pagination.search_query != input.value) {
+                    toTopScroll();
                     pagination.search_query = input.value;
                     pagination.search_page = 1;
                     route_search.innerHTML = `

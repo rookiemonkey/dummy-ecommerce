@@ -2430,7 +2430,7 @@ p {
   height: 50px; }
 
 .nav_scrolled {
-  z-index: 999999;
+  z-index: 9998;
   background-color: #e0e0e0;
   box-shadow: 0 10px 10px -5px lightgrey;
   position: fixed !important;
