@@ -54,6 +54,7 @@ async function getProductCounts() {
         card.innerHTML = `
             <img src="${require(`../images/icon_${dept.department_id}.svg`).default}" />
             ${dept.department_name}
+            <p>${dept.department_numProducts} Items!</p>
         `
         list_department.appendChild(card);
 
