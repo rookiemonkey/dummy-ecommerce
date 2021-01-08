@@ -4,10 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev:start": "yarn run build && serve ./build",
-    "dev:live": "yarn run build && webpack serve",
+    "dev:start": "yarn run build && yarn run favicon && serve ./build",
+    "dev:live": "yarn run build && yarn run favicon && webpack serve",
     "build": "yarn run sass && webpack",
-    "sass": "clear && node-sass ./src/assets/sass/_index.scss ./src/assets/css/main.css"
+    "sass": "clear && node-sass ./src/assets/sass/_index.scss ./src/assets/css/main.css",
+    "favicon": "cp ./src/assets/images/favicon.png ./build/"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

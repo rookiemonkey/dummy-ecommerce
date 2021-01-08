@@ -32,6 +32,7 @@ module.exports = {
             new TerserPlugin(),
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, "./src/index.html"),
+                favicon: ".src/assets/images/favicon.png",
                 minify: {
                     removeAttributeQuotes: true,
                     collapseWhitespace: true,
