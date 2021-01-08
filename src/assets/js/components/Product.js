@@ -2,7 +2,9 @@ import Calzada from '../main';
 import HTMLProductCard from './ProductCard';
 import HTMLProductReview from './ProductReview';
 import HTMLStarRatings from './Stars';
+import generanteDom from '../utilities/toGenerateDom';
 import toPhp from '../utilities/toFormat';
+import img_loader from '../../images/loader_card.svg';
 
 export default function HTMLProduct(product) {
 
@@ -15,7 +17,8 @@ export default function HTMLProduct(product) {
     this.container.innerHTML = `
         <div class="product-container">
             <div class="product-image-container">
-                <img src="${product.product_image_lg}" />
+                <img src="${img_loader}" id="productloader_${product._id}" class="productloader" />
+                <img src="${product.product_image_lg}" id="productimg_${product._id}" style="display: none" />
             </div>
             <div class="product-meta-container">
                 <h1>${product.product_name}</h1>
@@ -61,15 +64,20 @@ export default function HTMLProduct(product) {
 
     `
 
-    // append to DOM, create review/similar product elements and append it as well
-    document.getElementById('product-route').appendChild(this.container)
+    // append to DOM and attach loader to image
+    document.getElementById('product-route').appendChild(this.container);
 
-    product.product_reviews.forEach(p => new HTMLProductReview(p))
+    const product_loader = document.getElementById(`productloader_${product._id}`);
+    const product_image = document.getElementById(`productimg_${product._id}`);
 
-    product.product_similar.forEach(p => {
-        const { li } = new HTMLProductCard(p)
-        document.querySelector('.similarities-container').appendChild(li)
-    })
+    product_image.onload = () => {
+        product_image.style.display = 'block';
+        product_loader.remove();
+    }
+
+    // create review/similar product elements and append it as well
+    generanteDom(product.product_similar, HTMLProductCard, '.similarities-container');
+    generanteDom(product.product_reviews, HTMLProductReview, '.reviews-container');
 
     // attach event listeners after appending to DOM
     const quantity = document.getElementById(`quantity_${product._id}`);

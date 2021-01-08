@@ -2,13 +2,13 @@ import HTMLStarRatings from './Stars';
 
 export default function HTMLProductReview(review) {
 
-    this.container = document.createElement('li');
-    this.container.classList.add('review');
+    this.li = document.createElement('li');
+    this.li.classList.add('review');
 
     const start = new Date(2012, 0, 1);
     const end = new Date();
 
-    this.container.innerHTML = `
+    this.li.innerHTML = `
         <div class="review-header">
             <div class="review-header-avatar">
                 <img src="${review.review_avatar}" />
@@ -25,6 +25,4 @@ export default function HTMLProductReview(review) {
             ${new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toDateString()}
         </div>
     `
-
-    document.querySelector('.reviews-container').appendChild(this.container);
 }

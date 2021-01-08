@@ -7,7 +7,7 @@
 
 export default function generanteDom(arr, model, appendTo) {
 
-    arr.forEach(product => {
+    for (const product of arr) {
 
         const { li } = new model(product);
 
@@ -15,6 +15,16 @@ export default function generanteDom(arr, model, appendTo) {
             .querySelector(appendTo)
             .appendChild(li);
 
-    })
+        // remove the loader once image is ready/downloaded
+        const children = [...li.children];
+        const _thisloader = children[0];
+        const _thisimg = children[1];
+
+        _thisimg.onload = () => {
+            _thisimg.style.display = 'block';
+            _thisloader.remove();
+        }
+
+    }
 
 }
