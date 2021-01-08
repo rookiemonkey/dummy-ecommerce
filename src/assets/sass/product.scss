@@ -20,6 +20,10 @@
         }
 
         .product-meta-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
             h1 {
                 color: $color_primary;
             }
@@ -135,59 +139,161 @@
         }
     }
 
-    .reviews-container {
-
-        h4 {
-            font-size: 1.25rem;
-            margin: $spacing_lg 0px;
-            border-bottom: 2.5px solid $color_primary;
+    .product-container-bottom {
+        display: flex;
+        
+        .similarities-container {
+            width: 25%;
         }
 
-        .review {
-            width: 100%;
-            background-color: $color_light;
-            margin: $spacing_md 0px;
+        .reviews-container {
+            width: 75%;
+        }
+
+        .similarities-container,
+        .reviews-container {
             padding: $spacing_md;
-            border-radius: $radius;
-            list-style-type: none;
 
-            div.review-header,
-            div.review-body,
-            div.review-date {
-                margin-bottom: $spacing_sm;
+            h4.headers {
+                font-size: 1.25rem;
+                margin: $spacing_lg 0px;
+                border-bottom: 2.5px solid $color_primary;
             }
+        }
 
-            div.review-header {
+        .similarities-container {
+
+            li {    
+                background-color: white;
+                border-radius: $radius;
+                padding: $spacing_lg;
+                margin: $spacing_md 0px;
+                list-style-type: none;
+                width: 100%;       
+                height: 250px;
                 display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 0.8rem;
+                text-align: left;
+                color: $color_darkmuted;
+                cursor: pointer;
+                transition: transform 250ms ease-in-out,
+                            box-shadow 250ms ease-in-out;
+                
+                &:hover {
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 10px -5px;
+                }
 
-                div.review-header-avatar {
-                    margin-right: $spacing_sm;
-                    width: 45px;
-                    height: 45px;
+                &:hover > img {
+                    transform: scale(1.1);
+                }
 
-                    img {
+                img {
+                    width: 100%;
+                    height: 150px;
+                    margin-bottom: $spacing_sm;
+                    transition: transform 250ms ease-in-out;
+                }
+
+                div.productcard-meta {
+                    width: 100%;
+
+                    h4 {
+                        height: 38px;
                         width: 100%;
-                        height: 100%;
-                        border-radius: 50%;
+                        display: flex;
+                        align-items: flex-end;
+                        color: $color_darkmuted !important;
                     }
-                }
-               
-                div.review-header-meta {
-                    
-                    span > img {
-                        width: 15px;
-                        height: 15px;
-                    }
+
+                    div.productcard-meta-details {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        div.productcard-meta-details-left {
+                                display: flex;
+                                align-items: center;
+                            }
+
+                            span.ratings {
+                                display: flex;
+                                align-items: center;
+
+                                img {
+                                    margin: 0px;
+                                    height: 12px;
+                                    width: 12px;
+                                }
+                            }
+
+                            span.type {
+                                margin-left: 2.5px;
+                                font-size: xx-small;
+                                color: $color_meta;
+                            }
+
+                            span.price {
+                                color: green;
+                                font-weight: 800;
+                            }
+                        }
                 }
             }
+        }
 
-            div.review-body {
-                text-align: justify;
-            }
+        .reviews-container {
 
-            div.review-date {
-                font-style: italic;
+            .review {
+                width: 100%;
+                background-color: $color_light;
+                margin: $spacing_md 0px;
+                padding: $spacing_md;
+                border-radius: $radius;
+                list-style-type: none;
+
+                div.review-header,
+                div.review-body,
+                div.review-date {
+                    margin-bottom: $spacing_sm;
+                }
+
+                div.review-header {
+                    display: flex;
+
+                    div.review-header-avatar {
+                        margin-right: $spacing_sm;
+                        width: 45px;
+                        height: 45px;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 50%;
+                        }
+                    }
+                
+                    div.review-header-meta {
+                        
+                        span > img {
+                            width: 15px;
+                            height: 15px;
+                        }
+                    }
+                }
+
+                div.review-body {
+                    text-align: justify;
+                }
+
+                div.review-date {
+                    font-style: italic;
+                }
             }
         }
     }
+
 }

@@ -32,7 +32,7 @@ export default function HTMLProductCard(product) {
     this.li.onclick = async () => {
         toTopScroll();
 
-        const url = `${baseurl}/api/v1/products/${product._id}?apikey=${apikey}`;
+        const url = `${baseurl}/api/v1/products/${product._id}?apikey=${apikey}&similarities=true`;
         const raw = await fetch(url);
         const parsed = await raw.json();
 

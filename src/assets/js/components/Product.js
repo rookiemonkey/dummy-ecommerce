@@ -1,9 +1,13 @@
 import Calzada from '../main';
+import HTMLProductCard from './ProductCard';
 import HTMLProductReview from './ProductReview';
 import HTMLStarRatings from './Stars';
 import toPhp from '../utilities/toFormat';
 
 export default function HTMLProduct(product) {
+
+    // clear the parent first
+    document.getElementById('product-route').innerHTML = ``;
 
     this.container = document.createElement('div');
     this.container.classList.add('product-main-container');
@@ -46,14 +50,26 @@ export default function HTMLProduct(product) {
             </div>
         </div>
 
-        <ul class="reviews-container">
-            <h4>Product Reviews</h4>
-        </ul>
+        <div class="product-container-bottom">
+            <ul class="reviews-container">
+                <h4 class="headers">Product Reviews</h4>
+            </ul>
+            <ul class="similarities-container">
+                <h4 class="headers">Similar Products</h4>
+            </ul>
+        </div>
+
     `
 
-    // append to DOM, create review elements and append it as well
+    // append to DOM, create review/similar product elements and append it as well
     document.getElementById('product-route').appendChild(this.container)
+
     product.product_reviews.forEach(p => new HTMLProductReview(p))
+
+    product.product_similar.forEach(p => {
+        const { li } = new HTMLProductCard(p)
+        document.querySelector('.similarities-container').appendChild(li)
+    })
 
     // attach event listeners after appending to DOM
     const quantity = document.getElementById(`quantity_${product._id}`);
