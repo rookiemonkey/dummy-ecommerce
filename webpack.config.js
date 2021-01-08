@@ -6,20 +6,26 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-    mode: 'production',
+    mode: 'development',
+
+    devtool: 'eval-source-map',
+
     entry: {
         main: './webpack.js',
     },
+
     output: {
         path: path.resolve(__dirname, "build"),
         filename: '[name].[contenthash].bundle.js',
         publicPath: ''
     },
+
     devServer: {
         port: 8080,
         contentBase: path.resolve(__dirname, "build"),
         hot: true
     },
+
     optimization: {
         minimizer: [
             new OptimizeCssAssetsPlugin(),
@@ -34,11 +40,13 @@ module.exports = {
             })
         ]
     },
+
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({ template: path.resolve(__dirname, "./src/index.html") }),
         new MiniCssExtractPlugin({ filename: '[name].[contenthash].bundle.css' })
     ],
+
     module: {
         rules: [
             {

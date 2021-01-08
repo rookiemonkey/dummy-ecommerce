@@ -28,7 +28,7 @@ p {
 .preloader {
   width: 100%;
   height: 100vh;
-  background: #802c6e;
+  background: #ffd0f5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,6 +43,9 @@ p {
     width: 250px;
     height: 250px;
     margin-bottom: 20px; }
+  .preloader h3 {
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 1.5rem; }
 
 .button {
   display: flex;
@@ -56,6 +59,7 @@ p {
 .btn_more {
   background-color: #f7aa35;
   border: 2px solid #f7aa35;
+  font-weight: 800;
   color: white;
   cursor: pointer;
   transition: background-color 250ms ease-in-out,  border 250ms ease-in-out; }
@@ -2465,13 +2469,20 @@ p {
       display: flex;
       justify-content: flex-start;
       margin: 20px 0px; }
-      #banner .banner-right .banner-right-button button {
+      #banner .banner-right .banner-right-button a {
+        text-decoration: none; }
+      #banner .banner-right .banner-right-button a button {
         width: max-content;
         font-size: 1rem;
         font-weight: 800;
         color: #eaebec;
         border: 2px solid #f7aa35;
-        background-color: #f7aa35; }
+        background-color: #f7aa35;
+        cursor: pointer;
+        transition: background-color 250ms ease-in-out,  border 250ms ease-in-out; }
+        #banner .banner-right .banner-right-button a button:hover {
+          background-color: #802c6e;
+          border: 2px solid #802c6e; }
 
 #toprated,
 #topsales,

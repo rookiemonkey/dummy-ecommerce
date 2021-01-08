@@ -72,7 +72,8 @@ async function renderRandomProducts() {
 // Hide the preloader once all of the HTTP requests has reponded back wiht 200 status
 Promise.all([
     renderDepartments(),
-    renderTopRated(), renderTopSales(),
+    renderTopRated(),
+    renderTopSales(),
     renderRandomProducts()
 ])
 
@@ -81,7 +82,7 @@ Promise.all([
         const preloader = document.querySelector('.preloader')
         main.style.display = 'block';
         preloader.style.opacity = 0;
-        setTimeout(() => preloader.remove(), 500)
+        setTimeout(() => preloader.remove(), 750)
     })
 
     .catch(e => {
