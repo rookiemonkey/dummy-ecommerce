@@ -10,6 +10,8 @@ const { baseurl, apikey } = variables;
 export default function HTMLProductCard(product) {
     this.li = document.createElement('li');
     this.li.setAttribute('data-product_id', product._id);
+    this.li.classList.add('transition-scroll');
+    this.li.classList.add('show-on-scroll');
 
 
     // NOTE: loader first before the actualy image, if not, it will break

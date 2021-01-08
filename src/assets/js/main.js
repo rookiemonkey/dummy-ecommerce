@@ -12,6 +12,7 @@ import generanteDom from './utilities/toGenerateDom';
 import parseFormData from './utilities/getFormData';
 import showSlides from './utilities/toShowSlides';
 import toTopScroll from './utilities/toTopScroll';
+import toShowOnScroll from './utilities/toShowOnScroll';
 import variables from './utilities/_variables';
 import img_logo from '../images/logo.svg';
 import img_empty from '../images/empty.svg';
@@ -438,6 +439,9 @@ const Calzada = (function Application() {
 
             // initialize copyright date
             copyright.textContent = `© ${new Date().getFullYear()} Calzada. All Rights Reserved`;
+
+            // initialize onscroll animation
+            toShowOnScroll();
 
             // onclick for the whole document to close the dropdown
             document.onclick = event => {

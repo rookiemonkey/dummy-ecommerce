@@ -138,6 +138,20 @@ p {
     color: #ffffff;
 }
 
+.transition-scroll {
+    transition: opacity 500ms ease-in,
+                background-color 500ms ease-in-out, 
+                color 500ms ease-in-out !important;
+}
+
+.show-on-scroll {
+    opacity: 0 !important;
+}
+
+.is-visible {
+    opacity: 1 !important;
+}
+
 @keyframes fadeout {
     from {
         opacity: 1;

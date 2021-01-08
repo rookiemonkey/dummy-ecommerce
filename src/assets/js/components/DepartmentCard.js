@@ -8,6 +8,8 @@ export default function HTMLDepartmentCard(department) {
     card.setAttribute('deptId', department_id);
     card.setAttribute('deptName', department_name);
     card.classList.add('department_list_item');
+    card.classList.add('transition-scroll');
+    card.classList.add('show-on-scroll');
 
     card.innerHTML = `
             <img src="${require(`../../images/icon_${department_id}.svg`).default}" />

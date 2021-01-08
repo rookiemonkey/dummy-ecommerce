@@ -4,6 +4,8 @@ export default function HTMLProductReview(review) {
 
     this.li = document.createElement('li');
     this.li.classList.add('review');
+    this.li.classList.add('transition-scroll');
+    this.li.classList.add('show-on-scroll');
 
     const start = new Date(2012, 0, 1);
     const end = new Date();
