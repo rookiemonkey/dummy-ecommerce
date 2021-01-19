@@ -134,6 +134,12 @@
     padding: $spacing_lg
              ($spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg);
 
+    .nav-brand  {
+        h2 {
+            color: $color_secondary !important;
+        }
+    }
+
     .nav-options {
         input {
             color: $color_light !important;

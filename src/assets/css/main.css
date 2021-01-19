@@ -2451,6 +2451,8 @@ p {
   left: 0px;
   margin: 0px;
   padding: 20px 140px; }
+  .nav_scrolled .nav-brand h2 {
+    color: #f7aa35 !important; }
   .nav_scrolled .nav-options input {
     color: white !important; }
     .nav_scrolled .nav-options input::placeholder {

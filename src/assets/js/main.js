@@ -421,6 +421,10 @@ const Calzada = (function Application() {
             }, 500)
         }
 
+        static isOnCart = productId => {
+            return CalzadaCart.cart_products.some(({ _id }) => _id == productId)
+        }
+
         static onNextPage = key => pagination[key]++;
 
         static onDropdown = () => {

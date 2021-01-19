@@ -133,6 +133,11 @@ export default function HTMLProduct(product) {
 
     // EVENT: Add to Cart!
     addtocart.onclick = () => {
+        const isOnCart = Calzada.isOnCart(product._id)
+
+        if (isOnCart) return Calzada.notifier
+            .showMessage(`You already have ${product.product_name} on your cart!`, 'error')
+
         Calzada.addToCart({
             _id: product._id,
             product_name: product.product_name,
@@ -153,6 +158,10 @@ export default function HTMLProduct(product) {
 
     // EVENT: Buy Now!, add to cart then route to checkout
     buynow.onclick = () => {
+        const isOnCart = Calzada.isOnCart(product._id)
+
+        if (isOnCart) return Calzada.toCheckout();
+
         Calzada.addToCart({
             _id: product._id,
             product_name: product.product_name,
