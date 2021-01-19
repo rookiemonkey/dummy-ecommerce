@@ -35,7 +35,7 @@
 
         input {
             border: none;
-            color: $color_primary;
+            color: $color_secondary;
             background-color: transparent;
             border-bottom: 2px solid $color_secondary;
             padding: $spacing_sm 0px;
@@ -124,12 +124,28 @@
 
 .nav_scrolled {
     z-index: 9998;
-    background-color: #e0e0e0;
+    background-color: $color_primary;
     box-shadow: 0 10px 10px -5px lightgrey;
     position: fixed !important;
     top: 0px;
     left: 0px;
     margin: 0px;
+
     padding: $spacing_lg
              ($spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg);
+
+    .nav-options {
+        input {
+            color: $color_light !important;
+
+            &::placeholder {
+                color: $color_light;
+            }
+        }
+
+        li#nav_search, li#nav_departments{
+            border: 2px solid $color_light !important;
+            color: $color_light !important;
+        }
+    }
 }

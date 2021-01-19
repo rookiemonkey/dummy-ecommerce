@@ -1,8 +1,8 @@
 footer {
-    margin:$spacing_lg+$spacing_lg+$spacing_lg 0px;
     border-top: 2.5px solid $color_primary;
-    padding-top: $spacing_lg;
-    color: $color_darkmuted;
+    padding: $spacing_lg+$spacing_lg+$spacing_lg 140px;
+    background-color: $color_primary;
+    color: $color_light;
     font-size: small;
 
     #big,
@@ -29,7 +29,7 @@ footer {
                 cursor: pointer;
 
                 &:hover {
-                    color: $color_primary;
+                    color: $color_secondary;
                 }
             }
         }

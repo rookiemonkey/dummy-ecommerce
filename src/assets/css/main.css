@@ -2379,7 +2379,7 @@ p {
     align-items: center; }
     #nav .nav-options input {
       border: none;
-      color: #802c6e;
+      color: #f7aa35;
       background-color: transparent;
       border-bottom: 2px solid #f7aa35;
       padding: 8px 0px;
@@ -2444,13 +2444,20 @@ p {
 
 .nav_scrolled {
   z-index: 9998;
-  background-color: #e0e0e0;
+  background-color: #802c6e;
   box-shadow: 0 10px 10px -5px lightgrey;
   position: fixed !important;
   top: 0px;
   left: 0px;
   margin: 0px;
   padding: 20px 140px; }
+  .nav_scrolled .nav-options input {
+    color: white !important; }
+    .nav_scrolled .nav-options input::placeholder {
+      color: white; }
+  .nav_scrolled .nav-options li#nav_search, .nav_scrolled .nav-options li#nav_departments {
+    border: 2px solid white !important;
+    color: white !important; }
 
 #banner {
   display: flex;
@@ -2765,10 +2772,10 @@ p {
     font-weight: 400; }
 
 footer {
-  margin: 60px 0px;
   border-top: 2.5px solid #802c6e;
-  padding-top: 20px;
-  color: rgba(0, 0, 0, 0.75);
+  padding: 60px 140px;
+  background-color: #802c6e;
+  color: white;
   font-size: small; }
   footer #big,
   footer #small {
@@ -2802,7 +2809,7 @@ footer {
       footer #big #footer-resources ul li:hover,
       footer #big #footer-social ul li:hover,
       footer #big #footer-app ul li:hover {
-        color: #802c6e; }
+        color: #f7aa35; }
   footer #big #footer-resources ul li img {
     width: 55px;
     height: 12px; }
