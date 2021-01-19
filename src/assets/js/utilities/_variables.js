@@ -30,7 +30,10 @@ export default {
         'Fashion Men': 'ion-man',
         'Accessories': 'ion-ios-rose',
         'Sports & Lifestyle': 'ion-ios-basketball',
-        'Automotive': 'ion-model-s'
+        'Automotive': 'ion-model-s',
+        'Toys and Collectibles': 'ion-ios-color-wand',
+        'School Supplies': 'ion-university',
+        'Home & Living': 'ion-ios-home'
     }
 
 }
