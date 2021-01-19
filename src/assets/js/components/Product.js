@@ -117,6 +117,8 @@ export default function HTMLProduct(product) {
         if (quantity_value == 1) {
             quantity_minus.setAttribute('disabled', 'disabled');
             quantity_minus.classList.add('quantity_minus_disabled')
+            quantity_add.removeAttribute('disabled');
+            quantity_add.classList.remove('quantity_add_disabled');
         }
 
         if (quantity_value == 10) {
