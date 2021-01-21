@@ -318,3 +318,48 @@
     }
 
 }
+
+// IPAD
+@media only screen and (max-width: 768px) {
+    #product-route {
+
+        .product-container {
+            flex-direction: column;
+
+            .product-image-container,
+            .product-meta-container {
+                width: 100%;
+            }
+
+            .product-image-container {
+                min-height: 632px;
+            }
+        }
+
+        .product-container-bottom {
+            flex-direction: column-reverse;
+
+            ul.similarities-container,
+            ul.reviews-container {
+                width: 100%;
+            }
+
+            ul.similarities-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-gap: 5px;
+
+                h4.headers {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 1.75rem;
+                    text-align: center;
+                    color: #802c6e;
+                    border-bottom: none;
+                }
+            }
+        }
+
+    }   
+}
