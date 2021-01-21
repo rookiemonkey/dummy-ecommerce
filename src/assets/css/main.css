@@ -2460,6 +2460,8 @@ p {
   .nav_scrolled .nav-options li#nav_search, .nav_scrolled .nav-options li#nav_departments {
     border: 2px solid white !important;
     color: white !important; }
+  .nav_scrolled .nav-options li#nav_departments ul.nav-dropdown {
+    color: #802c6e !important; }
 
 #banner {
   display: flex;

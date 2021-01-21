@@ -130,7 +130,6 @@
     top: 0px;
     left: 0px;
     margin: 0px;
-
     padding: $spacing_lg
              ($spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg+$spacing_lg);
 
@@ -152,6 +151,10 @@
         li#nav_search, li#nav_departments{
             border: 2px solid $color_light !important;
             color: $color_light !important;
+        }
+
+        li#nav_departments ul.nav-dropdown {
+            color: $color_primary !important;
         }
     }
 }

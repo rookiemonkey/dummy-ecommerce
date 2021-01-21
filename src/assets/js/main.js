@@ -27,7 +27,7 @@ const Calzada = (function Application() {
     // emulating private variables
     let CalzadaCart = new Cart();
     let CalzadaCartHistory = new Array();
-    let Route = new String();
+    let Route = 'home';
     const pagination = {
         search_query: '',
         search_page: 1,
@@ -457,14 +457,29 @@ const Calzada = (function Application() {
             window.addEventListener('scroll', function () {
                 // select the header/navigation
                 const navigation = document.querySelector('#nav');
+                const brand = document.querySelector('.nav-brand');
 
                 // get the y-axis scroll value
                 const scroll_value = window.scrollY;
 
-                // if the user scrolled down
-                scroll_value > 0
-                    ? navigation.classList.add('nav_scrolled')
-                    : navigation.classList.remove('nav_scrolled')
+                // if the user scrolled down just way pass the banner
+                if (scroll_value > 160) {
+                    navigation.classList.add('nav_scrolled')
+
+                    if (Route == 'home' && brand.children.length == 1) {
+                        brand.insertAdjacentHTML('beforeend', `<h2>Calzada</h2>`)
+                    }
+
+                }
+
+                else {
+                    navigation.classList.remove('nav_scrolled')
+
+                    if (Route == 'home' && brand.children.length > 1) {
+                        brand.removeChild(brand.lastElementChild)
+                    }
+
+                }
 
             });
         }
