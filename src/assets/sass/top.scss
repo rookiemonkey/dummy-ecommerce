@@ -112,3 +112,20 @@
         }
     }
 }
+
+// IPAD
+@media only screen and (max-width: 768px) {
+
+    #toprated ,
+    #topsales,
+    #randomproducts {
+
+        #toprated-cards,
+        #topsales-cards,
+        #randomproducts-cards {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+    }
+
+}

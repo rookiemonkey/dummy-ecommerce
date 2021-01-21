@@ -123,6 +123,10 @@ p {
   animation-name: fadeout;
   animation-duration: 500ms; }
 
+@media only screen and (max-width: 768px) {
+  main {
+    margin: 20px 68px; } }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -2463,6 +2467,17 @@ p {
   .nav_scrolled .nav-options li#nav_departments ul.nav-dropdown {
     color: #802c6e !important; }
 
+@media only screen and (max-width: 768px) {
+  .nav_scrolled {
+    padding: 20px 68px; }
+  #nav .nav-options li.nav_item {
+    width: 35px;
+    height: 35px; }
+  #nav .nav-options li.nav_item #badge {
+    top: -20px;
+    right: -25px;
+    font-size: small; } }
+
 #banner {
   display: flex;
   margin: 20px 0px; }
@@ -2503,6 +2518,16 @@ p {
         #banner .banner-right .banner-right-button a button:hover {
           background-color: #802c6e;
           border: 2px solid #802c6e; }
+
+@media only screen and (max-width: 768px) {
+  #banner {
+    flex-direction: column; }
+    #banner .banner-left,
+    #banner .banner-right {
+      width: 100%;
+      padding: 20px; }
+    #banner .banner-right {
+      height: 30vh; } }
 
 #toprated,
 #topsales,
@@ -2705,6 +2730,18 @@ p {
             color: green;
             font-weight: 800; }
 
+@media only screen and (max-width: 768px) {
+  #toprated #toprated-cards,
+  #toprated #topsales-cards,
+  #toprated #randomproducts-cards,
+  #topsales #toprated-cards,
+  #topsales #topsales-cards,
+  #topsales #randomproducts-cards,
+  #randomproducts #toprated-cards,
+  #randomproducts #topsales-cards,
+  #randomproducts #randomproducts-cards {
+    grid-template-columns: 1fr 1fr 1fr; } }
+
 #slideshow {
   margin: 60px 0px; }
   #slideshow .slide {
@@ -2775,6 +2812,12 @@ p {
     font-size: small;
     font-weight: 400; }
 
+@media only screen and (max-width: 768px) {
+  #departments ul#department_list {
+    grid-template-columns: 1fr 1fr 1fr 1fr; }
+  #departments ul#department_list li {
+    font-size: small; } }
+
 footer {
   border-top: 2.5px solid #802c6e;
   padding: 60px 140px;
@@ -2837,6 +2880,17 @@ footer {
     padding-top: 20px;
     display: flex;
     justify-content: space-between; }
+
+@media only screen and (max-width: 768px) {
+  footer {
+    padding: 20px 68px; }
+  footer #big #footer-app div {
+    display: block; }
+  footer #big #footer-app ul {
+    padding: 0px; }
+  footer #small {
+    flex-direction: column;
+    font-size: smaller; } }
 
 #product-route .product-container {
   margin-top: 12px;

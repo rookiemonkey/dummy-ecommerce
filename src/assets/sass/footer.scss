@@ -85,3 +85,27 @@ footer {
         justify-content: space-between;
     }
 }
+
+// IPAD
+@media only screen and (max-width: 768px) {
+
+    footer {
+        padding: ($spacing_lg) 
+                ($spacing_lg+$spacing_lg+$spacing_lg+$spacing_sm);
+    }
+
+    footer #big #footer-app {
+        div {
+            display: block;
+        }
+
+        ul {
+            padding: 0px;
+        }
+    }
+
+    footer #small {
+        flex-direction: column;
+        font-size: smaller;
+    }
+}

@@ -44,3 +44,19 @@
         }
     }
 }
+
+// IPAD
+@media only screen and (max-width: 768px) {
+
+    #departments {
+
+        ul#department_list {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+
+        ul#department_list li {
+            font-size: small;
+        }
+
+    }
+}

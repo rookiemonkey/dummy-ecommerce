@@ -62,3 +62,22 @@
         }
     }
 }
+
+// IPAD
+@media only screen and (max-width: 768px) {
+
+    #banner {
+        flex-direction: column;
+
+        .banner-left,
+        .banner-right {
+            width: 100%;
+            padding: $spacing_lg;
+        }
+
+        .banner-right {
+            height: 30vh;
+        }
+    }
+
+}

@@ -158,3 +158,23 @@
         }
     }
 }
+
+// IPAD
+@media only screen and (max-width: 768px) {
+
+    .nav_scrolled {
+        padding: ($spacing_lg) 
+                ($spacing_lg+$spacing_lg+$spacing_lg+$spacing_sm); 
+    }
+
+    #nav .nav-options li.nav_item {
+        width: 35px;
+        height: 35px;
+    }
+
+    #nav .nav-options li.nav_item #badge {
+        top: -20px;
+        right: -25px;
+        font-size: small;
+    }
+}

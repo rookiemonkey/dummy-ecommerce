@@ -168,6 +168,15 @@ p {
     animation-duration: 500ms;
 }
 
+// IPAD
+@media only screen and (max-width: 768px) {
+
+    main {
+        margin: ($spacing_lg) 
+                ($spacing_lg+$spacing_lg+$spacing_lg+$spacing_sm); 
+    }
+}
+
 @import './_ionic';
 @import './nav.scss';
 @import './banner.scss';
