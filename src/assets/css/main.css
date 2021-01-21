@@ -2740,7 +2740,12 @@ p {
   #randomproducts #toprated-cards,
   #randomproducts #topsales-cards,
   #randomproducts #randomproducts-cards {
-    grid-template-columns: 1fr 1fr 1fr; } }
+    grid-template-columns: 1fr 1fr 1fr !important; }
+  #search-route #list-search,
+  #search-route #list-department,
+  #department-route #list-search,
+  #department-route #list-department {
+    grid-template-columns: 1fr 1fr 1fr !important; } }
 
 #slideshow {
   margin: 60px 0px; }

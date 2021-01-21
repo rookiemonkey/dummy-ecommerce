@@ -123,9 +123,18 @@
         #toprated-cards,
         #topsales-cards,
         #randomproducts-cards {
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr !important;
         }
 
+    }
+
+    #search-route,
+    #department-route {
+
+        #list-search,
+        #list-department {
+            grid-template-columns: 1fr 1fr 1fr !important;
+        }
     }
 
 }
