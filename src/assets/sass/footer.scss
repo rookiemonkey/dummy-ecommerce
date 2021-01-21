@@ -94,6 +94,24 @@ footer {
                 ($spacing_lg+$spacing_lg+$spacing_lg+$spacing_sm);
     }
 
+    footer #big {
+        flex-wrap: wrap;
+
+        #footer-customerservice,
+        #footer-about,
+        #footer-resources,
+        #footer-social,
+        #footer-app {
+            width: 30% !important;
+            margin-top: $spacing_md;
+        }
+    }
+
+    footer #small {
+        flex-direction: column;
+        font-size: smaller;
+    }
+
     footer #big #footer-app {
         div {
             display: block;
@@ -102,10 +120,5 @@ footer {
         ul {
             padding: 0px;
         }
-    }
-
-    footer #small {
-        flex-direction: column;
-        font-size: smaller;
     }
 }

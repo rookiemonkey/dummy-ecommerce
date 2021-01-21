@@ -2889,13 +2889,22 @@ footer {
 @media only screen and (max-width: 768px) {
   footer {
     padding: 20px 68px; }
+  footer #big {
+    flex-wrap: wrap; }
+    footer #big #footer-customerservice,
+    footer #big #footer-about,
+    footer #big #footer-resources,
+    footer #big #footer-social,
+    footer #big #footer-app {
+      width: 30% !important;
+      margin-top: 12px; }
+  footer #small {
+    flex-direction: column;
+    font-size: smaller; }
   footer #big #footer-app div {
     display: block; }
   footer #big #footer-app ul {
-    padding: 0px; }
-  footer #small {
-    flex-direction: column;
-    font-size: smaller; } }
+    padding: 0px; } }
 
 #product-route .product-container {
   margin-top: 12px;
