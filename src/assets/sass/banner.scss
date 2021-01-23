@@ -25,7 +25,7 @@
         .banner-right-header {
             h1 {
                 font-size: 60px;
-                color: $color_primary
+                color: $color_secondary
             }
 
             p {
@@ -51,12 +51,13 @@
                 border: 2px solid $color_secondary;
                 background-color: $color_secondary;
                 cursor: pointer;
-                    transition: background-color 250ms ease-in-out, 
+                transition: background-color 250ms ease-in-out, 
                 border 250ms ease-in-out;
 
                 &:hover {
-                    background-color: $color_primary;
-                    border: 2px solid $color_primary;
+                    background-color: $color_accent1;
+                    border: 2px solid $color_accent1;
+                    color: $color_secondary;
                 }
             }
         }

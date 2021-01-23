@@ -4,7 +4,7 @@
     margin:$spacing_lg+$spacing_lg+$spacing_lg 0px;
 
     h2 {
-        color: $color_primary;
+        color: $color_secondary;
     }
 
     #btn_more_randomresults {
@@ -21,10 +21,8 @@
 
         li {    
             background-color: white;
-            border-radius: $radius;
             padding: $spacing_lg;
-            list-style-type: none;
-            width: 205px;       
+            list-style-type: none;     
             height: 250px;
             display: flex;
             flex-direction: column;

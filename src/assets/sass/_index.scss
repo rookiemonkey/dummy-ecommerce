@@ -1,8 +1,9 @@
-$color_primary: #802c6e;
-$color_secondary: #f7aa35;
+$color_primary: #E7B9B4;
+$color_secondary: #087E8B;
+$color_accent1: #C2DACE;
 $color_light: white;
-$color_lightmuted: #eaebec; 
-$color_darkmuted: rgba(0,0,0,0.75);
+$color_lightmuted: #E5DED2; 
+$color_darkmuted: #2C2C2C;
 $color_meta: #b1b1b3;
 $radius: 15px;
 $spacing_sm: 8px;
@@ -47,7 +48,7 @@ p {
 .preloader {
     width: 100%;
     height: 100vh;
-    background: #ffd0f5;
+    background: $color_accent1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -82,17 +83,20 @@ p {
 }
 
 .btn_more {
-    background-color: $color_secondary;
-    border: 2px solid $color_secondary;
+    width: max-content;
+    font-size:  1rem;
     font-weight: 800;
-    color: $color_light;
+    color: $color_lightmuted;
+    border: 2px solid $color_secondary;
+    background-color: $color_secondary;
     cursor: pointer;
     transition: background-color 250ms ease-in-out, 
-                border 250ms ease-in-out;
+                border 250ms ease-in-out !important;
 
     &:hover {
-        background-color: $color_primary;
-        border: 2px solid $color_primary;
+        background-color: $color_accent1;
+        border: 2px solid $color_accent1;
+        color: $color_secondary;
     }
 }
 
@@ -140,7 +144,8 @@ p {
 
 .transition-scroll {
     transition: opacity 500ms ease-in,
-                background-color 500ms ease-in-out, 
+                background-color 500ms ease-in-out,
+                transform 500ms ease-in-out,
                 color 500ms ease-in-out !important;
 }
 

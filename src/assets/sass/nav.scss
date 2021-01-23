@@ -25,7 +25,7 @@
 
         h2 {
             font-size: 2.25rem;
-            color: $color_primary;
+            color: $color_secondary;
         }
     }
 
@@ -47,14 +47,14 @@
         }
         
         li.nav_item {
-            border: 2px solid $color_primary;
+            border: 2px solid $color_secondary;
             display: flex;
             justify-content: center;
             align-items: center;
             width: 50px;
             height: 50px;
             border-radius: 35px;
-            color: $color_primary;
+            color: $color_secondary;
             font-weight: 800;
             list-style-type: none;
             margin-left: $spacing_lg;
@@ -76,10 +76,10 @@
                 right: -10px;
                 padding: 5px 10px;
                 border-radius: 50%;
-                background-color: green ;
+                background-color: white;
                 width: 30px;
                 height: 30px;
-                color: white;
+                color: $color_secondary;
             }
         }
     }
@@ -110,7 +110,7 @@
             }
 
             &:hover {
-                background-color: $color_primary;
+                background-color: $color_secondary;
                 color: $color_lightmuted;
             }
         }
@@ -124,8 +124,8 @@
 
 .nav_scrolled {
     z-index: 9998;
-    background-color: $color_primary;
-    box-shadow: 0 10px 10px -5px lightgrey;
+    background-color: $color_darkmuted;
+    box-shadow: $color_darkmuted 0px 4px 12px;
     position: fixed !important;
     top: 0px;
     left: 0px;
@@ -135,26 +135,26 @@
 
     .nav-brand  {
         h2 {
-            color: $color_secondary !important;
+            color: $color_accent1!important;
         }
     }
 
     .nav-options {
         input {
-            color: $color_light !important;
+            color: $color_lightmuted !important;
 
             &::placeholder {
-                color: $color_light;
+                color: $color_accent1;
             }
         }
 
         li#nav_search, li#nav_departments{
-            border: 2px solid $color_light !important;
-            color: $color_light !important;
+            border: 2px solid $color_accent1 !important;
+            color: $color_lightmuted !important;
         }
 
         li#nav_departments ul.nav-dropdown {
-            color: $color_primary !important;
+            color: $color_accent1 !important;
         }
     }
 }

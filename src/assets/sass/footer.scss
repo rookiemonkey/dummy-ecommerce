@@ -1,8 +1,8 @@
 footer {
-    border-top: 2.5px solid $color_primary;
+    border-top: 2.5px solid $color_darkmuted;
     padding: $spacing_lg+$spacing_lg+$spacing_lg 140px;
-    background-color: $color_primary;
-    color: $color_light;
+    background-color: $color_darkmuted;
+    color: $color_lightmuted;
     font-size: small;
 
     #big,
@@ -20,6 +20,10 @@ footer {
         #footer-app {
             width: 20%;
 
+            h3 {
+                color: $color_accent1;
+            }
+
             h3, ul li {
                 margin-bottom: $spacing_sm;
             }
@@ -29,7 +33,7 @@ footer {
                 cursor: pointer;
 
                 &:hover {
-                    color: $color_secondary;
+                    color: $color_accent1;
                 }
             }
         }

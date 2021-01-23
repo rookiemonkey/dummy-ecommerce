@@ -14,15 +14,14 @@
     #list-department {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-gap: 5px;
     }
 
     li {    
         background-color: white;
-        border-radius: $radius;
         padding: $spacing_lg;
         margin: $spacing_md 0px;
-        list-style-type: none;
-        width: 205px;       
+        list-style-type: none;      
         height: 250px;
         display: flex;
         flex-direction: column;
