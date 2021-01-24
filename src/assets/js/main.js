@@ -40,6 +40,7 @@ const Calzada = (function Application() {
     const route_department = document.querySelector('[data-route="department"]');
     const route_checkout = document.querySelector('[data-route="checkout"]');
     const input = document.getElementById('nav_search_input');
+    const input_mobile = document.getElementById('mobile_nav_search_input');
     const dropdown = document.querySelector('.nav-dropdown');
 
     return class App {
@@ -77,6 +78,7 @@ const Calzada = (function Application() {
                     pagination.search_query = ''
                     pagination.search_page = 1
                     input.value = ''
+                    input_mobile.value = ''
                 }
 
                 if (route != 'department') {
@@ -96,30 +98,35 @@ const Calzada = (function Application() {
 
         static toSearch = async event => {
             try {
+                event.preventDefault();
                 const { target } = event;
 
+                const input_value = window.screen.width <= 375
+                    ? input_mobile.value
+                    : input.value
+
                 // searching w/o query to match
-                if (!input.value)
+                if (!input_value)
                     return this.notifier.showMessage('Please enter a query', 'error')
 
                 // another search but same search query and not from more btn
                 if (pagination.search_query
-                    && pagination.search_query == input.value
+                    && pagination.search_query == input_value
                     && !target.classList.contains('btn_more'))
                     return null;
 
                 // initial search query
                 if (!pagination.search_query) {
                     toTopScroll();
-                    pagination.search_query = input.value;
+                    pagination.search_query = input_value;
                 }
 
                 // another search different query after initial, reset everything 
                 if (pagination.search_query
-                    && input.value
-                    && pagination.search_query != input.value) {
+                    && input_value
+                    && pagination.search_query != input_value) {
                     toTopScroll();
-                    pagination.search_query = input.value;
+                    pagination.search_query = input_value;
                     pagination.search_page = 1;
                     route_search.innerHTML = `
                         <h3 id="search_header">Matching resuts for <span>'${pagination.search_query}'</span></h3>
@@ -505,6 +512,7 @@ const Calzada = (function Application() {
 const copyright = document.getElementById('copyright');
 const nav_brand = document.querySelector('.nav-brand');
 const nav_search = document.getElementById('nav_search');
+const nav_search_mobile = document.getElementById('mobile_nav_search_form');
 const nav_checkout = document.getElementById('nav_checkout');
 const nav_checkout_mobile = document.getElementById('mobile_nav_checkout');
 const nav_departments = document.getElementById('nav_departments');
@@ -520,6 +528,12 @@ nav_departments.onclick = () => Calzada.onDropdown();
 
 // query to api then routes to search
 nav_search.onclick = e => Calzada.toSearch(e);
+
+// query to api then routes to search for mobile
+nav_search_mobile.onsubmit = e => {
+    Calzada.toSearch(e);
+    toToggleSideBar('close');
+};
 
 // renders the cart
 nav_checkout.onclick = () => Calzada.toCheckout();
