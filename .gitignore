@@ -1,3 +1,6 @@
 /build
 /node_modules
 /instructions.txt
+
+# Local Netlify folder
+.netlify
