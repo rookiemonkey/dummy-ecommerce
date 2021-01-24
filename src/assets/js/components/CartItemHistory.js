@@ -24,7 +24,7 @@ export default function HTMLCartItemHistory(cartHistory) {
                 ${cartHistory.history_cart.length} item/s &nbsp; | 
             </h5>
             <span class="cart-history-total"> 
-                &nbsp; Total ${toPhp(cartHistory.history_total)}
+                &nbsp; ${toPhp(cartHistory.history_total)}
             </h5>
         </div>
     `

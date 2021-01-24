@@ -33,11 +33,11 @@
             justify-content: center;
 
             h1 {
-                color: $color_primary;
+                color: $color_secondary;
             }
 
             h3, h3 > span {
-                color: $color_secondary;
+                color: $color_darkmuted;
                 font-weight: 400;
             }
 
@@ -81,7 +81,7 @@
 
                 .quantity_add,
                 .quantity_minus {
-                    color: white;
+                    color: $color_lightmuted;
                     font-weight: 800;
                     cursor: pointer;
                     border: none;
@@ -132,7 +132,7 @@
 
                 button.btn_addToCart {
                     background-color: $color_primary;
-                    color: $color_light;
+                    color: $color_darkmuted;
                 }
 
                 button.btn_buyNow {
@@ -164,6 +164,7 @@
 
             h4.headers {
                 font-size: 1.25rem;
+                color: $color_darkmuted;
                 margin: $spacing_lg 0px;
                 border-bottom: 2.5px solid $color_primary;
             }
@@ -173,7 +174,6 @@
 
             li {    
                 background-color: white;
-                border-radius: $radius;
                 padding: $spacing_lg;
                 margin: $spacing_md 0px;
                 list-style-type: none;
@@ -273,13 +273,13 @@
                 background-color: $color_light;
                 margin: $spacing_md 0px;
                 padding: $spacing_md;
-                border-radius: $radius;
                 list-style-type: none;
 
                 div.review-header,
                 div.review-body,
                 div.review-date {
                     margin-bottom: $spacing_sm;
+                    color: $color_darkmuted;
                 }
 
                 div.review-header {
@@ -355,7 +355,7 @@
                     align-items: center;
                     font-size: 1.75rem;
                     text-align: center;
-                    color: #802c6e;
+                    color: $color_darkmuted;
                     border-bottom: none;
                 }
             }

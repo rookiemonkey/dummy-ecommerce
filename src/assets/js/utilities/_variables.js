@@ -13,7 +13,7 @@ export default {
             'Needs something for your sports? We got you covered!',
             'Techy? We got some laptops for you to try',
             'Your comfort foods are available here!',
-            'Summer needs are on the go. Get that bathing suit you always wanted!',
+            'Summer needs are on the go. Get it while its hot!',
             'Grab some medicine and keep your self healthy!',
             'Make use of your green thumb and help the environment!'
         ],
