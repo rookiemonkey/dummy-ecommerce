@@ -14,6 +14,22 @@
         <h3>Opening our store for you!</h3>
     </div>
 
+    <div class="sidebar">
+        <div class="sidebar_item">
+            <i class="ion-chevron-right" id="btn_sidebar_close"></i>
+        </div>
+        <div class="sidebar_item mobile_search">
+            <a><i class="ion-search"></i></a>
+            <input id="mobile_nav_search_input" type="text" placeholder="Search Product">
+        </div>
+        <div class="sidebar_item">
+            <a id="mobile_nav_checkout" href='#'><i class="ion-ios-cart"> &nbsp; Cart</i></a>
+        </div>
+        <div class="sidebar_item">
+            <a id="mobile_nav_departments" href='#'><i class="ion-ios-keypad"></i> &nbsp; Departments</a>
+        </div>
+    </div>
+
     <main>
         <div class="nav_shadow">
             <nav id="nav">
@@ -29,6 +45,11 @@
                         </ul>
                     </li>
                     <li class="nav_item" id="nav_checkout"><i class="ion-ios-cart"></i><span id="badge">0</span></li>
+                </ul>
+                <ul class="nav-options mobile-nav-options">
+                    <li class="nav_item" id="btn_sidebar_open">
+                        <i class="ion-chevron-left"></i>
+                    </li>
                 </ul>
             </nav>
         </div>

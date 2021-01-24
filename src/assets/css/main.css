@@ -2430,6 +2430,8 @@ p {
         width: 30px;
         height: 30px;
         color: #087E8B; }
+  #nav .nav-options.mobile-nav-options {
+    display: none; }
   #nav #nav_departments {
     position: relative; }
   #nav .nav-dropdown {
@@ -2476,6 +2478,39 @@ p {
   .nav_scrolled .nav-options li#nav_departments ul.nav-dropdown {
     color: #087E8B !important; }
 
+.sidebar {
+  transform: translate(100vw);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 9999999;
+  top: 0;
+  left: 0;
+  background-color: #2C2C2C;
+  overflow-x: hidden;
+  padding: 8px;
+  color: #C2DACE;
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1); }
+  .sidebar .sidebar_item {
+    margin: 12px 0px;
+    margin-left: 20px; }
+    .sidebar .sidebar_item a {
+      margin-right: 8px;
+      text-decoration: none;
+      color: #C2DACE; }
+  .sidebar .sidebar_item.mobile_search {
+    display: flex;
+    align-items: center; }
+    .sidebar .sidebar_item.mobile_search input {
+      width: 90%;
+      border: none;
+      color: #C2DACE;
+      background-color: transparent;
+      border-bottom: 2px solid #087E8B;
+      padding: 8px 0px; }
+      .sidebar .sidebar_item.mobile_search input:focus {
+        outline: none; }
+
 @media only screen and (max-width: 768px) {
   .nav_scrolled {
     padding: 20px 68px; }
@@ -2488,8 +2523,12 @@ p {
     font-size: small; } }
 
 @media only screen and (max-width: 375px) {
-  #nav {
-    display: none; } }
+  #nav .nav-options {
+    display: none; }
+  #nav .nav-options.mobile-nav-options {
+    display: flex; }
+  .nav_scrolled {
+    padding: 8px; } }
 
 #banner {
   display: flex;

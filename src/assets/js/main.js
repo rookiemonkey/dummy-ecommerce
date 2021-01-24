@@ -13,6 +13,7 @@ import parseFormData from './utilities/getFormData';
 import showSlides from './utilities/toShowSlides';
 import toTopScroll from './utilities/toTopScroll';
 import toShowOnScroll from './utilities/toShowOnScroll';
+import toToggleSideBar from './utilities/toToggleSidebar';
 import variables from './utilities/_variables';
 import img_logo from '../images/logo.svg';
 import img_empty from '../images/empty.svg';
@@ -439,14 +440,26 @@ const Calzada = (function Application() {
             showSlides()
             setInterval(showSlides, 3500)
 
+
             // initialize notifier
             Calzada.notifier.initialize();
+
 
             // initialize copyright date
             copyright.textContent = `© ${new Date().getFullYear()} Calzada. All Rights Reserved`;
 
+
             // initialize onscroll animation
             toShowOnScroll();
+
+
+            // initizlize sidebar if on mobile
+            document.querySelector('#btn_sidebar_open')
+                .onclick = () => toToggleSideBar('open')
+
+            document.querySelector('#btn_sidebar_close')
+                .onclick = () => toToggleSideBar('close')
+
 
             // onclick for the whole document to close the dropdown
             document.onclick = event => {
@@ -454,6 +467,7 @@ const Calzada = (function Application() {
                     dropdown.style.display = 'none'
             }
 
+            
             // onscroll for navigation
             window.addEventListener('scroll', function () {
                 // select the header/navigation
