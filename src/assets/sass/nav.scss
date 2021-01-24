@@ -205,6 +205,18 @@
             }
         }
     }
+
+    .sidebar_item .nav-dropdown-mobile li {
+        margin-top: $spacing_md;
+        margin-left: $spacing_lg;
+        list-style-type: none;
+
+        span {
+            margin-right: $spacing_md;
+            display: inline-block;
+            width: 17px;
+        }
+    }
 }
 
 // IPAD

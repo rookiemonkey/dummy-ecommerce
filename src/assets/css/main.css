@@ -2510,6 +2510,14 @@ p {
       padding: 8px 0px; }
       .sidebar .sidebar_item.mobile_search input:focus {
         outline: none; }
+  .sidebar .sidebar_item .nav-dropdown-mobile li {
+    margin-top: 12px;
+    margin-left: 20px;
+    list-style-type: none; }
+    .sidebar .sidebar_item .nav-dropdown-mobile li span {
+      margin-right: 12px;
+      display: inline-block;
+      width: 17px; }
 
 @media only screen and (max-width: 768px) {
   .nav_scrolled {
