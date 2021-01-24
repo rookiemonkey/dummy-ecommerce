@@ -249,3 +249,27 @@
         }
     }
 }
+
+// MOBILE
+@media only screen and (max-width: 375px) {
+    #checkout-route #checkout-route-container  {
+        ul.list-cart li {
+            & > img {
+                height: 100px;
+                width: 100px;
+            }
+
+            div.cart-item-meta {
+                div.cart-item-metatop {
+                    h2 {
+                        font-size: 1rem;
+                    }
+
+                    span {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -358,8 +358,26 @@
                     color: $color_darkmuted;
                     border-bottom: none;
                 }
+
+                li.img {
+                    object-fit: contain;
+                }
             }
         }
 
     }   
+}
+
+// MOBILE
+@media only screen and (max-width: 375px) {
+    #product-route {
+
+        .product-container .product-image-container  {
+            min-height: 500px;
+        }
+
+        .product-container-bottom ul.similarities-container {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
 }
