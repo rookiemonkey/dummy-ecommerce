@@ -467,7 +467,7 @@ const Calzada = (function Application() {
                     dropdown.style.display = 'none'
             }
 
-            
+
             // onscroll for navigation
             window.addEventListener('scroll', function () {
                 // select the header/navigation
@@ -506,6 +506,7 @@ const copyright = document.getElementById('copyright');
 const nav_brand = document.querySelector('.nav-brand');
 const nav_search = document.getElementById('nav_search');
 const nav_checkout = document.getElementById('nav_checkout');
+const nav_checkout_mobile = document.getElementById('mobile_nav_checkout');
 const nav_departments = document.getElementById('nav_departments');
 
 // onload of the document
@@ -517,10 +518,16 @@ nav_brand.onclick = () => Calzada.router('home')
 // open/close dropdown
 nav_departments.onclick = () => Calzada.onDropdown();
 
+// query to api then routes to search
+nav_search.onclick = e => Calzada.toSearch(e);
+
 // renders the cart
 nav_checkout.onclick = () => Calzada.toCheckout();
 
-// query to api then routes to search
-nav_search.onclick = e => Calzada.toSearch(e);
+// renders the cart for mobile
+nav_checkout_mobile.onclick = () => {
+    Calzada.toCheckout();
+    toToggleSideBar('close');
+}
 
 export default Calzada;

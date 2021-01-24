@@ -1,6 +1,6 @@
 
 export default function toggleSideBar(action) {
-    const sidebar = document.querySelector('.sidebar');
+    const sidebar = document.querySelector('.sidebar_nav');
     const body = document.body;
 
     switch (action) {
