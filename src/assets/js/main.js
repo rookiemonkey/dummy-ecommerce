@@ -435,8 +435,9 @@ const Calzada = (function Application() {
 
         static onLoad = () => {
 
-            // initialize the slides
-            showSlides();
+            // initialize the slides, then change every 3.5s
+            showSlides()
+            setInterval(showSlides, 3500)
 
             // initialize notifier
             Calzada.notifier.initialize();
