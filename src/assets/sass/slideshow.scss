@@ -23,6 +23,26 @@
   }
 }
 
+// MOBILE
+@media only screen and (max-width: 375px) {
+  #slideshow .slide {
+    flex-direction: column-reverse;
+
+    img {
+      width: 100%;
+      height: 100%
+    }
+
+    p {
+      margin-top: $spacing_sm;
+      margin-left: $spacing_sm;
+      margin-right: $spacing_sm;
+      width: 100%;
+      font-size: 1.25rem;
+    }
+  }
+}
+
 .fade {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 1.5s;

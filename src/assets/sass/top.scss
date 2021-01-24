@@ -115,7 +115,7 @@
 // IPAD
 @media only screen and (max-width: 768px) {
 
-    #toprated ,
+    #toprated,
     #topsales,
     #randomproducts {
 
@@ -133,6 +133,34 @@
         #list-search,
         #list-department {
             grid-template-columns: 1fr 1fr 1fr !important;
+        }
+    }
+
+}
+
+// MOBILE
+@media only screen and (max-width: 375px) {
+    #toprated,
+    #topsales,
+    #randomproducts {
+
+        h2 {
+            font-size: 1rem;
+        }
+
+        #toprated-cards,
+        #topsales-cards,
+        #randomproducts-cards {
+            grid-template-columns: 1fr 1fr !important;
+        }
+    }
+
+    #search-route,
+    #department-route {
+
+        #list-search,
+        #list-department {
+            grid-template-columns: 1fr 1fr !important;
         }
     }
 

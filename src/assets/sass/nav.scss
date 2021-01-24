@@ -178,3 +178,10 @@
         font-size: small;
     }
 }
+
+// MOBILE
+@media only screen and (max-width: 375px) {
+    #nav {
+        display: none; // temporary, while looking for solutions
+    }
+}

@@ -126,3 +126,20 @@ footer {
         }
     }
 }
+
+// MOBILE
+@media only screen and (max-width: 375px) {
+    footer {
+        padding: $spacing_sm;
+    }
+
+    footer #big {
+        #footer-customerservice,
+        #footer-about,
+        #footer-resources,
+        #footer-social,
+        #footer-app {
+            width: 50% !important;
+        }
+    }
+}

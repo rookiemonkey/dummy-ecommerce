@@ -130,6 +130,12 @@ p {
   main {
     margin: 20px 68px; } }
 
+@media only screen and (max-width: 375px) {
+  main {
+    margin: 8px; }
+  .preloader h3 {
+    font-size: 1rem; } }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -2481,6 +2487,10 @@ p {
     right: -25px;
     font-size: small; } }
 
+@media only screen and (max-width: 375px) {
+  #nav {
+    display: none; } }
+
 #banner {
   display: flex;
   margin: 20px 0px; }
@@ -2750,6 +2760,27 @@ p {
   #department-route #list-department {
     grid-template-columns: 1fr 1fr 1fr !important; } }
 
+@media only screen and (max-width: 375px) {
+  #toprated h2,
+  #topsales h2,
+  #randomproducts h2 {
+    font-size: 1rem; }
+  #toprated #toprated-cards,
+  #toprated #topsales-cards,
+  #toprated #randomproducts-cards,
+  #topsales #toprated-cards,
+  #topsales #topsales-cards,
+  #topsales #randomproducts-cards,
+  #randomproducts #toprated-cards,
+  #randomproducts #topsales-cards,
+  #randomproducts #randomproducts-cards {
+    grid-template-columns: 1fr 1fr !important; }
+  #search-route #list-search,
+  #search-route #list-department,
+  #department-route #list-search,
+  #department-route #list-department {
+    grid-template-columns: 1fr 1fr !important; } }
+
 #slideshow {
   margin: 60px 0px; }
   #slideshow .slide {
@@ -2767,6 +2798,19 @@ p {
       color: #087E8B;
       font-weight: 800;
       font-size: 2.5rem; }
+
+@media only screen and (max-width: 375px) {
+  #slideshow .slide {
+    flex-direction: column-reverse; }
+    #slideshow .slide img {
+      width: 100%;
+      height: 100%; }
+    #slideshow .slide p {
+      margin-top: 8px;
+      margin-left: 8px;
+      margin-right: 8px;
+      width: 100%;
+      font-size: 1.25rem; } }
 
 .fade {
   -webkit-animation-name: fade;
@@ -2824,6 +2868,12 @@ p {
     grid-template-columns: 1fr 1fr 1fr 1fr; }
   #departments ul#department_list li {
     font-size: small; } }
+
+@media only screen and (max-width: 375px) {
+  #departments h2 {
+    font-size: 1rem; }
+  #departments ul#department_list {
+    grid-template-columns: 1fr 1fr; } }
 
 footer {
   border-top: 2.5px solid #2C2C2C;
@@ -2913,6 +2963,16 @@ footer {
     display: block; }
   footer #big #footer-app ul {
     padding: 0px; } }
+
+@media only screen and (max-width: 375px) {
+  footer {
+    padding: 8px; }
+  footer #big #footer-customerservice,
+  footer #big #footer-about,
+  footer #big #footer-resources,
+  footer #big #footer-social,
+  footer #big #footer-app {
+    width: 50% !important; } }
 
 #product-route .product-container {
   margin-top: 12px;
@@ -3137,7 +3197,7 @@ footer {
         align-items: center;
         font-size: 1.75rem;
         text-align: center;
-        color: #802c6e;
+        color: #2C2C2C;
         border-bottom: none; } }
 
 #search-route,
