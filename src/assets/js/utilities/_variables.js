@@ -1,6 +1,7 @@
 export default {
 
-    baseurl: 'http://localhost:5050',
+    // baseurl: 'http://localhost:5050',
+    baseurl: 'https://dummyproducts-api.herokuapp.com',
 
     apikey: 'Ogq1qI5b1psE',
 
